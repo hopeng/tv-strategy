@@ -1,0 +1,17 @@
+# Normalize line endings: check out and store text as LF
+* text=auto eol=lf
+
+# Binary — do not touch line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

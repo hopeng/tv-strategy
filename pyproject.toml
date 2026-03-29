@@ -1,0 +1,23 @@
+# =============================================================================
+# Package manager: Astral uv only — do not use pip in this repo.
+#
+#   uv sync              # install / refresh .venv from this file (and uv.lock)
+#   uv run python …      # run a script using the project environment
+#   uv add <pkg>         # add a runtime dependency
+#   uv lock              # refresh the lockfile after manual pyproject edits
+#
+# Docs: https://docs.astral.sh/uv/
+# =============================================================================
+
+[project]
+name = "sandbox"
+version = "0.1.0"
+description = "Local scripts and tools; use `uv sync` and `uv run` (see header comments)."
+requires-python = ">=3.13"
+dependencies = [
+    "yt-dlp>=2026.3.17",
+]
+
+[tool.uv]
+# Script-style repo: dependencies only, not a wheel/sdist to build or publish.
+package = false
