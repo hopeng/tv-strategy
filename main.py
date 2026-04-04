@@ -2,12 +2,12 @@
 1. No args: scan subfolders in cwd for vid_list.txt and process each URL.
 2. One URL arg: download EN subs to --out-dir (default cwd).
 
-Subtitle download matches yt_subtitle_downloader.download_subtitles: same ydl_opts
-(writesubtitles + writeautomaticsub like its CLI default, subtitlesformat srt, extract_info
-→ second YoutubeDL with outtmpl {"default": ...}). No FFmpeg postprocessors.
+YouTube fetch is in yt_dlp_utils; this module handles naming, SRT sidecar rules, and
+vid_list.txt batch flow.
 
 Skip if an SRT already has this URL as the first cue text, or (legacy) filename contains
-the video id. After download, rename to [author].date.title.en.srt — author in brackets with
+the video id. Filename stem comes from ``build_srt_stem(info)`` and is passed to ``download_subtitles``;
+utils downloads to a temp id-based name then renames. Naming: [author].date.title.en.srt — author in brackets with
 spaces→dots inside; date/time segment YYYY-MM-DD_HH-MM (no seconds); other segments
 spaces/hyphens→dots; runs of dots collapsed. Then insert the URL as cue 1.
 
@@ -17,18 +17,15 @@ equivalent to cmd: yt-dlp --skip-download --write-auto-subs --sub-langs "en" --c
 import argparse
 from datetime import datetime
 import logging
-import os
 import re
-import shutil
 import sys
 from pathlib import Path
 
-import yt_dlp
+from yt_dlp_utils import DEFAULT_SUB_LANG, download_subtitles, extract_video_info
 
 logger = logging.getLogger(__name__)
 
-SUB_FMT = "srt"
-SUB_LANG = "en"
+SUB_LANG = DEFAULT_SUB_LANG
 
 # Windows / cross-platform: strip characters illegal in file names.
 _BAD_FN = set('<>:"/\\|?*\n\r\t')
@@ -78,57 +75,8 @@ def build_srt_stem(info: dict, lang: str = SUB_LANG) -> str:
     return _collapse_dots(stem)
 
 
-def _unique_srt_path(output_dir: Path, stem: str) -> Path:
-    base = output_dir / f"{stem}.srt"
-    if not base.exists():
-        return base
-    for i in range(2, 10_000):
-        cand = output_dir / f"{stem}.{i}.srt"
-        if not cand.exists():
-            return cand
-    raise OSError("Could not allocate unique .srt path")
-
-
-def _ydl_extract_opts() -> dict:
-    return {
-        "skip_download": True,
-        "quiet": True,
-        "no_warnings": True,
-        "compat_opts": {"prefer-legacy-http-handler"},
-    }
-
-
-def video_id_from_url(url: str) -> str | None:
-    """Resolve canonical video id via yt-dlp (same idea as yt_subtitle_downloader.get_subtitle_info)."""
-    opts = dict(_ydl_extract_opts())
-    if shutil.which("node"):
-        opts["js_runtime"] = "node"
-    try:
-        with yt_dlp.YoutubeDL(opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-    except Exception:
-        return None
-    if not info:
-        return None
-    vid = info.get("id")
-    return vid.strip() if isinstance(vid, str) and vid.strip() else None
-
-
 def _is_subtitle_filename(name: str) -> bool:
     return name.lower().endswith(".srt")
-
-
-def _subtitle_mtime_map(output_dir: Path) -> dict[str, float]:
-    out: dict[str, float] = {}
-    if not output_dir.is_dir():
-        return out
-    for p in output_dir.iterdir():
-        if p.is_file() and _is_subtitle_filename(p.name):
-            try:
-                out[p.name] = p.stat().st_mtime
-            except OSError:
-                pass
-    return out
 
 
 def _srt_first_cue_text(path: Path) -> str | None:
@@ -194,49 +142,6 @@ def prepend_source_url_as_first_cue(srt_path: Path, url: str) -> None:
     srt_path.write_text(first + body, encoding="utf-8")
 
 
-def download_subtitles(url: str, output_dir: Path) -> dict:
-    """Same flow as yt_subtitle_downloader; writes a short temp name, then caller renames to build_srt_stem."""
-    node_path = shutil.which("node")
-    this_out = os.path.abspath(str(output_dir))
-    os.makedirs(this_out, exist_ok=True)
-
-    ydl_opts = {
-        "skip_download": True,
-        "writesubtitles": True,
-        "writeautomaticsub": True,
-        "subtitleslangs": [SUB_LANG],
-        "subtitlesformat": SUB_FMT,
-        "outtmpl": os.path.join(this_out, "%(id)s.%(ext)s"),
-        "quiet": True,
-        "no_warnings": True,
-        "ignoreerrors": True,
-        "compat_opts": {"prefer-legacy-http-handler"},
-    }
-    if node_path:
-        ydl_opts["js_runtime"] = "node"
-
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=False)
-    if not info:
-        raise RuntimeError("Could not extract video info.")
-
-    download_opts = {
-        **ydl_opts,
-        "outtmpl": {"default": os.path.join(this_out, f"%(id)s.%(ext)s")},
-    }
-    with yt_dlp.YoutubeDL(download_opts) as ydl_dl:
-        ydl_dl.download([url])
-    return info
-
-
-def _pick_new_srt(new_paths: list[Path], video_id: str) -> Path | None:
-    srts = [p for p in new_paths if p.suffix.lower() == ".srt"]
-    for p in sorted(srts):
-        if video_id in p.name:
-            return p
-    return sorted(srts)[0] if srts else None
-
-
 def _existing_subtitle_for_id(output_dir: Path, video_id: str) -> Path | None:
     for p in sorted(output_dir.iterdir()):
         if p.is_file() and video_id in p.name and _is_subtitle_filename(p.name):
@@ -266,42 +171,42 @@ def process_url(
         )
         return True
 
-    video_id = video_id_from_url(url)
+    try:
+        info = extract_video_info(url)
+    except Exception as e:
+        logger.error("%sSkipping (could not extract video info): url=%s: %s", lp, url, e)
+        return False
+
+    vid = info.get("id")
+    video_id = vid.strip() if isinstance(vid, str) and vid.strip() else None
     if not video_id:
-        logger.error("%sSkipping (could not resolve video id): %s", lp, url)
+        logger.error("%sSkipping (no video id in metadata): url=%s", lp, url)
         return False
 
     if existing := _existing_subtitle_for_id(output_dir, video_id):
         logger.info("%sAlready exists: url=%s file=%s", lp, url, existing.name)
         return True
 
+    filename_stem = build_srt_stem(info)
     logger.info("%sDownloading subtitles for: url=%s", lp, url)
-    before = _subtitle_mtime_map(output_dir)
     try:
-        info = download_subtitles(url, output_dir)
+        _, final_path = download_subtitles(
+            url,
+            output_dir,
+            filename_stem,
+            info=info,
+        )
     except Exception as e:
         logger.error("%sError downloading subtitles for url=%s: %s", lp, url, e)
         return False
 
-    after = _subtitle_mtime_map(output_dir)
-    new_paths: list[Path] = []
-    for name, m in after.items():
-        prev = before.get(name)
-        if prev is None or m > prev:
-            new_paths.append(output_dir / name)
+    if not final_path:
+        logger.warning("%sNo SRT file created for: url=%s", lp, url)
+        return False
 
-    new_sub = _pick_new_srt(new_paths, video_id)
-    if new_sub:
-        stem = build_srt_stem(info)
-        target = _unique_srt_path(output_dir, stem)
-        if new_sub.resolve() != target.resolve():
-            new_sub.rename(target)
-            new_sub = target
-        prepend_source_url_as_first_cue(new_sub, url)
-        logger.info("%sSaved: url=%s file=%s", lp, url, new_sub.name)
-        return True
-    logger.warning("%sNo SRT file created for: url=%s", lp, url)
-    return False
+    prepend_source_url_as_first_cue(final_path, url)
+    logger.info("%sSaved: url=%s file=%s", lp, url, final_path.name)
+    return True
 
 
 def process_subfolder(subfolder: Path) -> None:
