@@ -1,0 +1,987 @@
+1
+00:00:00,000 --> 00:00:00,001
+https://www.youtube.com/watch?v=bvXRKqqvy5o
+
+2
+00:00:00,780 --> 00:00:05,460
+all right y'all so here I am driving and
+
+3
+00:00:03,179 --> 00:00:07,379
+trading right now I almost got hit by a
+
+4
+00:00:05,460 --> 00:00:09,300
+truck oh my goodness now I'm not
+
+5
+00:00:07,379 --> 00:00:11,580
+actually driving right I've got my wife
+
+6
+00:00:09,300 --> 00:00:13,259
+Big Bus 28 driving but I want to talk
+
+7
+00:00:11,580 --> 00:00:15,179
+about a scalping strategy that you can
+
+8
+00:00:13,259 --> 00:00:17,699
+use on a very low time frame currently I
+
+9
+00:00:15,179 --> 00:00:20,520
+am in this uh long trade right here as
+
+10
+00:00:17,699 --> 00:00:23,400
+you can see up 37 I want to talk about
+
+11
+00:00:20,520 --> 00:00:24,779
+how I was able to get into this trade
+
+12
+00:00:23,400 --> 00:00:28,199
+okay now this is something that you can
+
+13
+00:00:24,779 --> 00:00:31,080
+do on very very very low time frames and
+
+14
+00:00:28,199 --> 00:00:34,260
+it really just comes down to this okay
+
+15
+00:00:31,080 --> 00:00:36,360
+what you want to do and you can do this
+
+16
+00:00:34,260 --> 00:00:38,579
+on the one minute the six minute I like
+
+17
+00:00:36,360 --> 00:00:40,860
+to use the 12 minute and down what you
+
+18
+00:00:38,579 --> 00:00:43,500
+can do is if you notice that an asset is
+
+19
+00:00:40,860 --> 00:00:45,300
+trading sideways like it is right here
+
+20
+00:00:43,500 --> 00:00:48,360
+with clear lows and clear highs just
+
+21
+00:00:45,300 --> 00:00:50,399
+draw a box of round
+
+22
+00:00:48,360 --> 00:00:52,440
+the highs and the lows in general and
+
+23
+00:00:50,399 --> 00:00:55,620
+what you can do is you can look
+
+24
+00:00:52,440 --> 00:00:57,239
+literally to take trades whenever we
+
+25
+00:00:55,620 --> 00:00:58,620
+come up to the top of the box you can
+
+26
+00:00:57,239 --> 00:01:00,480
+look to take shorts and whenever we come
+
+27
+00:00:58,620 --> 00:01:03,600
+down to the bottom of the box you can
+
+28
+00:01:00,480 --> 00:01:06,000
+look to take Longs and what I like to do
+
+29
+00:01:03,600 --> 00:01:07,260
+is I like to use Market Cipher to tell
+
+30
+00:01:06,000 --> 00:01:10,140
+me when
+
+31
+00:01:07,260 --> 00:01:11,520
+there is a good opportunity to get into
+
+32
+00:01:10,140 --> 00:01:13,560
+a trade and the way we're going to do
+
+33
+00:01:11,520 --> 00:01:15,540
+that is using divergences it's a very
+
+34
+00:01:13,560 --> 00:01:16,920
+simple strategy people over complicate
+
+35
+00:01:15,540 --> 00:01:20,520
+their trades all the time don't you
+
+36
+00:01:16,920 --> 00:01:22,979
+agree Big Bus 28 yes she agrees people
+
+37
+00:01:20,520 --> 00:01:24,659
+over complicate things all the time all
+
+38
+00:01:22,979 --> 00:01:26,340
+you need to do if you see a sideways
+
+39
+00:01:24,659 --> 00:01:28,380
+range is I like to pull some volume
+
+40
+00:01:26,340 --> 00:01:29,939
+through the range so what that means is
+
+41
+00:01:28,380 --> 00:01:32,400
+this right
+
+42
+00:01:29,939 --> 00:01:34,259
+we are going to come over here to the
+
+43
+00:01:32,400 --> 00:01:36,659
+prediction and measurement tools come
+
+44
+00:01:34,259 --> 00:01:39,240
+down to fixed range volume profile and
+
+45
+00:01:36,659 --> 00:01:42,600
+we are simply going to drag that through
+
+46
+00:01:39,240 --> 00:01:44,880
+the entirety of the price action and
+
+47
+00:01:42,600 --> 00:01:48,140
+once we do that
+
+48
+00:01:44,880 --> 00:01:48,140
+hang on one second here
+
+49
+00:01:50,340 --> 00:01:54,119
+once we do that this now gives us a
+
+50
+00:01:52,320 --> 00:01:55,560
+framework where we can look for trades
+
+51
+00:01:54,119 --> 00:01:59,460
+and this will also give us our take
+
+52
+00:01:55,560 --> 00:02:01,740
+profits and our stop losses so
+
+53
+00:01:59,460 --> 00:02:04,259
+we can then after we have this larger
+
+54
+00:02:01,740 --> 00:02:07,680
+box we can then make smaller boxes and
+
+55
+00:02:04,259 --> 00:02:09,780
+say okay whenever we come up here we can
+
+56
+00:02:07,680 --> 00:02:12,360
+look for shorts and whenever we come
+
+57
+00:02:09,780 --> 00:02:15,060
+down here we can be looking for launch
+
+58
+00:02:12,360 --> 00:02:17,060
+now this morning in the VIP Discord I
+
+59
+00:02:15,060 --> 00:02:20,760
+did it put this exact level here that
+
+60
+00:02:17,060 --> 00:02:22,500
+19462 level right here as an area where
+
+61
+00:02:20,760 --> 00:02:24,060
+we are going to be looking for long
+
+62
+00:02:22,500 --> 00:02:26,640
+trace and also this morning when I was
+
+63
+00:02:24,060 --> 00:02:28,020
+giving my potential trade setups in the
+
+64
+00:02:26,640 --> 00:02:31,860
+VIP Discord
+
+65
+00:02:28,020 --> 00:02:33,480
+I was saying that this box is the zone
+
+66
+00:02:31,860 --> 00:02:36,180
+to look for Longs because we are coming
+
+67
+00:02:33,480 --> 00:02:37,860
+down to this lower portion of the
+
+68
+00:02:36,180 --> 00:02:39,420
+sideways range so when we get there
+
+69
+00:02:37,860 --> 00:02:42,420
+here's what we're going to look for
+
+70
+00:02:39,420 --> 00:02:45,060
+we're going to look for divergences okay
+
+71
+00:02:42,420 --> 00:02:48,060
+I did actually take a scout this morning
+
+72
+00:02:45,060 --> 00:02:50,040
+from up here because we had come up to
+
+73
+00:02:48,060 --> 00:02:51,420
+the higher region of the box and when we
+
+74
+00:02:50,040 --> 00:02:53,760
+take a look at our indicator of Market
+
+75
+00:02:51,420 --> 00:02:56,040
+Cipher B we can see that we are getting
+
+76
+00:02:53,760 --> 00:02:58,140
+bearish divergences we can see that
+
+77
+00:02:56,040 --> 00:03:01,140
+price is making a higher high as
+
+78
+00:02:58,140 --> 00:03:02,400
+momentum is making a lower high and
+
+79
+00:03:01,140 --> 00:03:05,340
+something else that I really like to
+
+80
+00:03:02,400 --> 00:03:07,560
+look at is the money flow okay the money
+
+81
+00:03:05,340 --> 00:03:08,819
+flow on Market Cypher B is very very
+
+82
+00:03:07,560 --> 00:03:10,620
+important not only do we want to see
+
+83
+00:03:08,819 --> 00:03:13,440
+bearish divergences where we have a very
+
+84
+00:03:10,620 --> 00:03:15,840
+juicy left butt cheek over here full of
+
+85
+00:03:13,440 --> 00:03:17,519
+Ravioli and then a skinny butt cheek
+
+86
+00:03:15,840 --> 00:03:19,560
+over here not so much ravioli in there
+
+87
+00:03:17,519 --> 00:03:21,959
+probably vegan eating lots of celery
+
+88
+00:03:19,560 --> 00:03:24,239
+okay but we also want to see the money
+
+89
+00:03:21,959 --> 00:03:27,180
+flow getting lower and if we come over
+
+90
+00:03:24,239 --> 00:03:29,159
+here to Marcus Cipher B and we just turn
+
+91
+00:03:27,180 --> 00:03:31,920
+off our momentum here
+
+92
+00:03:29,159 --> 00:03:33,180
+okay we can see I'll turn off the V wob
+
+93
+00:03:31,920 --> 00:03:35,940
+I'll turn off everything except the
+
+94
+00:03:33,180 --> 00:03:37,920
+money flow we can see that the money
+
+95
+00:03:35,940 --> 00:03:39,959
+flow was getting lower
+
+96
+00:03:37,920 --> 00:03:42,060
+as we were
+
+97
+00:03:39,959 --> 00:03:43,560
+getting higher in price okay we can see
+
+98
+00:03:42,060 --> 00:03:46,080
+that literally the money flow ways are
+
+99
+00:03:43,560 --> 00:03:48,239
+getting lower okay this is very very key
+
+100
+00:03:46,080 --> 00:03:50,340
+now when we come down to the long tray
+
+101
+00:03:48,239 --> 00:03:52,379
+that we just took we can see the exact
+
+102
+00:03:50,340 --> 00:03:53,940
+same thing on the higher term time
+
+103
+00:03:52,379 --> 00:03:56,640
+frames a 12 minute time frame the money
+
+104
+00:03:53,940 --> 00:04:00,599
+flow is actually getting higher as the
+
+105
+00:03:56,640 --> 00:04:02,159
+price is getting lower and so that is
+
+106
+00:04:00,599 --> 00:04:04,200
+what gives us the entry for the trade
+
+107
+00:04:02,159 --> 00:04:07,680
+now the stop loss is always going to go
+
+108
+00:04:04,200 --> 00:04:09,720
+above or below the last high or low okay
+
+109
+00:04:07,680 --> 00:04:10,739
+the last higher low
+
+110
+00:04:09,720 --> 00:04:13,080
+um
+
+111
+00:04:10,739 --> 00:04:15,480
+so in this case our initial stop loss
+
+112
+00:04:13,080 --> 00:04:17,400
+goes below this Wick after take profit
+
+113
+00:04:15,480 --> 00:04:19,139
+one we move that to the entry and if
+
+114
+00:04:17,400 --> 00:04:21,479
+we're shorting initially the stop loss
+
+115
+00:04:19,139 --> 00:04:22,919
+goes above this way okay this gives us
+
+116
+00:04:21,479 --> 00:04:24,540
+really good risk to reward ratios
+
+117
+00:04:22,919 --> 00:04:27,780
+because if we're taking shorts from the
+
+118
+00:04:24,540 --> 00:04:30,900
+high targeting the low right like this
+
+119
+00:04:27,780 --> 00:04:32,759
+that is a good four to one risk and
+
+120
+00:04:30,900 --> 00:04:34,860
+reward ratio and if we're taking along
+
+121
+00:04:32,759 --> 00:04:37,199
+from the bottom and we're targeting the
+
+122
+00:04:34,860 --> 00:04:39,180
+high let's just say from here that is
+
+123
+00:04:37,199 --> 00:04:42,120
+also giving us a nice
+
+124
+00:04:39,180 --> 00:04:43,979
+um well hang on this is not correct this
+
+125
+00:04:42,120 --> 00:04:47,340
+trade is now giving us a three to one
+
+126
+00:04:43,979 --> 00:04:48,960
+reward ratio right so they're good risk
+
+127
+00:04:47,340 --> 00:04:51,240
+reward ratios if we constantly are
+
+128
+00:04:48,960 --> 00:04:52,500
+trading this way over time we will be
+
+129
+00:04:51,240 --> 00:04:54,840
+profitable now what about the take
+
+130
+00:04:52,500 --> 00:04:57,180
+profits where do they go well I like to
+
+131
+00:04:54,840 --> 00:05:00,000
+use these areas of volume for take
+
+132
+00:04:57,180 --> 00:05:01,860
+profits okay this is giving us a fair
+
+133
+00:05:00,000 --> 00:05:03,540
+value for this little sideways range
+
+134
+00:05:01,860 --> 00:05:05,520
+where these candles are shaded on the
+
+135
+00:05:03,540 --> 00:05:07,680
+fixed range volume profile anything
+
+136
+00:05:05,520 --> 00:05:09,960
+below is considered oversold anything
+
+137
+00:05:07,680 --> 00:05:11,520
+above is considered overbought and
+
+138
+00:05:09,960 --> 00:05:13,500
+pretty much we're looking at this as a
+
+139
+00:05:11,520 --> 00:05:14,880
+sideways range where these levels are
+
+140
+00:05:13,500 --> 00:05:16,740
+going to be take profits so a take
+
+141
+00:05:14,880 --> 00:05:19,380
+profit one would be right here a take
+
+142
+00:05:16,740 --> 00:05:22,080
+profit two would be right here and then
+
+143
+00:05:19,380 --> 00:05:24,419
+we can let the rest ride now why did
+
+144
+00:05:22,080 --> 00:05:26,340
+take profits there it's because this is
+
+145
+00:05:24,419 --> 00:05:28,440
+establishing a fair value if the price
+
+146
+00:05:26,340 --> 00:05:30,539
+is unable to now come back inside of the
+
+147
+00:05:28,440 --> 00:05:33,180
+fair value we can expect actually lower
+
+148
+00:05:30,539 --> 00:05:35,160
+so if we take profit one here and then
+
+149
+00:05:33,180 --> 00:05:37,860
+move our stop loss to our entry then
+
+150
+00:05:35,160 --> 00:05:39,479
+we've guaranteed a win and then we don't
+
+151
+00:05:37,860 --> 00:05:41,039
+really have to worry about getting
+
+152
+00:05:39,479 --> 00:05:42,840
+stopped out at our entry because it's a
+
+153
+00:05:41,039 --> 00:05:44,580
+small win but we we don't want to close
+
+154
+00:05:42,840 --> 00:05:46,139
+the whole tree here because we know if
+
+155
+00:05:44,580 --> 00:05:47,820
+we come back inside of here it's very
+
+156
+00:05:46,139 --> 00:05:49,740
+probable we'll make it back up to the
+
+157
+00:05:47,820 --> 00:05:51,960
+highs right look at the trades that we
+
+158
+00:05:49,740 --> 00:05:53,759
+could have taken in this range so far
+
+159
+00:05:51,960 --> 00:05:54,840
+now today I've taken two trades in this
+
+160
+00:05:53,759 --> 00:05:57,000
+range
+
+161
+00:05:54,840 --> 00:05:58,560
+but you know we could have literally
+
+162
+00:05:57,000 --> 00:06:01,560
+after establishing the low and the high
+
+163
+00:05:58,560 --> 00:06:03,539
+taking one short one long one short one
+
+164
+00:06:01,560 --> 00:06:04,860
+long one short and now one long we've
+
+165
+00:06:03,539 --> 00:06:07,500
+literally had one two three four five
+
+166
+00:06:04,860 --> 00:06:09,960
+six profitable trades in this tiny
+
+167
+00:06:07,500 --> 00:06:13,860
+little range here that only spans about
+
+168
+00:06:09,960 --> 00:06:16,139
+you know 1.5 percent now the reason I
+
+169
+00:06:13,860 --> 00:06:18,419
+say this is a one minute strategy is
+
+170
+00:06:16,139 --> 00:06:20,580
+because literally you can use the very
+
+171
+00:06:18,419 --> 00:06:22,560
+low time frames here
+
+172
+00:06:20,580 --> 00:06:24,000
+um for example like the one minute look
+
+173
+00:06:22,560 --> 00:06:26,039
+at this on the one minute as we come
+
+174
+00:06:24,000 --> 00:06:28,020
+down to here we are getting money flow
+
+175
+00:06:26,039 --> 00:06:30,840
+getting higher and the momentum getting
+
+176
+00:06:28,020 --> 00:06:32,400
+higher down here okay and when we were
+
+177
+00:06:30,840 --> 00:06:34,500
+up here we could see the money flow and
+
+178
+00:06:32,400 --> 00:06:37,259
+the momentum getting lower when we were
+
+179
+00:06:34,500 --> 00:06:39,600
+down here we could see the momentum
+
+180
+00:06:37,259 --> 00:06:41,639
+waves getting higher money flow not
+
+181
+00:06:39,600 --> 00:06:43,500
+getting higher down here but even still
+
+182
+00:06:41,639 --> 00:06:46,020
+we had our divergences it's always best
+
+183
+00:06:43,500 --> 00:06:47,819
+if the money flow agrees okay this short
+
+184
+00:06:46,020 --> 00:06:49,800
+right here we can see money flow getting
+
+185
+00:06:47,819 --> 00:06:51,600
+lower but momentum not you can still
+
+186
+00:06:49,800 --> 00:06:53,520
+take trades if only one of the two is
+
+187
+00:06:51,600 --> 00:06:55,740
+working but if both are giving you the
+
+188
+00:06:53,520 --> 00:06:57,780
+same signal then it's a very very high
+
+189
+00:06:55,740 --> 00:06:59,280
+probability trade setup if we're looking
+
+190
+00:06:57,780 --> 00:07:01,080
+at sideways ranges so we can see now
+
+191
+00:06:59,280 --> 00:07:02,880
+we're back inside that value area
+
+192
+00:07:01,080 --> 00:07:05,100
+the trade is now up 50 percent in
+
+193
+00:07:02,880 --> 00:07:06,960
+profits and so now that we're inside of
+
+194
+00:07:05,100 --> 00:07:09,539
+here we're looking now to take our next
+
+195
+00:07:06,960 --> 00:07:12,120
+take profit up at this area okay at the
+
+196
+00:07:09,539 --> 00:07:13,740
+1975 area now here's the thing you can
+
+197
+00:07:12,120 --> 00:07:16,380
+front run these and I front run these a
+
+198
+00:07:13,740 --> 00:07:18,900
+lot because you know we we might not
+
+199
+00:07:16,380 --> 00:07:20,220
+exactly come up right to here right we
+
+200
+00:07:18,900 --> 00:07:22,580
+might just come up a little bit before
+
+201
+00:07:20,220 --> 00:07:25,139
+it and then lose it so you can
+
+202
+00:07:22,580 --> 00:07:26,880
+manipulate your take profits but in
+
+203
+00:07:25,139 --> 00:07:28,440
+general this is the outline that you
+
+204
+00:07:26,880 --> 00:07:30,120
+want to be using here
+
+205
+00:07:28,440 --> 00:07:32,580
+okay this is the outline that you want
+
+206
+00:07:30,120 --> 00:07:34,560
+to be using here so I could take another
+
+207
+00:07:32,580 --> 00:07:37,500
+little profit out now uh maybe in
+
+208
+00:07:34,560 --> 00:07:40,020
+another little profit out right there
+
+209
+00:07:37,500 --> 00:07:42,479
+if it ever loads I don't know kind of on
+
+210
+00:07:40,020 --> 00:07:45,360
+the road as you can see trading and
+
+211
+00:07:42,479 --> 00:07:46,800
+driving and yeah guys that's that's it
+
+212
+00:07:45,360 --> 00:07:49,080
+for today's video
+
+213
+00:07:46,800 --> 00:07:50,819
+um just a quick little scoping strategy
+
+214
+00:07:49,080 --> 00:07:52,020
+hope you found that helpful and if you
+
+215
+00:07:50,819 --> 00:07:53,639
+did make sure to like the video make
+
+216
+00:07:52,020 --> 00:07:54,960
+sure to subscribe to the channel if you
+
+217
+00:07:53,639 --> 00:07:56,160
+want to join the VIP Discord where we
+
+218
+00:07:54,960 --> 00:07:57,539
+give these levels in advance you can go
+
+219
+00:07:56,160 --> 00:07:59,819
+to patreon.com forward slash Jason
+
+220
+00:07:57,539 --> 00:08:01,919
+Casper also if you want to learn how to
+
+221
+00:07:59,819 --> 00:08:03,240
+trade this way where you know what
+
+222
+00:08:01,919 --> 00:08:05,000
+you're looking for how to have a plan in
+
+223
+00:08:03,240 --> 00:08:07,020
+advance you can check out the course
+
+224
+00:08:05,000 --> 00:08:07,919
+jasoncastmortrading.com this will give
+
+225
+00:08:07,020 --> 00:08:09,840
+you the knowledge and the skills you
+
+226
+00:08:07,919 --> 00:08:12,060
+need to become a confident profitable
+
+227
+00:08:09,840 --> 00:08:13,199
+Trader because not only does it teach
+
+228
+00:08:12,060 --> 00:08:15,000
+you how to read the charts and feel
+
+229
+00:08:13,199 --> 00:08:16,560
+confident in your trades it also teaches
+
+230
+00:08:15,000 --> 00:08:18,660
+you how to read the charts and feel
+
+231
+00:08:16,560 --> 00:08:20,520
+confident in your trades it does not
+
+232
+00:08:18,660 --> 00:08:22,379
+teach you how to proofread your website
+
+233
+00:08:20,520 --> 00:08:24,419
+to avoid putting the same thing twice in
+
+234
+00:08:22,379 --> 00:08:26,699
+a row but it will teach you how to stop
+
+235
+00:08:24,419 --> 00:08:28,259
+fomo trading and trading with emotions
+
+236
+00:08:26,699 --> 00:08:29,819
+so that you can have a plan come to the
+
+237
+00:08:28,259 --> 00:08:31,860
+charts every single day and be
+
+238
+00:08:29,819 --> 00:08:33,719
+profitable doing this God bless
+
+239
+00:08:31,860 --> 00:08:35,700
+everybody in the name of Jesus the
+
+240
+00:08:33,719 --> 00:08:37,320
+Messiah make sure you're always wearing
+
+241
+00:08:35,700 --> 00:08:39,060
+your Market Cipher merch guys make sure
+
+242
+00:08:37,320 --> 00:08:40,680
+to keep your biceps nice and big make
+
+243
+00:08:39,060 --> 00:08:43,020
+sure to always Skip Leg Day make sure to
+
+244
+00:08:40,680 --> 00:08:45,839
+trade and drive speaking of trading and
+
+245
+00:08:43,020 --> 00:08:47,339
+driving I have tried doing it behind the
+
+246
+00:08:45,839 --> 00:08:50,720
+driver's wheel before and that did not
+
+247
+00:08:47,339 --> 00:08:50,720
+work out well peace

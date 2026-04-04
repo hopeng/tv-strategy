@@ -1,0 +1,1243 @@
+1
+00:00:00,000 --> 00:00:00,001
+https://www.youtube.com/watch?v=60RS6O_vfWs
+
+2
+00:00:00,000 --> 00:00:03,840
+this one minute scalping strategy is
+
+3
+00:00:01,979 --> 00:00:05,279
+simple profitable it's great for new
+
+4
+00:00:03,840 --> 00:00:07,379
+traders who are looking for a very
+
+5
+00:00:05,279 --> 00:00:08,580
+simple step-by-step strategy or anybody
+
+6
+00:00:07,379 --> 00:00:10,679
+who's looking to have a good time
+
+7
+00:00:08,580 --> 00:00:12,360
+scalping on the one minute this strategy
+
+8
+00:00:10,679 --> 00:00:13,799
+would have been used to give you this
+
+9
+00:00:12,360 --> 00:00:15,660
+entry on this current long scalp that
+
+10
+00:00:13,799 --> 00:00:17,279
+I'm in from the exact bottom so make
+
+11
+00:00:15,660 --> 00:00:18,480
+sure to like the video make sure to
+
+12
+00:00:17,279 --> 00:00:19,500
+subscribe to the channel make sure to
+
+13
+00:00:18,480 --> 00:00:21,180
+click that Bell for notifications
+
+14
+00:00:19,500 --> 00:00:22,740
+because we are bringing the juiciest
+
+15
+00:00:21,180 --> 00:00:24,359
+technical analysis and trading strategy
+
+16
+00:00:22,740 --> 00:00:25,920
+videos here on YouTube so in order to
+
+17
+00:00:24,359 --> 00:00:28,080
+use this strategy we are going to open
+
+18
+00:00:25,920 --> 00:00:30,000
+up a blank chart we are going to put on
+
+19
+00:00:28,080 --> 00:00:31,560
+the one minute time frame and then we
+
+20
+00:00:30,000 --> 00:00:34,079
+are going to put on two indicators first
+
+21
+00:00:31,560 --> 00:00:35,340
+of all Bollinger Bands okay in order to
+
+22
+00:00:34,079 --> 00:00:36,600
+find the Bollinger band you are going to
+
+23
+00:00:35,340 --> 00:00:39,300
+come to indicators and you're just going
+
+24
+00:00:36,600 --> 00:00:41,340
+to search for a ball and your bands okay
+
+25
+00:00:39,300 --> 00:00:43,559
+right here make sure to screenshot this
+
+26
+00:00:41,340 --> 00:00:45,120
+if you are new and put that on and then
+
+27
+00:00:43,559 --> 00:00:46,920
+we are going to be also using something
+
+28
+00:00:45,120 --> 00:00:48,120
+called the awesome oscillator the
+
+29
+00:00:46,920 --> 00:00:50,579
+awesome oscillator you are going to go
+
+30
+00:00:48,120 --> 00:00:52,500
+to indicators and simply just search AO
+
+31
+00:00:50,579 --> 00:00:54,180
+and it is this one right here the
+
+32
+00:00:52,500 --> 00:00:55,500
+awesome oscillator screenshot that if
+
+33
+00:00:54,180 --> 00:00:56,879
+you need to these are the only two
+
+34
+00:00:55,500 --> 00:00:59,039
+indicators we are going to be using for
+
+35
+00:00:56,879 --> 00:01:01,379
+a trade and basically here is how it
+
+36
+00:00:59,039 --> 00:01:03,660
+works step number 1 we are going to wait
+
+37
+00:01:01,379 --> 00:01:05,880
+for price to pierce or touch either the
+
+38
+00:01:03,660 --> 00:01:07,439
+upper or lower Bollinger band these are
+
+39
+00:01:05,880 --> 00:01:09,600
+the green lines on the chart if price
+
+40
+00:01:07,439 --> 00:01:11,220
+touches the upper or pierces the upper
+
+41
+00:01:09,600 --> 00:01:13,560
+band or touches or pierces of the lower
+
+42
+00:01:11,220 --> 00:01:15,240
+band that is potentially going to be a
+
+43
+00:01:13,560 --> 00:01:17,040
+trade for us so when we're using the
+
+44
+00:01:15,240 --> 00:01:18,720
+strategy we do not think about even
+
+45
+00:01:17,040 --> 00:01:20,880
+entering a trade unless price is
+
+46
+00:01:18,720 --> 00:01:22,320
+touching the upper or lower Bollinger
+
+47
+00:01:20,880 --> 00:01:24,780
+band and then the confirmation to get
+
+48
+00:01:22,320 --> 00:01:26,820
+into the trade is a Divergence so if
+
+49
+00:01:24,780 --> 00:01:28,500
+we're looking for a short trade from the
+
+50
+00:01:26,820 --> 00:01:29,880
+upper Bollinger band we're looking for a
+
+51
+00:01:28,500 --> 00:01:31,259
+bearish Divergence if we're looking for
+
+52
+00:01:29,880 --> 00:01:32,939
+a long trade from the lower Bollinger
+
+53
+00:01:31,259 --> 00:01:34,920
+band we're looking for a bullish
+
+54
+00:01:32,939 --> 00:01:36,840
+Divergence what is a Divergence a
+
+55
+00:01:34,920 --> 00:01:38,460
+Divergence is when price and the
+
+56
+00:01:36,840 --> 00:01:39,900
+oscillator are basically doing the
+
+57
+00:01:38,460 --> 00:01:41,939
+opposite thing it's showing a sign of
+
+58
+00:01:39,900 --> 00:01:44,520
+weakness in a trend if the price is
+
+59
+00:01:41,939 --> 00:01:46,979
+making a higher high and our oscillator
+
+60
+00:01:44,520 --> 00:01:48,659
+is making a lower high this is called a
+
+61
+00:01:46,979 --> 00:01:50,340
+bearish Divergence it's showing us that
+
+62
+00:01:48,659 --> 00:01:52,979
+momentum and money is leaving the market
+
+63
+00:01:50,340 --> 00:01:54,000
+even though price is pumping higher and
+
+64
+00:01:52,979 --> 00:01:55,320
+higher showing us that there's an
+
+65
+00:01:54,000 --> 00:01:56,220
+imbalance and there needs to be a
+
+66
+00:01:55,320 --> 00:01:58,259
+correction and I know what you're
+
+67
+00:01:56,220 --> 00:02:00,479
+thinking to yourself Jason this kind of
+
+68
+00:01:58,259 --> 00:02:02,460
+looks like a pair of glue gluteus
+
+69
+00:02:00,479 --> 00:02:03,899
+maximus that's slightly uneven and you
+
+70
+00:02:02,460 --> 00:02:06,060
+know what you're absolutely right this
+
+71
+00:02:03,899 --> 00:02:08,099
+is a pair of butt cheeks that is uneven
+
+72
+00:02:06,060 --> 00:02:09,300
+and we can see here this waitress at the
+
+73
+00:02:08,099 --> 00:02:11,580
+diner hanging upside down from the
+
+74
+00:02:09,300 --> 00:02:13,140
+ceiling as the price is getting higher
+
+75
+00:02:11,580 --> 00:02:14,819
+and higher we can see her butt cheeks
+
+76
+00:02:13,140 --> 00:02:16,260
+are getting lower and lower and look at
+
+77
+00:02:14,819 --> 00:02:17,520
+where the money is actually it's in that
+
+78
+00:02:16,260 --> 00:02:19,440
+skinny right butt cheek over here
+
+79
+00:02:17,520 --> 00:02:21,300
+because this is a bearish Divergence
+
+80
+00:02:19,440 --> 00:02:22,500
+those uneven butt cheeks and look at
+
+81
+00:02:21,300 --> 00:02:24,660
+what happens from the time the price
+
+82
+00:02:22,500 --> 00:02:26,400
+comes up here and hits into that higher
+
+83
+00:02:24,660 --> 00:02:28,080
+height we get a move to the downside and
+
+84
+00:02:26,400 --> 00:02:30,239
+the opposite is true for a bullish
+
+85
+00:02:28,080 --> 00:02:32,940
+Divergence a bullish Divergence is where
+
+86
+00:02:30,239 --> 00:02:34,980
+the price is making a lower low and the
+
+87
+00:02:32,940 --> 00:02:36,540
+momentum is making a higher low and a
+
+88
+00:02:34,980 --> 00:02:39,000
+great example of that would be right
+
+89
+00:02:36,540 --> 00:02:41,400
+over here where the price makes a lower
+
+90
+00:02:39,000 --> 00:02:44,040
+low and our momentum down here is also
+
+91
+00:02:41,400 --> 00:02:45,660
+printing that juicy uneven butt cheek
+
+92
+00:02:44,040 --> 00:02:47,519
+pattern not upside down but regular side
+
+93
+00:02:45,660 --> 00:02:49,379
+up where we have the left cheek very
+
+94
+00:02:47,519 --> 00:02:50,640
+juicy full of gravy and ravioli if we
+
+95
+00:02:49,379 --> 00:02:51,959
+take a little needle and pop that thing
+
+96
+00:02:50,640 --> 00:02:54,180
+we can squeeze out the ricotta cheese
+
+97
+00:02:51,959 --> 00:02:56,459
+nice and good but that right cheek over
+
+98
+00:02:54,180 --> 00:02:58,140
+here is very very skinny that's what we
+
+99
+00:02:56,459 --> 00:02:59,459
+want to see and imbalance is showing us
+
+100
+00:02:58,140 --> 00:03:01,500
+that there needs to be a correction to
+
+101
+00:02:59,459 --> 00:03:03,000
+the upside so it's very very simple we
+
+102
+00:03:01,500 --> 00:03:06,120
+are simply going to put on our Bollinger
+
+103
+00:03:03,000 --> 00:03:07,440
+Bands and then wait for a price to come
+
+104
+00:03:06,120 --> 00:03:09,780
+to one of those bands and then look and
+
+105
+00:03:07,440 --> 00:03:11,400
+see if we are getting a confirmation on
+
+106
+00:03:09,780 --> 00:03:13,500
+the oscillator and here's something very
+
+107
+00:03:11,400 --> 00:03:16,319
+interesting look at this move right here
+
+108
+00:03:13,500 --> 00:03:19,560
+okay price made a lower low from the
+
+109
+00:03:16,319 --> 00:03:20,940
+previous low right over here okay and
+
+110
+00:03:19,560 --> 00:03:23,159
+look at our oscillator it is getting
+
+111
+00:03:20,940 --> 00:03:24,720
+higher as the price is getting lower and
+
+112
+00:03:23,159 --> 00:03:26,580
+touching or piercing the band and what
+
+113
+00:03:24,720 --> 00:03:28,620
+we are going to do is when we enter the
+
+114
+00:03:26,580 --> 00:03:30,060
+trade we are going to enter we don't
+
+115
+00:03:28,620 --> 00:03:31,500
+have to wait for candle close or
+
+116
+00:03:30,060 --> 00:03:33,599
+confirmation we just want to see is it
+
+117
+00:03:31,500 --> 00:03:35,519
+piercing the band and if it is we enter
+
+118
+00:03:33,599 --> 00:03:38,099
+as soon as we see that and then we put
+
+119
+00:03:35,519 --> 00:03:39,000
+our stop loss below that last low okay
+
+120
+00:03:38,099 --> 00:03:40,140
+you might want to give it a little
+
+121
+00:03:39,000 --> 00:03:41,940
+breathing room but what's great about
+
+122
+00:03:40,140 --> 00:03:43,140
+this it has a very good risk to reward
+
+123
+00:03:41,940 --> 00:03:45,540
+ratio and then we're going to be setting
+
+124
+00:03:43,140 --> 00:03:47,700
+our take profits at the upper Bollinger
+
+125
+00:03:45,540 --> 00:03:49,620
+band and at the time that was right
+
+126
+00:03:47,700 --> 00:03:50,879
+about here okay when this thing printed
+
+127
+00:03:49,620 --> 00:03:54,180
+the upper Bollinger band was right here
+
+128
+00:03:50,879 --> 00:03:56,819
+now this is a 0.25 move but if you
+
+129
+00:03:54,180 --> 00:03:58,860
+notice it's a three to one risk reward
+
+130
+00:03:56,819 --> 00:04:00,599
+ratio what does that mean it means if
+
+131
+00:03:58,860 --> 00:04:02,760
+we're putting let's say a hundred
+
+132
+00:04:00,599 --> 00:04:05,159
+dollars on the trade right and we're
+
+133
+00:04:02,760 --> 00:04:07,799
+risking one percent of a hundred dollars
+
+134
+00:04:05,159 --> 00:04:09,360
+that means uh we're potentially going to
+
+135
+00:04:07,799 --> 00:04:10,920
+lose one dollar to potentially make
+
+136
+00:04:09,360 --> 00:04:12,720
+three dollars and seventy five cents
+
+137
+00:04:10,920 --> 00:04:14,939
+which means these have good risk reward
+
+138
+00:04:12,720 --> 00:04:17,040
+ratios we could take multiple losses in
+
+139
+00:04:14,939 --> 00:04:18,419
+a row we could take three losses in a
+
+140
+00:04:17,040 --> 00:04:20,760
+row and actually still be in profit on
+
+141
+00:04:18,419 --> 00:04:23,220
+the fourth win just because we are
+
+142
+00:04:20,760 --> 00:04:25,500
+utilizing good risk to reward ratio and
+
+143
+00:04:23,220 --> 00:04:27,180
+by the way it helps if you have zero
+
+144
+00:04:25,500 --> 00:04:28,860
+percent limit fees right one of the ways
+
+145
+00:04:27,180 --> 00:04:30,180
+I'm able to scalp on these low-term time
+
+146
+00:04:28,860 --> 00:04:32,160
+frames because I did actually enter the
+
+147
+00:04:30,180 --> 00:04:33,660
+scalp on the one minute time frame is by
+
+148
+00:04:32,160 --> 00:04:35,040
+using zero percent limit fees and we do
+
+149
+00:04:33,660 --> 00:04:36,479
+offer that on by bit if you sign up
+
+150
+00:04:35,040 --> 00:04:38,040
+using my affiliate link we have a
+
+151
+00:04:36,479 --> 00:04:40,020
+special for Jason Casper zero percent
+
+152
+00:04:38,040 --> 00:04:41,639
+limit fees it's great for scalping on
+
+153
+00:04:40,020 --> 00:04:43,080
+low time frames and if you deposit a
+
+154
+00:04:41,639 --> 00:04:44,940
+hundred dollars you get one month free
+
+155
+00:04:43,080 --> 00:04:47,280
+of the crypto Fusion trading bot it's a
+
+156
+00:04:44,940 --> 00:04:49,800
+great tool the crypto Fusion trading bot
+
+157
+00:04:47,280 --> 00:04:51,060
+it trades for you okay so now what are
+
+158
+00:04:49,800 --> 00:04:54,240
+we basically going to do we're going to
+
+159
+00:04:51,060 --> 00:04:56,340
+look to see if we get lower low or or uh
+
+160
+00:04:54,240 --> 00:04:57,720
+higher high with a Divergence so this
+
+161
+00:04:56,340 --> 00:04:59,580
+actually would have been a win right
+
+162
+00:04:57,720 --> 00:05:01,080
+here let's see the next time we pierce
+
+163
+00:04:59,580 --> 00:05:03,000
+the and so he pierced the band right
+
+164
+00:05:01,080 --> 00:05:05,280
+here no Divergence so we pierce the band
+
+165
+00:05:03,000 --> 00:05:07,259
+right here no Divergence we're piercing
+
+166
+00:05:05,280 --> 00:05:09,479
+the band here and here no Divergence
+
+167
+00:05:07,259 --> 00:05:11,639
+okay we're piercing the band here no
+
+168
+00:05:09,479 --> 00:05:13,080
+Divergence next time we Pierce that band
+
+169
+00:05:11,639 --> 00:05:15,300
+is actually
+
+170
+00:05:13,080 --> 00:05:17,040
+right up here where we're touching into
+
+171
+00:05:15,300 --> 00:05:19,320
+that Bollinger band and now we are
+
+172
+00:05:17,040 --> 00:05:21,660
+seeing that bearish Divergence print now
+
+173
+00:05:19,320 --> 00:05:23,220
+you might say to yourself Jason look I
+
+174
+00:05:21,660 --> 00:05:24,600
+see two potential entries right here
+
+175
+00:05:23,220 --> 00:05:27,780
+right maybe we would have entered on
+
+176
+00:05:24,600 --> 00:05:30,479
+that first Wick right here personally
+
+177
+00:05:27,780 --> 00:05:32,940
+um I would not enter here I like to wait
+
+178
+00:05:30,479 --> 00:05:34,919
+for price to be inside the band and then
+
+179
+00:05:32,940 --> 00:05:36,180
+touch the band but some people might say
+
+180
+00:05:34,919 --> 00:05:38,400
+because we're already outside the band
+
+181
+00:05:36,180 --> 00:05:40,020
+they would enter here but for me the
+
+182
+00:05:38,400 --> 00:05:42,360
+main entry would be right here because
+
+183
+00:05:40,020 --> 00:05:44,400
+we want price already to be inside the
+
+184
+00:05:42,360 --> 00:05:45,840
+Bollinger band right if we're outside
+
+185
+00:05:44,400 --> 00:05:48,240
+the Bollinger band that's actually a
+
+186
+00:05:45,840 --> 00:05:49,560
+very good sign of strength but if we're
+
+187
+00:05:48,240 --> 00:05:50,639
+back inside the Bollinger band that's
+
+188
+00:05:49,560 --> 00:05:53,340
+showing that there's a good chance for
+
+189
+00:05:50,639 --> 00:05:54,780
+reversal but even if we took two entries
+
+190
+00:05:53,340 --> 00:05:56,759
+here and let's say we hit our first
+
+191
+00:05:54,780 --> 00:05:58,199
+entry right here and we targeted the
+
+192
+00:05:56,759 --> 00:06:00,539
+lower Bollinger band and then we ended
+
+193
+00:05:58,199 --> 00:06:02,580
+up getting stopped out of this trade big
+
+194
+00:06:00,539 --> 00:06:05,400
+deal because the very next entry that we
+
+195
+00:06:02,580 --> 00:06:08,039
+get right over here is going to give us
+
+196
+00:06:05,400 --> 00:06:09,539
+the um that's going to give us the win
+
+197
+00:06:08,039 --> 00:06:11,280
+back plus sign right that's going to
+
+198
+00:06:09,539 --> 00:06:12,720
+give us the win back plus some the only
+
+199
+00:06:11,280 --> 00:06:14,340
+thing about this trade that we need to
+
+200
+00:06:12,720 --> 00:06:16,919
+be careful of is the fact that as the
+
+201
+00:06:14,340 --> 00:06:18,300
+price moves so do the Bollinger Bands
+
+202
+00:06:16,919 --> 00:06:19,919
+and so we have to be a little proactive
+
+203
+00:06:18,300 --> 00:06:21,479
+sometimes you might have to find
+
+204
+00:06:19,919 --> 00:06:23,340
+yourself a marketing out of a trade
+
+205
+00:06:21,479 --> 00:06:25,500
+instead of limiting but what you can do
+
+206
+00:06:23,340 --> 00:06:27,780
+is you can extrapolate into the future
+
+207
+00:06:25,500 --> 00:06:29,340
+where is the Bollinger band going to be
+
+208
+00:06:27,780 --> 00:06:31,860
+so for example sample let's say we go
+
+209
+00:06:29,340 --> 00:06:34,319
+back in time and we see as we enter the
+
+210
+00:06:31,860 --> 00:06:35,880
+short trade right about here okay that
+
+211
+00:06:34,319 --> 00:06:37,740
+the bones are banned we can see at the
+
+212
+00:06:35,880 --> 00:06:39,960
+time is way down here so our initial
+
+213
+00:06:37,740 --> 00:06:41,160
+trade setup would be like this right
+
+214
+00:06:39,960 --> 00:06:43,080
+we're entering when we see that
+
+215
+00:06:41,160 --> 00:06:44,460
+Divergence stop loss goes above the wick
+
+216
+00:06:43,080 --> 00:06:46,620
+and then we're targeting down to the
+
+217
+00:06:44,460 --> 00:06:48,360
+Bollinger band but as we actually watch
+
+218
+00:06:46,620 --> 00:06:49,979
+price kind of play out here right we're
+
+219
+00:06:48,360 --> 00:06:51,720
+watching it play out we can see that the
+
+220
+00:06:49,979 --> 00:06:54,120
+Bollinger Bands are kind of Getting
+
+221
+00:06:51,720 --> 00:06:56,940
+Thinner lower and then we can move our
+
+222
+00:06:54,120 --> 00:06:58,560
+limit take profit up a little bit and
+
+223
+00:06:56,940 --> 00:07:00,240
+kind of hit that take profit like that
+
+224
+00:06:58,560 --> 00:07:02,039
+that would get us out of the trade so it
+
+225
+00:07:00,240 --> 00:07:03,840
+does take a little bit of pro action if
+
+226
+00:07:02,039 --> 00:07:05,220
+that's even a word but we can drag the
+
+227
+00:07:03,840 --> 00:07:07,620
+limit orders around so the way you would
+
+228
+00:07:05,220 --> 00:07:10,199
+do that in Bible is basically like when
+
+229
+00:07:07,620 --> 00:07:12,180
+you see that the price is getting a move
+
+230
+00:07:10,199 --> 00:07:13,560
+so I am going to actually turn on the
+
+231
+00:07:12,180 --> 00:07:15,240
+limit orders that I have now on the
+
+232
+00:07:13,560 --> 00:07:17,460
+chart so that we can see more like what
+
+233
+00:07:15,240 --> 00:07:18,960
+I'm talking about if this is my limit
+
+234
+00:07:17,460 --> 00:07:21,360
+take profit order
+
+235
+00:07:18,960 --> 00:07:22,680
+because I I did not use this strategy to
+
+236
+00:07:21,360 --> 00:07:24,599
+get into this long but you absolutely
+
+237
+00:07:22,680 --> 00:07:26,280
+could have in fact that is this long
+
+238
+00:07:24,599 --> 00:07:28,080
+trade from right down here the one we're
+
+239
+00:07:26,280 --> 00:07:30,599
+just looking at this is the trade that
+
+240
+00:07:28,080 --> 00:07:32,340
+I'm actually in right now uh but I
+
+241
+00:07:30,599 --> 00:07:33,720
+decided to hold it longer but if we were
+
+242
+00:07:32,340 --> 00:07:34,919
+trading strictly with this strategy we
+
+243
+00:07:33,720 --> 00:07:37,380
+would have been out of the trade already
+
+244
+00:07:34,919 --> 00:07:39,419
+with a win but for me I have some higher
+
+245
+00:07:37,380 --> 00:07:41,639
+take profit set on this long and so
+
+246
+00:07:39,419 --> 00:07:43,500
+let's say that price is kind of trading
+
+247
+00:07:41,639 --> 00:07:45,120
+and we're watching the Bollinger band at
+
+248
+00:07:43,500 --> 00:07:46,380
+first the Bollinger band is here but
+
+249
+00:07:45,120 --> 00:07:48,720
+then the boeinger band is starting to
+
+250
+00:07:46,380 --> 00:07:50,160
+come down as price starts to come up
+
+251
+00:07:48,720 --> 00:07:52,680
+what we would do is we would simply take
+
+252
+00:07:50,160 --> 00:07:55,440
+our limit order and drag it down to the
+
+253
+00:07:52,680 --> 00:07:57,780
+Bollinger band to try and meet price uh
+
+254
+00:07:55,440 --> 00:07:59,400
+as it comes up because if
+
+255
+00:07:57,780 --> 00:08:00,900
+um we have a limit order set we're not
+
+256
+00:07:59,400 --> 00:08:02,340
+going to get charged that fee but if
+
+257
+00:08:00,900 --> 00:08:04,319
+we're using a market order we will get
+
+258
+00:08:02,340 --> 00:08:06,360
+charged a fee now here's the thing we
+
+259
+00:08:04,319 --> 00:08:09,300
+can absolutely still Market out of these
+
+260
+00:08:06,360 --> 00:08:11,400
+trades and still be profitable
+
+261
+00:08:09,300 --> 00:08:13,199
+um in certain instances but it's much
+
+262
+00:08:11,400 --> 00:08:14,940
+better to limit out okay the more
+
+263
+00:08:13,199 --> 00:08:16,020
+trading volume you have on an exchange
+
+264
+00:08:14,940 --> 00:08:18,479
+like buy bit they actually give you
+
+265
+00:08:16,020 --> 00:08:20,520
+discounts on the fees so let's see if we
+
+266
+00:08:18,479 --> 00:08:22,139
+can find a few more trades here this was
+
+267
+00:08:20,520 --> 00:08:24,180
+the last short trade that we could have
+
+268
+00:08:22,139 --> 00:08:25,440
+taken Let's uh take a look and see if we
+
+269
+00:08:24,180 --> 00:08:28,020
+have any more
+
+270
+00:08:25,440 --> 00:08:29,580
+yeah so look at this right here this
+
+271
+00:08:28,020 --> 00:08:30,780
+would have been a no trade this actually
+
+272
+00:08:29,580 --> 00:08:32,459
+would have been a trade right here
+
+273
+00:08:30,780 --> 00:08:34,740
+because we came up and we pierced the
+
+274
+00:08:32,459 --> 00:08:37,440
+Bollinger band and we get a rejection
+
+275
+00:08:34,740 --> 00:08:39,360
+with the bearish Divergence on the
+
+276
+00:08:37,440 --> 00:08:41,820
+awesome oscillator as we see right here
+
+277
+00:08:39,360 --> 00:08:43,320
+beautiful beautiful Divergence and we
+
+278
+00:08:41,820 --> 00:08:45,360
+open the trade and we hit our take
+
+279
+00:08:43,320 --> 00:08:48,060
+profit down at the lower Bollinger band
+
+280
+00:08:45,360 --> 00:08:49,860
+for a three to one risk reward ratio now
+
+281
+00:08:48,060 --> 00:08:51,300
+this is just so important here because
+
+282
+00:08:49,860 --> 00:08:53,339
+people say how can you make money on
+
+283
+00:08:51,300 --> 00:08:55,500
+such small moves is because look we only
+
+284
+00:08:53,339 --> 00:08:57,360
+need a point zero five percent stop loss
+
+285
+00:08:55,500 --> 00:09:00,660
+which means we can put a very very big
+
+286
+00:08:57,360 --> 00:09:02,760
+position size on to the trade and still
+
+287
+00:09:00,660 --> 00:09:05,700
+be risking very very little which means
+
+288
+00:09:02,760 --> 00:09:07,740
+we're making a 0.2 percent move on a
+
+289
+00:09:05,700 --> 00:09:09,660
+much bigger position size than we would
+
+290
+00:09:07,740 --> 00:09:10,920
+be if we were trading on a higher term
+
+291
+00:09:09,660 --> 00:09:12,240
+time frame right that's one of the
+
+292
+00:09:10,920 --> 00:09:14,279
+things that can make scalping so
+
+293
+00:09:12,240 --> 00:09:15,779
+profitable and we're going to basically
+
+294
+00:09:14,279 --> 00:09:17,220
+stack up these small games throughout
+
+295
+00:09:15,779 --> 00:09:19,440
+the day understanding that the winds
+
+296
+00:09:17,220 --> 00:09:20,820
+will offset the losses so that is it for
+
+297
+00:09:19,440 --> 00:09:22,140
+today's video guys make sure to like the
+
+298
+00:09:20,820 --> 00:09:23,339
+video make sure to subscribe to the
+
+299
+00:09:22,140 --> 00:09:25,080
+channel make sure to click the bell for
+
+300
+00:09:23,339 --> 00:09:26,880
+notifications if you're looking for a
+
+301
+00:09:25,080 --> 00:09:29,339
+great Trading Group to join check out
+
+302
+00:09:26,880 --> 00:09:30,720
+patreon.com Jason Casper where we give
+
+303
+00:09:29,339 --> 00:09:32,880
+our levels our trade setups and three
+
+304
+00:09:30,720 --> 00:09:34,800
+live streams a day every single day also
+
+305
+00:09:32,880 --> 00:09:36,660
+for a 20 discount on the courses check
+
+306
+00:09:34,800 --> 00:09:38,519
+out Jason Casper trading.com if you want
+
+307
+00:09:36,660 --> 00:09:40,019
+to learn how to do this and do it right
+
+308
+00:09:38,519 --> 00:09:41,640
+and I will see everybody in the next
+
+309
+00:09:40,019 --> 00:09:43,440
+video may God bless you all in the name
+
+310
+00:09:41,640 --> 00:09:46,700
+of Jesus the Messiah even if you are not
+
+311
+00:09:43,440 --> 00:09:46,700
+religious peace guys

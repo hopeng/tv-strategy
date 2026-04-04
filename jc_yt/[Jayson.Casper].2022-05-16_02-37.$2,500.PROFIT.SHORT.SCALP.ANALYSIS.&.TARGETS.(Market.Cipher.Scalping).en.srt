@@ -1,0 +1,1095 @@
+1
+00:00:00,000 --> 00:00:00,001
+https://www.youtube.com/watch?v=10Synp-joH8
+
+2
+00:00:00,640 --> 00:00:05,200
+all right y'all so today we're going to
+
+3
+00:00:03,280 --> 00:00:07,520
+be talking about the bitcoin technical
+
+4
+00:00:05,200 --> 00:00:10,400
+analysis and i'm currently on the road
+
+5
+00:00:07,520 --> 00:00:12,080
+y'all i've been on the road for the past
+
+6
+00:00:10,400 --> 00:00:14,160
+few days and i want to talk about what
+
+7
+00:00:12,080 --> 00:00:16,480
+has been going on with bitcoin because
+
+8
+00:00:14,160 --> 00:00:19,680
+we're coming to some very very important
+
+9
+00:00:16,480 --> 00:00:22,240
+levels now i am currently in a short
+
+10
+00:00:19,680 --> 00:00:24,400
+position right now as you can see
+
+11
+00:00:22,240 --> 00:00:26,320
+currently up about a little bit over two
+
+12
+00:00:24,400 --> 00:00:28,240
+thousand dollars in profit
+
+13
+00:00:26,320 --> 00:00:30,480
+right here now this is a trade setup
+
+14
+00:00:28,240 --> 00:00:32,719
+that we did give this morning
+
+15
+00:00:30,480 --> 00:00:34,800
+in the vip discord where we wanted to
+
+16
+00:00:32,719 --> 00:00:37,040
+see the price come up to this very
+
+17
+00:00:34,800 --> 00:00:39,440
+important zone between thirty thousand
+
+18
+00:00:37,040 --> 00:00:41,840
+one hundred and thirty thousand five
+
+19
+00:00:39,440 --> 00:00:43,760
+hundred with bearish divergences on the
+
+20
+00:00:41,840 --> 00:00:45,440
+twelve minute time frame and as we can
+
+21
+00:00:43,760 --> 00:00:47,760
+see if we come to market cipher b on the
+
+22
+00:00:45,440 --> 00:00:49,680
+12 minute time frame as we came up to
+
+23
+00:00:47,760 --> 00:00:51,520
+that exact level
+
+24
+00:00:49,680 --> 00:00:53,520
+we were indeed getting bearish
+
+25
+00:00:51,520 --> 00:00:55,440
+divergences on the 12 minute time frame
+
+26
+00:00:53,520 --> 00:00:56,399
+we also wanted to see money flow getting
+
+27
+00:00:55,440 --> 00:00:58,480
+lower
+
+28
+00:00:56,399 --> 00:01:00,399
+on the six minute time frame
+
+29
+00:00:58,480 --> 00:01:02,480
+on the three minute time frame so we got
+
+30
+00:01:00,399 --> 00:01:04,479
+our confirmations and now we're getting
+
+31
+00:01:02,480 --> 00:01:06,159
+a move to the downside and this is one
+
+32
+00:01:04,479 --> 00:01:08,560
+of the best ways that you can actually
+
+33
+00:01:06,159 --> 00:01:10,320
+be successful trading is have a plan in
+
+34
+00:01:08,560 --> 00:01:11,920
+advance and then when
+
+35
+00:01:10,320 --> 00:01:13,760
+the price action does what you're
+
+36
+00:01:11,920 --> 00:01:15,920
+planning for you can execute on the
+
+37
+00:01:13,760 --> 00:01:18,720
+trade now i have hit a take profit one
+
+38
+00:01:15,920 --> 00:01:20,159
+here i have my stop-loss at my entry i'm
+
+39
+00:01:18,720 --> 00:01:21,680
+going to see how much i can milk out of
+
+40
+00:01:20,159 --> 00:01:23,680
+the trade but now that i've secured a
+
+41
+00:01:21,680 --> 00:01:24,880
+profit i can just relax and not worry
+
+42
+00:01:23,680 --> 00:01:27,920
+about it so
+
+43
+00:01:24,880 --> 00:01:29,840
+let's talk about why bitcoin did get a
+
+44
+00:01:27,920 --> 00:01:31,840
+slight move to the downside here
+
+45
+00:01:29,840 --> 00:01:34,240
+and let me talk about my overall
+
+46
+00:01:31,840 --> 00:01:36,000
+sentiment on the market because it's no
+
+47
+00:01:34,240 --> 00:01:38,159
+joke that we are
+
+48
+00:01:36,000 --> 00:01:39,680
+at very crucial levels of support and
+
+49
+00:01:38,159 --> 00:01:42,560
+resistance by the way if you do want to
+
+50
+00:01:39,680 --> 00:01:44,240
+join the vip discord where we post the
+
+51
+00:01:42,560 --> 00:01:45,600
+exact levels that we're looking to trade
+
+52
+00:01:44,240 --> 00:01:48,399
+every single day
+
+53
+00:01:45,600 --> 00:01:49,920
+as well as the trade setups i'm looking
+
+54
+00:01:48,399 --> 00:01:52,840
+to take as well as a thriving community
+
+55
+00:01:49,920 --> 00:01:55,119
+of traders you can go to
+
+56
+00:01:52,840 --> 00:01:56,719
+jasoncaspertrading.com and uh the next
+
+57
+00:01:55,119 --> 00:01:59,200
+area of support actually is literally
+
+58
+00:01:56,719 --> 00:02:00,880
+right here uh literally right here
+
+59
+00:01:59,200 --> 00:02:03,439
+because we want to see a potential
+
+60
+00:02:00,880 --> 00:02:06,000
+retest of this support resistance flip
+
+61
+00:02:03,439 --> 00:02:08,720
+right there in fact i should while i'm
+
+62
+00:02:06,000 --> 00:02:11,440
+making this video limit out a little bit
+
+63
+00:02:08,720 --> 00:02:13,840
+more of this position right here
+
+64
+00:02:11,440 --> 00:02:17,360
+let's just limit out a little bit more
+
+65
+00:02:13,840 --> 00:02:19,120
+right here see if we can get that
+
+66
+00:02:17,360 --> 00:02:21,680
+but that is actually the next level of
+
+67
+00:02:19,120 --> 00:02:23,120
+support the retest of that resistance
+
+68
+00:02:21,680 --> 00:02:23,730
+right here
+
+69
+00:02:23,120 --> 00:02:25,680
+and um
+
+70
+00:02:23,730 --> 00:02:27,360
+[Music]
+
+71
+00:02:25,680 --> 00:02:28,879
+actually to be honest with you guys it
+
+72
+00:02:27,360 --> 00:02:31,200
+does look like we're getting some
+
+73
+00:02:28,879 --> 00:02:32,640
+bullish divergences right here but that
+
+74
+00:02:31,200 --> 00:02:34,400
+goes beyond the scope of the video that
+
+75
+00:02:32,640 --> 00:02:36,319
+i want to make right now first of all
+
+76
+00:02:34,400 --> 00:02:38,640
+why are we finding resistance at this
+
+77
+00:02:36,319 --> 00:02:40,879
+area what we have to do is we have to
+
+78
+00:02:38,640 --> 00:02:44,080
+look at what bitcoin has been doing
+
+79
+00:02:40,879 --> 00:02:46,959
+uh for the past few days okay so we had
+
+80
+00:02:44,080 --> 00:02:48,879
+a very intense move to the downside
+
+81
+00:02:46,959 --> 00:02:52,959
+where we broke down from the very
+
+82
+00:02:48,879 --> 00:02:54,160
+important support level of about 37 500
+
+83
+00:02:52,959 --> 00:02:55,760
+the reason why this was such an
+
+84
+00:02:54,160 --> 00:02:58,159
+important support level
+
+85
+00:02:55,760 --> 00:03:00,480
+is because it was the
+
+86
+00:02:58,159 --> 00:03:03,040
+diagonal support from the low that we
+
+87
+00:03:00,480 --> 00:03:05,200
+put in january 24th then again we put
+
+88
+00:03:03,040 --> 00:03:06,640
+the low in february 24th and then we
+
+89
+00:03:05,200 --> 00:03:08,480
+bounced twice from this trend line and
+
+90
+00:03:06,640 --> 00:03:10,560
+now we've lost the trend line
+
+91
+00:03:08,480 --> 00:03:13,120
+then what we did was we came down and we
+
+92
+00:03:10,560 --> 00:03:14,640
+put a bottom down here right around the
+
+93
+00:03:13,120 --> 00:03:17,040
+golden pocket
+
+94
+00:03:14,640 --> 00:03:19,360
+but the first major area of resistance
+
+95
+00:03:17,040 --> 00:03:20,239
+that we had along the way up was going
+
+96
+00:03:19,360 --> 00:03:22,560
+to be
+
+97
+00:03:20,239 --> 00:03:24,799
+in this area where we had consolidation
+
+98
+00:03:22,560 --> 00:03:26,959
+right here we can see two things that
+
+99
+00:03:24,799 --> 00:03:29,200
+are very important the first thing that
+
+100
+00:03:26,959 --> 00:03:32,560
+we can see is that we had a very high
+
+101
+00:03:29,200 --> 00:03:33,840
+volume node right here at about 31
+
+102
+00:03:32,560 --> 00:03:35,680
+300
+
+103
+00:03:33,840 --> 00:03:38,080
+the second thing that's very important
+
+104
+00:03:35,680 --> 00:03:40,799
+is if we go to the daily time frame we
+
+105
+00:03:38,080 --> 00:03:42,560
+can see that we actually did have
+
+106
+00:03:40,799 --> 00:03:43,760
+two daily candles closed right about
+
+107
+00:03:42,560 --> 00:03:46,319
+here at about thirty thousand one
+
+108
+00:03:43,760 --> 00:03:48,799
+hundred dollars giving us this very
+
+109
+00:03:46,319 --> 00:03:50,159
+important resistance zone
+
+110
+00:03:48,799 --> 00:03:52,720
+where the reason why this is so
+
+111
+00:03:50,159 --> 00:03:55,360
+important guys if we zoom in here
+
+112
+00:03:52,720 --> 00:03:57,120
+is if we want to see a real reversal
+
+113
+00:03:55,360 --> 00:03:58,080
+okay if we want to see a real recovery
+
+114
+00:03:57,120 --> 00:03:59,599
+right here
+
+115
+00:03:58,080 --> 00:04:02,480
+what we need to do
+
+116
+00:03:59,599 --> 00:04:04,239
+is we need to now start forming
+
+117
+00:04:02,480 --> 00:04:06,560
+bullish market structure which means we
+
+118
+00:04:04,239 --> 00:04:09,439
+need to start putting in higher highs
+
+119
+00:04:06,560 --> 00:04:12,319
+and higher lows now we've put in our low
+
+120
+00:04:09,439 --> 00:04:14,400
+okay right down here and in order for us
+
+121
+00:04:12,319 --> 00:04:16,320
+to start now switching into bullish
+
+122
+00:04:14,400 --> 00:04:20,239
+market structure we need to come above
+
+123
+00:04:16,320 --> 00:04:22,320
+the previous highs which is about 32.6
+
+124
+00:04:20,239 --> 00:04:23,360
+and so this is the doorway right here
+
+125
+00:04:22,320 --> 00:04:25,600
+into
+
+126
+00:04:23,360 --> 00:04:28,080
+a higher high this has been major
+
+127
+00:04:25,600 --> 00:04:30,160
+resistance the last video i made on
+
+128
+00:04:28,080 --> 00:04:32,479
+friday i was saying this is major
+
+129
+00:04:30,160 --> 00:04:34,639
+resistance right here this juicy level
+
+130
+00:04:32,479 --> 00:04:37,280
+we have rejected it basically
+
+131
+00:04:34,639 --> 00:04:39,520
+not to the dollar but very very close so
+
+132
+00:04:37,280 --> 00:04:41,199
+what am i looking at now
+
+133
+00:04:39,520 --> 00:04:43,040
+what am i looking at now
+
+134
+00:04:41,199 --> 00:04:44,960
+we can see the short trade is still
+
+135
+00:04:43,040 --> 00:04:46,960
+going we had a fast move up we're
+
+136
+00:04:44,960 --> 00:04:49,199
+getting a fast move down let's take a
+
+137
+00:04:46,960 --> 00:04:50,720
+look just objectively at what we're
+
+138
+00:04:49,199 --> 00:04:52,479
+seeing here on the charts
+
+139
+00:04:50,720 --> 00:04:54,400
+okay on the charts on the daily time
+
+140
+00:04:52,479 --> 00:04:56,639
+frame we are bottoming out on the four
+
+141
+00:04:54,400 --> 00:04:58,320
+hour time frame we also are getting
+
+142
+00:04:56,639 --> 00:05:00,880
+bullish divergences we're getting money
+
+143
+00:04:58,320 --> 00:05:02,800
+flow crossing to the upside
+
+144
+00:05:00,880 --> 00:05:04,800
+but we're coming up to resistance so
+
+145
+00:05:02,800 --> 00:05:07,440
+what that tells me is this
+
+146
+00:05:04,800 --> 00:05:08,720
+if this is going to be a real bottom
+
+147
+00:05:07,440 --> 00:05:10,240
+okay
+
+148
+00:05:08,720 --> 00:05:13,039
+what i would like to see is i would like
+
+149
+00:05:10,240 --> 00:05:15,360
+to see a retest coming back to a major
+
+150
+00:05:13,039 --> 00:05:16,960
+area where we can expect
+
+151
+00:05:15,360 --> 00:05:19,199
+bitcoin to find support and put in a
+
+152
+00:05:16,960 --> 00:05:22,639
+higher low potentially we have now a
+
+153
+00:05:19,199 --> 00:05:24,160
+high a higher low a higher high maybe we
+
+154
+00:05:22,639 --> 00:05:25,520
+can put in a higher low so we need to
+
+155
+00:05:24,160 --> 00:05:28,000
+think to ourselves
+
+156
+00:05:25,520 --> 00:05:31,199
+if we are going to see a reversal what
+
+157
+00:05:28,000 --> 00:05:33,600
+place should we look for bitcoin to find
+
+158
+00:05:31,199 --> 00:05:35,120
+support to get into a long trade what i
+
+159
+00:05:33,600 --> 00:05:36,960
+like to do is i'd like to pull out my
+
+160
+00:05:35,120 --> 00:05:39,360
+fib right so what i would do is i'd take
+
+161
+00:05:36,960 --> 00:05:41,199
+the fib from the swing low to the most
+
+162
+00:05:39,360 --> 00:05:42,840
+recent swing high that we put in and we
+
+163
+00:05:41,199 --> 00:05:44,720
+can see right here that
+
+164
+00:05:42,840 --> 00:05:47,120
+27.5 ish
+
+165
+00:05:44,720 --> 00:05:48,560
+is going to be a nice area of support
+
+166
+00:05:47,120 --> 00:05:50,479
+down here we're definitely if we get a
+
+167
+00:05:48,560 --> 00:05:51,840
+move to the downside i would be looking
+
+168
+00:05:50,479 --> 00:05:54,560
+for support there
+
+169
+00:05:51,840 --> 00:05:56,880
+something else take from the most recent
+
+170
+00:05:54,560 --> 00:05:59,840
+swing low to the most recent swing high
+
+171
+00:05:56,880 --> 00:06:02,400
+and we can see that around 29.5
+
+172
+00:05:59,840 --> 00:06:04,720
+we also do have another fibonacci golden
+
+173
+00:06:02,400 --> 00:06:06,479
+pocket retracement right there and so
+
+174
+00:06:04,720 --> 00:06:08,000
+these would be two areas that i would be
+
+175
+00:06:06,479 --> 00:06:09,280
+looking for bitcoin to come down to
+
+176
+00:06:08,000 --> 00:06:11,680
+potentially
+
+177
+00:06:09,280 --> 00:06:14,160
+get a bounce
+
+178
+00:06:11,680 --> 00:06:16,160
+to put in a higher height understanding
+
+179
+00:06:14,160 --> 00:06:18,960
+the fact that this right here
+
+180
+00:06:16,160 --> 00:06:20,639
+is going to be major major resistance
+
+181
+00:06:18,960 --> 00:06:22,639
+what we have to do here is we have to be
+
+182
+00:06:20,639 --> 00:06:24,479
+thinking one step ahead of the market
+
+183
+00:06:22,639 --> 00:06:26,560
+instead of following into a trade long
+
+184
+00:06:24,479 --> 00:06:28,400
+or short we need to sit down at the
+
+185
+00:06:26,560 --> 00:06:30,160
+drawing board and say okay
+
+186
+00:06:28,400 --> 00:06:32,880
+what are the possibilities
+
+187
+00:06:30,160 --> 00:06:35,039
+and if a happens then my plan is this if
+
+188
+00:06:32,880 --> 00:06:37,039
+b happens then my plan is this and i'm
+
+189
+00:06:35,039 --> 00:06:38,639
+kind of guys on the road as i said i'm
+
+190
+00:06:37,039 --> 00:06:40,319
+literally in the trunk of my car making
+
+191
+00:06:38,639 --> 00:06:42,240
+this video for you guys
+
+192
+00:06:40,319 --> 00:06:44,000
+so make sure to like make sure to
+
+193
+00:06:42,240 --> 00:06:46,000
+subscribe to the channel because you're
+
+194
+00:06:44,000 --> 00:06:48,400
+not going to get this juicy information
+
+195
+00:06:46,000 --> 00:06:49,919
+anywhere besides the jason casper
+
+196
+00:06:48,400 --> 00:06:52,160
+youtube channel guys pikachu hat and all
+
+197
+00:06:49,919 --> 00:06:54,800
+definitely not financial advice not even
+
+198
+00:06:52,160 --> 00:06:55,599
+real trading just paper trading
+
+199
+00:06:54,800 --> 00:06:57,919
+but
+
+200
+00:06:55,599 --> 00:07:00,639
+a few things guys these would be areas i
+
+201
+00:06:57,919 --> 00:07:02,880
+would look for retests we can also see
+
+202
+00:07:00,639 --> 00:07:04,759
+that the highest volume node from the
+
+203
+00:07:02,880 --> 00:07:07,199
+entire move to the upside is also that
+
+204
+00:07:04,759 --> 00:07:09,520
+29.5 thousand dollar area
+
+205
+00:07:07,199 --> 00:07:11,120
+so i am actually potentially looking at
+
+206
+00:07:09,520 --> 00:07:13,039
+something like this because of the four
+
+207
+00:07:11,120 --> 00:07:16,000
+hour time frame right
+
+208
+00:07:13,039 --> 00:07:17,680
+if we get another trigger wave here that
+
+209
+00:07:16,000 --> 00:07:19,440
+prints really tight close to the zero
+
+210
+00:07:17,680 --> 00:07:20,319
+line that could be actually a pretty
+
+211
+00:07:19,440 --> 00:07:23,120
+nice
+
+212
+00:07:20,319 --> 00:07:25,199
+uh bounce okay now keep in mind on a
+
+213
+00:07:23,120 --> 00:07:27,120
+smaller term timeframe we are absolutely
+
+214
+00:07:25,199 --> 00:07:28,960
+at support right now because we have
+
+215
+00:07:27,120 --> 00:07:30,880
+these previous highs right here
+
+216
+00:07:28,960 --> 00:07:33,840
+and you know just very very clear
+
+217
+00:07:30,880 --> 00:07:36,400
+support resistance flip this could be
+
+218
+00:07:33,840 --> 00:07:38,720
+you know a um
+
+219
+00:07:36,400 --> 00:07:40,960
+a higher low but personally for me i
+
+220
+00:07:38,720 --> 00:07:42,240
+would be looking for lower
+
+221
+00:07:40,960 --> 00:07:44,400
+so that's kind of where i'm at right now
+
+222
+00:07:42,240 --> 00:07:47,039
+i do think that what we put in down here
+
+223
+00:07:44,400 --> 00:07:48,720
+could potentially be a bottom but i also
+
+224
+00:07:47,039 --> 00:07:50,960
+wouldn't be surprised if we start to
+
+225
+00:07:48,720 --> 00:07:53,120
+like just simply trade sideways here for
+
+226
+00:07:50,960 --> 00:07:55,599
+a while so this trade i'm in now
+
+227
+00:07:53,120 --> 00:07:57,360
+i actually would even hold it back down
+
+228
+00:07:55,599 --> 00:07:59,360
+all the way to the low
+
+229
+00:07:57,360 --> 00:08:00,960
+and then expect maybe when we come back
+
+230
+00:07:59,360 --> 00:08:02,879
+to this low gonna move back up to this
+
+231
+00:08:00,960 --> 00:08:04,479
+high i think a lot of times people are
+
+232
+00:08:02,879 --> 00:08:06,400
+too impatient in these markets and
+
+233
+00:08:04,479 --> 00:08:07,199
+they're expecting huge moves all the
+
+234
+00:08:06,400 --> 00:08:09,440
+time
+
+235
+00:08:07,199 --> 00:08:11,039
+when in reality most of the time we
+
+236
+00:08:09,440 --> 00:08:13,280
+don't get huge moves and we just have to
+
+237
+00:08:11,039 --> 00:08:14,720
+take what the market can give to us now
+
+238
+00:08:13,280 --> 00:08:16,000
+if you want to learn how to trade this
+
+239
+00:08:14,720 --> 00:08:17,919
+way you can check out the course at
+
+240
+00:08:16,000 --> 00:08:19,680
+jasoncaspertrading.com
+
+241
+00:08:17,919 --> 00:08:21,360
+this course will give you the knowledge
+
+242
+00:08:19,680 --> 00:08:23,039
+and the skills you need to wear pikachu
+
+243
+00:08:21,360 --> 00:08:24,000
+i'm sorry this course will give you the
+
+244
+00:08:23,039 --> 00:08:25,680
+knowledge and the skills you need to
+
+245
+00:08:24,000 --> 00:08:27,199
+become a confident profitable trader
+
+246
+00:08:25,680 --> 00:08:29,199
+because we give you
+
+247
+00:08:27,199 --> 00:08:31,199
+the blueprint to having a plan in
+
+248
+00:08:29,199 --> 00:08:34,240
+advance that you can come in
+
+249
+00:08:31,199 --> 00:08:38,080
+in the morning and say you know what
+
+250
+00:08:34,240 --> 00:08:40,240
+if bitcoin does this and market cipher
+
+251
+00:08:38,080 --> 00:08:42,000
+does this then i will take a trade and
+
+252
+00:08:40,240 --> 00:08:44,159
+then you can take a trade and you can
+
+253
+00:08:42,000 --> 00:08:45,440
+take a profit and you can lock in that
+
+254
+00:08:44,159 --> 00:08:46,240
+profit guys
+
+255
+00:08:45,440 --> 00:08:48,320
+and
+
+256
+00:08:46,240 --> 00:08:49,680
+move your stop loss to your entry so
+
+257
+00:08:48,320 --> 00:08:51,600
+that you can
+
+258
+00:08:49,680 --> 00:08:53,120
+you know be profitable paper trading
+
+259
+00:08:51,600 --> 00:08:54,640
+this way all right
+
+260
+00:08:53,120 --> 00:08:57,120
+that's kind of where i'm at with bitcoin
+
+261
+00:08:54,640 --> 00:08:59,120
+right now guys um
+
+262
+00:08:57,120 --> 00:09:00,839
+25 discount on the course in the
+
+263
+00:08:59,120 --> 00:09:02,880
+description of the video
+
+264
+00:09:00,839 --> 00:09:05,360
+patreon.com jason casper to join the
+
+265
+00:09:02,880 --> 00:09:08,800
+community tomorrow we do have a vip live
+
+266
+00:09:05,360 --> 00:09:10,800
+stream at 8 30 in the morning where we
+
+267
+00:09:08,800 --> 00:09:15,440
+will be going over our plan for the
+
+268
+00:09:10,800 --> 00:09:17,120
+entire week potentially finding a trade
+
+269
+00:09:15,440 --> 00:09:18,320
+during new york open looking for a scalp
+
+270
+00:09:17,120 --> 00:09:20,720
+guys look forward to seeing you guys
+
+271
+00:09:18,320 --> 00:09:23,519
+there god bless everybody in the name of
+
+272
+00:09:20,720 --> 00:09:26,080
+jesus the messiah yeshua the messiah i
+
+273
+00:09:23,519 --> 00:09:29,080
+will see everybody in the next video
+
+274
+00:09:26,080 --> 00:09:29,080
+peace

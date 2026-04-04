@@ -1,0 +1,1 @@
+yt-dlp --skip-download --write-auto-subs --sub-langs "en" --convert-subs srt "$1"

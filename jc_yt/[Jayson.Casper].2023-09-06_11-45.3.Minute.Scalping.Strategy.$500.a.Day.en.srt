@@ -1,0 +1,1187 @@
+1
+00:00:00,000 --> 00:00:00,001
+https://www.youtube.com/watch?v=twiHuDh_NEM
+
+2
+00:00:00,080 --> 00:00:04,400
+about to walk you through a very simple
+
+3
+00:00:01,640 --> 00:00:05,879
+yet powerful scalping strategy that is
+
+4
+00:00:04,400 --> 00:00:08,160
+meant to be used on the lower time
+
+5
+00:00:05,879 --> 00:00:10,000
+frames the 5 minute time frame and even
+
+6
+00:00:08,160 --> 00:00:11,360
+lower this is the strategy that I use to
+
+7
+00:00:10,000 --> 00:00:12,799
+get into the scalp trade you see right
+
+8
+00:00:11,360 --> 00:00:14,360
+here on your screen and I use this
+
+9
+00:00:12,799 --> 00:00:16,279
+strategy all the time to get into some
+
+10
+00:00:14,360 --> 00:00:18,000
+Ninja scalps that has a very good risk
+
+11
+00:00:16,279 --> 00:00:19,920
+reward ratio so make sure to like the
+
+12
+00:00:18,000 --> 00:00:21,600
+video subscribe to the channel and click
+
+13
+00:00:19,920 --> 00:00:23,359
+that Bell for notifications because we
+
+14
+00:00:21,600 --> 00:00:25,560
+are bringing you the juiciest trading
+
+15
+00:00:23,359 --> 00:00:27,439
+strategy videos here on YouTube going to
+
+16
+00:00:25,560 --> 00:00:29,000
+go over the basics of this strategy
+
+17
+00:00:27,439 --> 00:00:30,519
+starting with the long trade that I'm in
+
+18
+00:00:29,000 --> 00:00:33,040
+right now and then I'm going to show you
+
+19
+00:00:30,519 --> 00:00:35,440
+how to fine-tune this strategy to get
+
+20
+00:00:33,040 --> 00:00:38,079
+those ninja amazing risk to reward
+
+21
+00:00:35,440 --> 00:00:40,680
+ratios now for this strategy I use an
+
+22
+00:00:38,079 --> 00:00:42,840
+indicator called Market Cipher it is a
+
+23
+00:00:40,680 --> 00:00:44,520
+premium indicator there are many other
+
+24
+00:00:42,840 --> 00:00:47,199
+indicators out there that function very
+
+25
+00:00:44,520 --> 00:00:48,920
+similarly but for this strategy I have
+
+26
+00:00:47,199 --> 00:00:51,440
+not found anything that gives as
+
+27
+00:00:48,920 --> 00:00:53,399
+accurate a signal as Market Cipher and
+
+28
+00:00:51,440 --> 00:00:55,239
+basically what we are going to be doing
+
+29
+00:00:53,399 --> 00:00:57,600
+is we are going to be looking at three
+
+30
+00:00:55,239 --> 00:00:59,519
+aspects of the market Cipher indicator
+
+31
+00:00:57,600 --> 00:01:02,719
+now when you load Market Cipher it looks
+
+32
+00:00:59,519 --> 00:01:05,000
+crazy this is Market Cipher B by the way
+
+33
+00:01:02,719 --> 00:01:07,159
+there's a whole bunch of stuff here I've
+
+34
+00:01:05,000 --> 00:01:09,759
+basically chopped mine up into two so
+
+35
+00:01:07,159 --> 00:01:12,680
+that we can more easily see what am I
+
+36
+00:01:09,759 --> 00:01:14,600
+looking for at a key area where I'm
+
+37
+00:01:12,680 --> 00:01:16,680
+looking for a trade and there's three
+
+38
+00:01:14,600 --> 00:01:20,360
+things I'm looking for I am looking for
+
+39
+00:01:16,680 --> 00:01:23,079
+the price to be making a lower low for a
+
+40
+00:01:20,360 --> 00:01:26,079
+long trade and then I am looking for the
+
+41
+00:01:23,079 --> 00:01:28,799
+money flow to be getting higher as the
+
+42
+00:01:26,079 --> 00:01:31,600
+price comes up to that lower low and I'm
+
+43
+00:01:28,799 --> 00:01:34,960
+also looking for the momentum waves over
+
+44
+00:01:31,600 --> 00:01:37,280
+time to be getting higher as the price
+
+45
+00:01:34,960 --> 00:01:39,880
+comes into that lower low and I am also
+
+46
+00:01:37,280 --> 00:01:42,640
+looking at this yellow line This is
+
+47
+00:01:39,880 --> 00:01:45,240
+called the vwob line I'm looking for
+
+48
+00:01:42,640 --> 00:01:49,000
+this to get higher as the price comes
+
+49
+00:01:45,240 --> 00:01:52,640
+into that lower low if I see all three
+
+50
+00:01:49,000 --> 00:01:54,840
+of these things then I can go ahead and
+
+51
+00:01:52,640 --> 00:01:57,360
+take the trade so basically I'm looking
+
+52
+00:01:54,840 --> 00:02:00,399
+at the money flow on Market Cipher is
+
+53
+00:01:57,360 --> 00:02:02,600
+that purple stuff that curves into blue
+
+54
+00:02:00,399 --> 00:02:05,079
+I'm looking at the momentum waves on
+
+55
+00:02:02,600 --> 00:02:07,560
+Market Cipher these are these blue bumpy
+
+56
+00:02:05,079 --> 00:02:10,599
+humpies right here I'm looking at these
+
+57
+00:02:07,560 --> 00:02:13,800
+and then thirdly I am looking at this
+
+58
+00:02:10,599 --> 00:02:15,519
+yellow line right here on some when you
+
+59
+00:02:13,800 --> 00:02:19,040
+load up Market Cipher it's not actually
+
+60
+00:02:15,519 --> 00:02:21,879
+a line it's an area it looks like this
+
+61
+00:02:19,040 --> 00:02:24,599
+right here right but nonetheless we're
+
+62
+00:02:21,879 --> 00:02:27,120
+looking for it to get higher over time
+
+63
+00:02:24,599 --> 00:02:31,120
+if we see those three things it is a
+
+64
+00:02:27,120 --> 00:02:33,800
+trade entry so let's go back and look at
+
+65
+00:02:31,120 --> 00:02:35,560
+a few major pivots in price where we
+
+66
+00:02:33,800 --> 00:02:37,360
+could have taken some nice scalps some
+
+67
+00:02:35,560 --> 00:02:39,959
+of those scalps actually would have
+
+68
+00:02:37,360 --> 00:02:41,599
+turned out to be much more than a scalp
+
+69
+00:02:39,959 --> 00:02:43,959
+now one of the best things about trading
+
+70
+00:02:41,599 --> 00:02:46,120
+this way is it basically gives you a
+
+71
+00:02:43,959 --> 00:02:48,480
+very clear-cut criteria that you need to
+
+72
+00:02:46,120 --> 00:02:51,080
+see before entering a trade this will
+
+73
+00:02:48,480 --> 00:02:53,440
+keep you from chasing price and trading
+
+74
+00:02:51,080 --> 00:02:56,480
+with emotion and this will also keep you
+
+75
+00:02:53,440 --> 00:02:58,360
+out of bad trades and only get you into
+
+76
+00:02:56,480 --> 00:03:01,840
+trades that have a high probability of
+
+77
+00:02:58,360 --> 00:03:04,080
+going in your favor so I want to start
+
+78
+00:03:01,840 --> 00:03:06,720
+with the top of this move that Bitcoin
+
+79
+00:03:04,080 --> 00:03:09,239
+got Tuesday August 29th
+
+80
+00:03:06,720 --> 00:03:11,440
+2023 if we go ahead and turn on our
+
+81
+00:03:09,239 --> 00:03:14,159
+Market safer indicator we can see that
+
+82
+00:03:11,440 --> 00:03:16,360
+we actually don't get any kind of a
+
+83
+00:03:14,159 --> 00:03:20,280
+signal to take a short according to this
+
+84
+00:03:16,360 --> 00:03:23,239
+strategy until we actually come up to
+
+85
+00:03:20,280 --> 00:03:25,040
+this exact high right this is very key
+
+86
+00:03:23,239 --> 00:03:26,440
+you might be tempted to short all this
+
+87
+00:03:25,040 --> 00:03:28,200
+stuff if you were watching my live
+
+88
+00:03:26,440 --> 00:03:31,280
+stream when I was live streaming the
+
+89
+00:03:28,200 --> 00:03:33,159
+long trade that I was in from lower I
+
+90
+00:03:31,280 --> 00:03:35,120
+was not shorting any of this stuff and
+
+91
+00:03:33,159 --> 00:03:37,239
+the reason is because I wasn't seeing my
+
+92
+00:03:35,120 --> 00:03:40,400
+confirmations on the oscillator but once
+
+93
+00:03:37,239 --> 00:03:42,760
+we get up to this exact High notice what
+
+94
+00:03:40,400 --> 00:03:45,000
+we see right here right we are seeing
+
+95
+00:03:42,760 --> 00:03:47,480
+number one the money flow getting lower
+
+96
+00:03:45,000 --> 00:03:50,480
+over time we are seeing number two the
+
+97
+00:03:47,480 --> 00:03:52,720
+momentum waves getting lower over time
+
+98
+00:03:50,480 --> 00:03:54,799
+and you have to zoom in to see this but
+
+99
+00:03:52,720 --> 00:03:57,840
+you would have seen it in the moment as
+
+100
+00:03:54,799 --> 00:04:01,439
+we are literally making this last High
+
+101
+00:03:57,840 --> 00:04:05,239
+the vwap on Market me this yellow area
+
+102
+00:04:01,439 --> 00:04:07,959
+is getting lower as the price is making
+
+103
+00:04:05,239 --> 00:04:11,319
+that high we have all three of our
+
+104
+00:04:07,959 --> 00:04:13,720
+confirmations right here to take a short
+
+105
+00:04:11,319 --> 00:04:16,560
+trade and as you can see this specific
+
+106
+00:04:13,720 --> 00:04:19,680
+trade would have resulted in much more
+
+107
+00:04:16,560 --> 00:04:22,960
+than a scalp if you had actually taken
+
+108
+00:04:19,680 --> 00:04:25,840
+that trade now that brings us to this
+
+109
+00:04:22,960 --> 00:04:27,680
+little rangy area right here and let's
+
+110
+00:04:25,840 --> 00:04:29,680
+take a look and see are there any other
+
+111
+00:04:27,680 --> 00:04:31,639
+trades that we would have taken here
+
+112
+00:04:29,680 --> 00:04:34,560
+would we have taken a scalp long trade
+
+113
+00:04:31,639 --> 00:04:37,160
+right here no we would not have why
+
+114
+00:04:34,560 --> 00:04:39,680
+because the money flow was getting lower
+
+115
+00:04:37,160 --> 00:04:41,240
+would we have taken a scalp long trade
+
+116
+00:04:39,680 --> 00:04:42,880
+right here yes we would because if we
+
+117
+00:04:41,240 --> 00:04:45,120
+take a look at this low that we made
+
+118
+00:04:42,880 --> 00:04:47,880
+right here we can see that over time the
+
+119
+00:04:45,120 --> 00:04:50,120
+money flow is getting slightly higher we
+
+120
+00:04:47,880 --> 00:04:51,800
+can see that the momentum waves over
+
+121
+00:04:50,120 --> 00:04:54,120
+time also are getting slightly higher
+
+122
+00:04:51,800 --> 00:04:56,039
+it's very slight and we can also see
+
+123
+00:04:54,120 --> 00:04:58,560
+that as we come to make that low this
+
+124
+00:04:56,039 --> 00:05:00,639
+yellow vwap is getting higher over time
+
+125
+00:04:58,560 --> 00:05:02,160
+and if we take a look we can see that
+
+126
+00:05:00,639 --> 00:05:03,280
+this would have actually given us a
+
+127
+00:05:02,160 --> 00:05:05,600
+pretty nice
+
+128
+00:05:03,280 --> 00:05:06,960
+.5% move give or take a little bit more
+
+129
+00:05:05,600 --> 00:05:10,160
+than that now when we're talking about
+
+130
+00:05:06,960 --> 00:05:12,120
+scalping a0 5% move on bitcoin is
+
+131
+00:05:10,160 --> 00:05:16,039
+actually a pretty dang good trade in
+
+132
+00:05:12,120 --> 00:05:19,360
+fact it's my typical tp1 around
+
+133
+00:05:16,039 --> 00:05:22,280
+05% in a scalp trade now let's take a
+
+134
+00:05:19,360 --> 00:05:23,360
+look at some of these other lows that
+
+135
+00:05:22,280 --> 00:05:26,600
+you know we could have been trading
+
+136
+00:05:23,360 --> 00:05:30,319
+let's be looking out no trade no trade
+
+137
+00:05:26,600 --> 00:05:33,759
+no trade no trade okay how about
+
+138
+00:05:30,319 --> 00:05:36,600
+this guy right here this low Wick right
+
+139
+00:05:33,759 --> 00:05:38,039
+here would this have given us a scalp
+
+140
+00:05:36,600 --> 00:05:40,680
+trade entry according to the strategy
+
+141
+00:05:38,039 --> 00:05:42,720
+well price makes a lower low we see that
+
+142
+00:05:40,680 --> 00:05:45,160
+the momentum I'm sorry the money flow
+
+143
+00:05:42,720 --> 00:05:48,120
+over time is getting higher we can also
+
+144
+00:05:45,160 --> 00:05:50,360
+see that the vwap over time is also
+
+145
+00:05:48,120 --> 00:05:53,520
+making a higher low right here and we
+
+146
+00:05:50,360 --> 00:05:56,360
+can also see that the momentum waves are
+
+147
+00:05:53,520 --> 00:05:58,600
+getting higher as the price is making
+
+148
+00:05:56,360 --> 00:06:00,360
+that lower low so the answer is yes we
+
+149
+00:05:58,600 --> 00:06:03,199
+would have gotten into to a trade right
+
+150
+00:06:00,360 --> 00:06:08,520
+here and as you can see boom this would
+
+151
+00:06:03,199 --> 00:06:11,199
+have been a very nice move of almost 2%
+
+152
+00:06:08,520 --> 00:06:13,319
+1.7% all right so we would actually have
+
+153
+00:06:11,199 --> 00:06:15,599
+not taken this trade here according to
+
+154
+00:06:13,319 --> 00:06:17,039
+the strategy and let's see the next
+
+155
+00:06:15,599 --> 00:06:20,880
+entry that we would have gotten right
+
+156
+00:06:17,039 --> 00:06:22,919
+here at this low for about a 6% move why
+
+157
+00:06:20,880 --> 00:06:25,800
+because the money flow is getting higher
+
+158
+00:06:22,919 --> 00:06:28,199
+over time as we put in that low the vwap
+
+159
+00:06:25,800 --> 00:06:29,479
+is also getting higher over time as we
+
+160
+00:06:28,199 --> 00:06:31,319
+put in that low and then of course
+
+161
+00:06:29,479 --> 00:06:34,400
+course the momentum waves also getting
+
+162
+00:06:31,319 --> 00:06:35,919
+higher over time as we put in this low
+
+163
+00:06:34,400 --> 00:06:38,039
+now you can go and back test this
+
+164
+00:06:35,919 --> 00:06:39,880
+yourself but I do just want to point out
+
+165
+00:06:38,039 --> 00:06:42,280
+the fact that this strategy will keep
+
+166
+00:06:39,880 --> 00:06:44,199
+you out of a lot of potential trades
+
+167
+00:06:42,280 --> 00:06:46,319
+right we didn't get an entry here we did
+
+168
+00:06:44,199 --> 00:06:51,120
+not get an entry here we did not get an
+
+169
+00:06:46,319 --> 00:06:54,720
+entry until we come all the way down to
+
+170
+00:06:51,120 --> 00:06:56,680
+this low that we put in right here it's
+
+171
+00:06:54,720 --> 00:06:59,960
+pretty crazy none of these gave us a
+
+172
+00:06:56,680 --> 00:07:01,840
+long entry not until we hit this low so
+
+173
+00:06:59,960 --> 00:07:04,520
+this strategy does require a little bit
+
+174
+00:07:01,840 --> 00:07:06,599
+of patience because you have to wait for
+
+175
+00:07:04,520 --> 00:07:09,160
+it to actually give you all three
+
+176
+00:07:06,599 --> 00:07:10,520
+confirmations now I highly recommend
+
+177
+00:07:09,160 --> 00:07:12,840
+when you were using this strategy that
+
+178
+00:07:10,520 --> 00:07:15,360
+you implement some kind of other
+
+179
+00:07:12,840 --> 00:07:17,360
+technical analysis what do I mean by
+
+180
+00:07:15,360 --> 00:07:19,520
+that you need to have some kind of key
+
+181
+00:07:17,360 --> 00:07:22,120
+level on the chart of support or
+
+182
+00:07:19,520 --> 00:07:25,560
+resistance that's going to also tell you
+
+183
+00:07:22,120 --> 00:07:27,160
+this is a key place to look for a trade
+
+184
+00:07:25,560 --> 00:07:30,240
+now I want to take a look at two of the
+
+185
+00:07:27,160 --> 00:07:32,720
+biggest moves that we actually got
+
+186
+00:07:30,240 --> 00:07:35,039
+during this entire chunk of price action
+
+187
+00:07:32,720 --> 00:07:37,919
+remember according to this strategy we
+
+188
+00:07:35,039 --> 00:07:40,160
+would have shorted this exact top and
+
+189
+00:07:37,919 --> 00:07:42,080
+longed this exact low that's the long
+
+190
+00:07:40,160 --> 00:07:44,560
+trade that I am actually currently in
+
+191
+00:07:42,080 --> 00:07:46,919
+right now we actually gave this setup in
+
+192
+00:07:44,560 --> 00:07:47,759
+advance in the Casper crew VIP Discord
+
+193
+00:07:46,919 --> 00:07:49,720
+from
+
+194
+00:07:47,759 --> 00:07:51,360
+25339 shout out to everybody in the
+
+195
+00:07:49,720 --> 00:07:52,720
+Casper crew who took this long by the
+
+196
+00:07:51,360 --> 00:07:54,520
+way if you want to join the Casper crew
+
+197
+00:07:52,720 --> 00:07:56,120
+you can go to Jason Casper trading.com
+
+198
+00:07:54,520 --> 00:07:57,879
+click the link to join the VIP Discord
+
+199
+00:07:56,120 --> 00:08:00,000
+we do multiple live streams every single
+
+200
+00:07:57,879 --> 00:08:01,599
+day going through the live Market open
+
+201
+00:08:00,000 --> 00:08:03,800
+sessions looking for trades given our
+
+202
+00:08:01,599 --> 00:08:05,560
+levels and our setups also if you want
+
+203
+00:08:03,800 --> 00:08:08,039
+to learn how to trade this way we
+
+204
+00:08:05,560 --> 00:08:09,400
+currently have a 25% discount on these
+
+205
+00:08:08,039 --> 00:08:11,800
+trading courses and if you want a long
+
+206
+00:08:09,400 --> 00:08:14,199
+and short Bitcoin and altcoins with a
+
+207
+00:08:11,800 --> 00:08:16,639
+great deal on fees check out mexe Link
+
+208
+00:08:14,199 --> 00:08:19,440
+in the pin comment in description 0%
+
+209
+00:08:16,639 --> 00:08:21,000
+limit order fees 0 1% Market order fees
+
+210
+00:08:19,440 --> 00:08:22,520
+an amazing deal especially if you're
+
+211
+00:08:21,000 --> 00:08:24,560
+scalping on low time frames people are
+
+212
+00:08:22,520 --> 00:08:26,720
+like Jason what about the fees well if
+
+213
+00:08:24,560 --> 00:08:29,280
+you're on mexe you really don't have to
+
+214
+00:08:26,720 --> 00:08:31,800
+worry about those fees even scalping A5
+
+215
+00:08:29,280 --> 00:08:33,680
+% move can be very profitable now the
+
+216
+00:08:31,800 --> 00:08:36,680
+biggest and the best moves are going to
+
+217
+00:08:33,680 --> 00:08:39,200
+happen when you use this strategy at a
+
+218
+00:08:36,680 --> 00:08:40,399
+very key level now the two biggest moves
+
+219
+00:08:39,200 --> 00:08:42,519
+we could have gotten in the past few
+
+220
+00:08:40,399 --> 00:08:44,920
+days using this strategy is the short
+
+221
+00:08:42,519 --> 00:08:47,160
+from right here and the long from right
+
+222
+00:08:44,920 --> 00:08:49,680
+here notice something the short was
+
+223
+00:08:47,160 --> 00:08:51,640
+coming up to the high volume node of all
+
+224
+00:08:49,680 --> 00:08:55,399
+the price action that we've traded all
+
+225
+00:08:51,640 --> 00:08:56,680
+the way from March 20 20123 to August
+
+226
+00:08:55,399 --> 00:08:58,839
+30th
+
+227
+00:08:56,680 --> 00:09:00,399
+2023 and then when we came down for the
+
+228
+00:08:58,839 --> 00:09:02,760
+long we were coming down to the
+
+229
+00:09:00,399 --> 00:09:05,600
+Fibonacci golden pocket retracement from
+
+230
+00:09:02,760 --> 00:09:08,959
+the most recent low to the most recent
+
+231
+00:09:05,600 --> 00:09:12,000
+High what you can do for this strategy
+
+232
+00:09:08,959 --> 00:09:14,399
+is if you find confluences technically
+
+233
+00:09:12,000 --> 00:09:17,000
+on the chart that tell you this is a
+
+234
+00:09:14,399 --> 00:09:19,279
+very important area to look when you go
+
+235
+00:09:17,000 --> 00:09:22,600
+ahead and take that trade you can take
+
+236
+00:09:19,279 --> 00:09:25,040
+it and hold a portion of it for a much
+
+237
+00:09:22,600 --> 00:09:26,800
+bigger move if you're not at a key level
+
+238
+00:09:25,040 --> 00:09:31,160
+maybe you'd want to close that entire
+
+239
+00:09:26,800 --> 00:09:34,279
+trade after a point 5% move or something
+
+240
+00:09:31,160 --> 00:09:36,560
+like that when you have a key level on
+
+241
+00:09:34,279 --> 00:09:41,000
+the chart this also allows you to get
+
+242
+00:09:36,560 --> 00:09:43,399
+very good risk reward ratios why because
+
+243
+00:09:41,000 --> 00:09:45,720
+if you know for example that you are
+
+244
+00:09:43,399 --> 00:09:47,680
+looking to Long the golden pocket and
+
+245
+00:09:45,720 --> 00:09:50,320
+you see your confirmations at that
+
+246
+00:09:47,680 --> 00:09:53,560
+golden pocket this basically allows you
+
+247
+00:09:50,320 --> 00:09:55,399
+to get into a trade and you know that
+
+248
+00:09:53,560 --> 00:09:56,920
+your stop loss needs to be below the
+
+249
+00:09:55,399 --> 00:10:00,200
+golden pocket it's giving you less than
+
+250
+00:09:56,920 --> 00:10:02,440
+a 1% stop loss and even if we're just
+
+251
+00:10:00,200 --> 00:10:05,279
+shooting up back to Value area low this
+
+252
+00:10:02,440 --> 00:10:07,320
+is still a 4:1 risk reward ratio now
+
+253
+00:10:05,279 --> 00:10:09,680
+this is the 4-Hour time frame when I
+
+254
+00:10:07,320 --> 00:10:11,160
+actually took this trade guys I was
+
+255
+00:10:09,680 --> 00:10:14,320
+using a much
+
+256
+00:10:11,160 --> 00:10:17,279
+juicier uh risk to reward ratio I was
+
+257
+00:10:14,320 --> 00:10:20,200
+looking at it like this I got my
+
+258
+00:10:17,279 --> 00:10:22,720
+confirmations right here basically so I
+
+259
+00:10:20,200 --> 00:10:25,640
+got to enter my trade right here I put
+
+260
+00:10:22,720 --> 00:10:29,120
+my stop loss below that Wick and my
+
+261
+00:10:25,640 --> 00:10:32,640
+takeprofit one was literally just a
+
+262
+00:10:29,120 --> 00:10:34,320
+retest of this previous low now you
+
+263
+00:10:32,640 --> 00:10:36,320
+might say Jason this is such a tiny
+
+264
+00:10:34,320 --> 00:10:40,160
+little move well if you take a look at
+
+265
+00:10:36,320 --> 00:10:42,560
+it it's almost a 1% move and it's a 6:1
+
+266
+00:10:40,160 --> 00:10:45,240
+risk reward absolutely amazing that was
+
+267
+00:10:42,560 --> 00:10:47,760
+my takeprofit one on this trade setup
+
+268
+00:10:45,240 --> 00:10:51,279
+because I was looking to Long the 618
+
+269
+00:10:47,760 --> 00:10:53,560
+Fibonacci level and basically six times
+
+270
+00:10:51,279 --> 00:10:56,440
+more potential reward than risk on a
+
+271
+00:10:53,560 --> 00:10:57,839
+takeprofit one I took out half the trade
+
+272
+00:10:56,440 --> 00:11:00,519
+and now I'm letting the rest ride you
+
+273
+00:10:57,839 --> 00:11:03,440
+can see us right now out basically a 20
+
+274
+00:11:00,519 --> 00:11:04,959
+to1 risk reward absolutely amazing so if
+
+275
+00:11:03,440 --> 00:11:08,120
+you have a little bit of technical
+
+276
+00:11:04,959 --> 00:11:11,560
+analysis that you apply to this strategy
+
+277
+00:11:08,120 --> 00:11:14,760
+it can give you very precise ninja
+
+278
+00:11:11,560 --> 00:11:16,680
+entries for much larger moves and if you
+
+279
+00:11:14,760 --> 00:11:18,920
+don't have a level there and you're just
+
+280
+00:11:16,680 --> 00:11:21,480
+trading basically this choppy price
+
+281
+00:11:18,920 --> 00:11:23,320
+action you can still take the trades but
+
+282
+00:11:21,480 --> 00:11:26,279
+you need to understand that you have to
+
+283
+00:11:23,320 --> 00:11:27,680
+be quick with your ins and your outs all
+
+284
+00:11:26,279 --> 00:11:30,399
+right y'all that is it for today's
+
+285
+00:11:27,680 --> 00:11:32,399
+trading strategy video go and back test
+
+286
+00:11:30,399 --> 00:11:34,760
+this on your own it works for Bitcoin
+
+287
+00:11:32,399 --> 00:11:36,600
+altcoins other assets as well forward
+
+288
+00:11:34,760 --> 00:11:37,760
+test it of course on your demo account
+
+289
+00:11:36,600 --> 00:11:39,639
+let me know what you think about this
+
+290
+00:11:37,760 --> 00:11:41,839
+strategy in the comment section Down
+
+291
+00:11:39,639 --> 00:11:44,040
+Below have you had success trading this
+
+292
+00:11:41,839 --> 00:11:46,480
+way let me know also may God bless
+
+293
+00:11:44,040 --> 00:11:47,920
+everybody in the name of Jesus Yeshua
+
+294
+00:11:46,480 --> 00:11:50,000
+the Messiah even if you are not
+
+295
+00:11:47,920 --> 00:11:51,839
+religious I pray you and your family are
+
+296
+00:11:50,000 --> 00:11:55,639
+super blessed and I will see everybody
+
+297
+00:11:51,839 --> 00:11:55,639
+in the next video peace

@@ -15,6 +15,7 @@ version = "0.1.0"
 description = "Local scripts and tools; use `uv sync` and `uv run` (see header comments)."
 requires-python = ">=3.13"
 dependencies = [
+    "mcp>=1.27.0",
     "yt-dlp>=2026.3.17",
 ]
 
