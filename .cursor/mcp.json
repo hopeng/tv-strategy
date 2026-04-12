@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "tradingview": {
+      "command": "node",
+      "args": ["D:/projects/tradingview-mcp-jackson/src/server.js"]
+    },
+    "yt-dlp": {
+      "command": "npx",
+      "args": ["-y", "@kevinwatt/yt-dlp-mcp@latest"]
+    }
+  }
+}

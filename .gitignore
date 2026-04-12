@@ -39,3 +39,4 @@ Thumbs.db
 
 # Tooling / local
 .claude/settings.local.json
+indicators/clipboard.pine

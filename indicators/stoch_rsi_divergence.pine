@@ -1,4 +1,4 @@
-//@version=5
+//@version=6
 // -----------------------------------------------------------------------------
 // Strategy: Stochastic RSI divergence (visual indicator, not automated entries)
 //
@@ -11,14 +11,23 @@
 // - Bullish divergence: price makes a lower low while %K makes a higher low at
 //   successive pivot lows → buyers may be absorbing; watch for upside.
 //
+// Hidden divergence (continuation-style HH/LL vs oscillator) is not detected.
+//
 // Implementation: Pivots use ta.pivothigh / ta.pivotlow on %K with configurable
-// left/right lookback. On each confirmed pivot, the script compares the new swing
-// to the previous stored swing and draws paired lines on %K and on the chart
-// (highs for bearish, lows for bullish) when the divergence condition holds.
+// left/right lookback. Anchor updates use price pivots and K pivots separately so
+// extremes are not missed when only one series pivots on a bar; drawing a
+// divergence line still requires aligned K+price pivots on the second leg.
+// Optional zone filters keep bearish signals in overbought and bullish in oversold
+// context. On each confirmed pivot, the script compares the new swing to the
+// previous stored swing and draws paired lines on %K and on the chart when the
+// divergence condition holds.
+// Structural rules use price pivots and K pivots separately so anchors advance
+// when one series prints a new extreme without the other on the same bar (e.g.
+// deeper low undercuts prior anchor before K aligns).
 // Stoch RSI settings (RSI length, stochastic length, K/D smoothing) follow the
 // usual bounded oscillator; bands at 20/50/80 give overbought/oversold context.
 // -----------------------------------------------------------------------------
-indicator(title="Stoch RSI Divergence", shorttitle="Stoch RSI Div+", overlay=false, max_lines_count=500)
+indicator(title="Stoch RSI Divergence", shorttitle="StochDiv", overlay=false, max_lines_count=500)
 
 // --- Stoch RSI Inputs ---
 smoothK     = input.int(3, "K Smoothing", minval=1)
@@ -32,6 +41,9 @@ showDiv     = input.bool(true, "Show Divergence Lines", tooltip="Toggles lines o
 lbR         = input.int(5, "Pivot Right Lookback")
 lbL         = input.int(5, "Pivot Left Lookback")
 priceColor  = input.color(color.new(#FFFF00, 0), "Yellow Price Line Color")
+minKDiff    = input.float(3.0, "Min K Difference", minval=0.0, step=0.5, tooltip="Minimum K line difference between pivots to qualify as divergence (0-100 scale)")
+minKBear    = input.float(0.0, "Bearish min K (0 = off)", minval=0.0, maxval=100.0, step=1.0, tooltip="Both pivots must have K at or above this (e.g. 55–70 = overbought context only). 0 disables.")
+maxKBull    = input.float(100.0, "Bullish max K (100 = off)", minval=0.0, maxval=100.0, step=1.0, tooltip="Both pivots must have K at or below this (e.g. 30–45 = oversold context only). 100 disables.")
 
 // --- Calculations ---
 rsi1 = ta.rsi(src, lengthRSI)
@@ -50,21 +62,73 @@ fill(h0, h1, color=color.rgb(33, 150, 243, 93), title="Background")
 var int lastPhBar = na, var float lastPhPrice = na, var float lastPhK = na
 var int lastPlBar = na, var float lastPlPrice = na, var float lastPlK = na
 
-ph = ta.pivothigh(k, lbL, lbR)
-pl = ta.pivotlow(k, lbL, lbR)
+phK = ta.pivothigh(k, lbL, lbR)
+plK = ta.pivotlow(k, lbL, lbR)
+phH = ta.pivothigh(high, lbL, lbR)
+plL = ta.pivotlow(low, lbL, lbR)
+
+bearSwing = not na(phK) and not na(phH)
+bullSwing = not na(plK) and not na(plL)
+
+// --- Bearish: anchor updates only when K+price do NOT align on this bar (bearSwing handles aligned bars)
+if not na(phH) and not bearSwing
+    int   cB = bar_index - lbR
+    float pH = phH
+    if not na(lastPhBar) and not na(lastPhPrice) and cB > lastPhBar
+        if pH < lastPhPrice
+            lastPhBar := na
+            lastPhPrice := na
+            lastPhK := na
+        else if pH > lastPhPrice
+            lastPhBar := cB
+            lastPhPrice := pH
+            lastPhK := k[lbR]
+if not na(phK) and not bearSwing
+    int   cB = bar_index - lbR
+    float kH = phK
+    if not na(lastPhBar) and not na(lastPhK) and cB > lastPhBar and kH > lastPhK
+        lastPhBar := cB
+        lastPhK := kH
+        lastPhPrice := high[lbR]
+
+// --- Bullish: anchor updates only when K+price do NOT align on this bar (bullSwing handles aligned bars)
+if not na(plL) and not bullSwing
+    int   cB = bar_index - lbR
+    float pL = plL
+    if not na(lastPlBar) and not na(lastPlPrice) and cB > lastPlBar
+        if pL > lastPlPrice
+            lastPlBar := na
+            lastPlPrice := na
+            lastPlK := na
+        else if pL < lastPlPrice
+            lastPlBar := cB
+            lastPlPrice := pL
+            lastPlK := k[lbR]
+// Deeper K low only; never clear on kL > lastPlK — that is the HL leg of regular bullish divergence
+if not na(plK) and not bullSwing
+    int   cB = bar_index - lbR
+    float kL = plK
+    if not na(lastPlBar) and not na(lastPlK) and cB > lastPlBar and kL < lastPlK
+        lastPlBar := cB
+        lastPlK := kL
+        lastPlPrice := low[lbR]
 
 // Bearish Divergence (Price HH + K LH)
-if not na(ph)
-    float curPrice = high[lbR]
-    if not na(lastPhPrice) and curPrice > lastPhPrice and ph < lastPhK and showDiv
-        line.new(lastPhBar, lastPhK, bar_index - lbR, ph, color=color.red, width=2)
-        line.new(lastPhBar, lastPhPrice, bar_index - lbR, curPrice, color=priceColor, width=2, force_overlay=true)
-    lastPhBar := bar_index - lbR, lastPhPrice := curPrice, lastPhK := ph
+if bearSwing
+    float curPrice = phH
+    int   curBar   = bar_index - lbR
+    bool  zoneOk   = minKBear <= 0.0 or (phK >= minKBear and (na(lastPhK) or lastPhK >= minKBear))
+    if not na(lastPhPrice) and curPrice > lastPhPrice and phK < lastPhK and showDiv and (lastPhK - phK) >= minKDiff and zoneOk
+        line.new(lastPhBar, lastPhK, curBar, phK, color=color.red, width=2)
+        line.new(lastPhBar, lastPhPrice, curBar, curPrice, color=priceColor, width=2, force_overlay=true)
+    lastPhBar := curBar, lastPhPrice := curPrice, lastPhK := phK
 
 // Bullish Divergence (Price LL + K HL)
-if not na(pl)
-    float curPrice = low[lbR]
-    if not na(lastPlPrice) and curPrice < lastPlPrice and pl > lastPlK and showDiv
-        line.new(lastPlBar, lastPlK, bar_index - lbR, pl, color=color.green, width=2)
-        line.new(lastPlBar, lastPlPrice, bar_index - lbR, curPrice, color=priceColor, width=2, force_overlay=true)
-    lastPlBar := bar_index - lbR, lastPlPrice := curPrice, lastPlK := pl
+if bullSwing
+    float curPrice = plL
+    int   curBar   = bar_index - lbR
+    bool  zoneOkB  = maxKBull >= 100.0 or (plK <= maxKBull and (na(lastPlK) or lastPlK <= maxKBull))
+    if not na(lastPlPrice) and curPrice < lastPlPrice and plK > lastPlK and showDiv and (plK - lastPlK) >= minKDiff and zoneOkB
+        line.new(lastPlBar, lastPlK, curBar, plK, color=color.green, width=2)
+        line.new(lastPlBar, lastPlPrice, curBar, curPrice, color=priceColor, width=2, force_overlay=true)
+    lastPlBar := curBar, lastPlPrice := curPrice, lastPlK := plK
