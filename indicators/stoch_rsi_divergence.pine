@@ -1,0 +1,51 @@
+//@version=5
+indicator(title="Stoch RSI Divergence", shorttitle="Stoch RSI Div+", overlay=false)
+
+// --- Stoch RSI Inputs ---
+smoothK     = input.int(3, "K Smoothing", minval=1)
+smoothD     = input.int(3, "D Smoothing", minval=1)
+lengthRSI   = input.int(14, "RSI Length", minval=1)
+lengthStoch = input.int(14, "Stochastic Length", minval=1)
+src         = input(close, title="RSI Source")
+
+// --- Divergence Toggle & Logic ---
+showDiv     = input.bool(true, "Show Divergence Lines", tooltip="Toggles lines on both price and indicator")
+lbR         = input.int(5, "Pivot Right Lookback")
+lbL         = input.int(5, "Pivot Left Lookback")
+priceColor  = input.color(color.new(#FFFF00, 0), "Yellow Price Line Color")
+
+// --- Calculations ---
+rsi1 = ta.rsi(src, lengthRSI)
+k = ta.sma(ta.stoch(rsi1, rsi1, rsi1, lengthStoch), smoothK)
+d = ta.sma(k, smoothD)
+
+// --- Plotting Stoch RSI ---
+plot(k, "K", color=#2962FF, linewidth=2)
+plot(d, "D", color=#FF6D00, linewidth=1)
+h0 = hline(80, "Upper Band", color=#787B86, linestyle=hline.style_dashed)
+hline(50, "Middle Band", color=color.new(#787B86, 50))
+h1 = hline(20, "Lower Band", color=#787B86, linestyle=hline.style_dashed)
+fill(h0, h1, color=color.rgb(33, 150, 243, 93), title="Background")
+
+// --- Divergence Logic ---
+var int lastPhBar = 0, var float lastPhPrice = 0.0, var float lastPhK = 0.0
+var int lastPlBar = 0, var float lastPlPrice = 0.0, var float lastPlK = 0.0
+
+ph = ta.pivothigh(k, lbL, lbR)
+pl = ta.pivotlow(k, lbL, lbR)
+
+// Bearish Divergence (Price HH + K LH)
+if not na(ph)
+    float curPrice = high[lbR]
+    if curPrice > lastPhPrice and ph < lastPhK and showDiv
+        line.new(lastPhBar, lastPhK, bar_index - lbR, ph, color=color.red, width=2)
+        line.new(lastPhBar, lastPhPrice, bar_index - lbR, curPrice, color=priceColor, width=2, force_overlay=true)
+    lastPhBar := bar_index - lbR, lastPhPrice := curPrice, lastPhK := ph
+
+// Bullish Divergence (Price LL + K HL)
+if not na(pl)
+    float curPrice = low[lbR]
+    if curPrice < lastPlPrice and pl > lastPlK and showDiv
+        line.new(lastPlBar, lastPlK, bar_index - lbR, pl, color=color.green, width=2)
+        line.new(lastPlBar, lastPlPrice, bar_index - lbR, curPrice, color=priceColor, width=2, force_overlay=true)
+    lastPlBar := bar_index - lbR, lastPlPrice := curPrice, lastPlK := pl
