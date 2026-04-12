@@ -1,32 +1,21 @@
 //@version=6
 // -----------------------------------------------------------------------------
-// Strategy: Stochastic RSI divergence (visual indicator, not automated entries)
+// Stochastic RSI Divergence v2 (visual indicator, not automated entries)
 //
-// Core idea: Compare swing structure on price vs. the Stoch RSI %K line. When price
-// and %K disagree, momentum may be weakening — a common way to spot potential
-// reversals or pullbacks before they show on price alone.
+// Bear div:
+// 1. Save a swing high as ps. On the next swing high: if higher, treat as pe;
+//    if lower, replace ps.
+// 2. Window: Stoch RSI from ps to pe, widened by 5 bars on each end.
+// 3. ks = %K anchor closest to ps: %K swing high (priority) or K cross-down
+//    through D (fallback).
+// 4. ke = %K anchor closest to pe (same rules, ke != ks).
+// 5. If %K at ke <= %K at ks -> bear div confirmed, draw lines.
+// 6. If %K at ke > %K at ks -> no div, clear ps/pe, start fresh.
+// 7. Lookbacks: lbL = 5, lbR = 3 for both price and %K pivots.
 //
-// - Bearish divergence: price makes a higher high while %K makes a lower high at
-//   successive pivot highs → sellers may be taking control; watch for downside.
-// - Bullish divergence: price makes a lower low while %K makes a higher low at
-//   successive pivot lows → buyers may be absorbing; watch for upside.
-//
-// Hidden divergence (continuation-style HH/LL vs oscillator) is not detected.
-//
-// Implementation: Price pivots only — ta.pivothigh / ta.pivotlow. For each price
-// swing, oscillator anchors use the K leg: bear = highest K between K crossing
-// above D and the next cross below D (pivot bar must lie in that leg; cross up
-// after prior bear anchor when one exists). Bull = lowest K between cross below D
-// and next cross above D (symmetric). Falls back to window max/min if no leg fits.
-// Optional zone filters keep bearish signals in overbought and bullish in oversold
-// context. Each confirmed price pivot updates the anchor; regular divergence
-// compares consecutive price swings with HH+K LH or LL+K HL.
-// Optional: each Stoch peak/trough validated by a full K/D cycle (bear: cross down
-// after peak; plus cross up after the prior cross down when one exists before the peak).
-// Stoch RSI settings (RSI length, stochastic length, K/D smoothing) follow the
-// usual bounded oscillator; bands at 20/50/80 give overbought/oversold context.
+// Bull div: symmetric (lower lows on price, higher lows on %K).
 // -----------------------------------------------------------------------------
-indicator(title="Stoch RSI Divergence", shorttitle="StochDiv", overlay=false, max_lines_count=500, max_bars_back=5000)
+indicator(title="Stoch RSI Divergence v2", shorttitle="StochDiv v2", overlay=false, max_lines_count=500, max_bars_back=5000)
 
 // --- Stoch RSI Inputs ---
 smoothK     = input.int(3, "K Smoothing", minval=1)
@@ -35,18 +24,14 @@ lengthRSI   = input.int(14, "RSI Length", minval=1)
 lengthStoch = input.int(14, "Stochastic Length", minval=1)
 src         = input(close, title="RSI Source")
 
-// --- Divergence Toggle & Logic ---
-showDiv     = input.bool(true, "Show Divergence Lines", tooltip="Toggles lines on both price and indicator")
-lbR         = input.int(3, "Pivot Right Lookback")
-lbL         = input.int(5, "Pivot Left Lookback")
-priceColor  = input.color(color.new(#FFFF00, 0), "Bullish price line color")
+// --- Divergence Inputs ---
+showDiv        = input.bool(true, "Show Divergence Lines", tooltip="Toggles lines on both price and indicator")
+lbR            = input.int(3, "Pivot Right Lookback")
+lbL            = input.int(5, "Pivot Left Lookback")
+priceColor     = input.color(color.new(#FFFF00, 0), "Bullish price line color")
 priceColorBear = input.color(color.new(#FF69B4, 0), "Bearish price line color")
-minKDiff    = input.float(3.0, "Min K Difference", minval=0.0, step=0.5, tooltip="Minimum K line difference between pivots to qualify as divergence (0-100 scale)")
-minKBear    = input.float(0.0, "Bearish min K (0 = off)", minval=0.0, maxval=100.0, step=1.0, tooltip="Both pivots must have K at or above this (e.g. 55-70 = overbought context only). 0 disables.")
-maxKBull    = input.float(100.0, "Bullish max K (100 = off)", minval=0.0, maxval=100.0, step=1.0, tooltip="Both pivots must have K at or below this (e.g. 30-45 = oversold context only). 100 disables.")
-kPeakWin    = input.int(5, "K peak/trough +/- bars", minval=0, maxval=30, tooltip="Bear: max K on the K>D leg (cross up to cross down) that contains the price pivot, restricted to this +/- bar band around the pivot. Bull: min K on the K<D leg. If no valid leg, falls back to window extrema.")
-requireCross = input.bool(true, "Validate K peaks with K/D cross", tooltip="Bearish: after each peak, K must cross down through D; if a prior cross down exists before that peak, K must also cross back up between that cross down and the peak (fresh leg). Bullish: symmetric with cross up after trough and cross down between prior cross up and trough when applicable.")
-debugPhH     = input.bool(true, "Debug: highlight all phH", tooltip="On the price chart: triangle on each swing-high bar; candle tint when pivot confirms. (Indicator pane has no phH background.)")
+
+WIN_EXTRA = 5
 
 // --- Calculations ---
 rsi1 = ta.rsi(src, lengthRSI)
@@ -54,7 +39,6 @@ k = ta.sma(ta.stoch(rsi1, rsi1, rsi1, lengthStoch), smoothK)
 d = ta.sma(k, smoothD)
 max_bars_back(k, 5000)
 max_bars_back(d, 5000)
-max_bars_back(rsi1, 5000)
 
 // --- Plotting Stoch RSI ---
 plot(k, "K", color=#2962FF, linewidth=2)
@@ -64,440 +48,172 @@ hline(50, "Middle Band", color=color.new(#787B86, 50))
 h1 = hline(20, "Lower Band", color=#787B86, linestyle=hline.style_dashed)
 fill(h0, h1, color=color.rgb(33, 150, 243, 93), title="Background")
 
-// Fallback: max/min %K in +/-w window around pivot offset pOff (when leg logic finds nothing).
-k_peak_around(int pOff, int w) =>
-    float mx = na
-    for i = -w to w
-        int o = pOff + i
-        if o >= 0
-            float kv = k[o]
-            if na(mx) or kv > mx
-                mx := kv
-    int bestOff = na
-    int bestDist = 2147483647
-    if not na(mx)
-        for i = -w to w
-            int o = pOff + i
-            if o >= 0
-                float kv = k[o]
-                if math.abs(kv - mx) < 0.0001
-                    int od = math.abs(o - pOff)
-                    if na(bestOff) or od < bestDist
-                        bestDist := od
-                        bestOff := o
-    int kB = na(bestOff) ? na : bar_index - bestOff
-    [mx, kB]
+// --- Helpers (called every bar below — satisfies Pine consistency) ---
 
-k_trough_around(int pOff, int w) =>
-    float mn = na
-    for i = -w to w
-        int o = pOff + i
-        if o >= 0
-            float kv = k[o]
-            if na(mn) or kv < mn
-                mn := kv
-    int bestOff = na
-    int bestDist = 2147483647
-    if not na(mn)
-        for i = -w to w
-            int o = pOff + i
-            if o >= 0
-                float kv = k[o]
-                if math.abs(kv - mn) < 0.0001
-                    int od = math.abs(o - pOff)
-                    if na(bestOff) or od < bestDist
-                        bestDist := od
-                        bestOff := o
-    int kB = na(bestOff) ? na : bar_index - bestOff
-    [mn, kB]
-
-// Max K in ±w around pivot using only bars strictly after minBarIdx (second swing — avoids re-picking first peak K).
-k_peak_around_after_anchor(int pivotBar, int w, int minBarIdx) =>
-    int winLo = math.max(0, pivotBar - w)
-    int winHi = math.min(bar_index, pivotBar + w)
-    float mx = na
-    for b = winLo to winHi
-        if not na(minBarIdx) and b <= minBarIdx
-            continue
-        int o = bar_index - b
-        if o < 0
-            continue
-        float kv = k[o]
-        if na(mx) or kv > mx
-            mx := kv
-    int bestB = na
-    int bestDist = 2147483647
-    if not na(mx)
+// Bear anchor: %K swing high closest to pricePivotBar, falling back to K cross-down-through-D.
+// excludeBar (-1 = none) is skipped so ke != ks.
+find_k_anchor_bear(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
+    if na(pricePivotBar) or winHi < winLo or winHi < 0
+        [na, na]
+    else
+        float bestVal = na
+        int bestBar = na
+        int bestDist = 2147483647
         for b = winLo to winHi
-            if not na(minBarIdx) and b <= minBarIdx
+            if b == excludeBar
                 continue
-            int o = bar_index - b
-            if o < 0
+            int off = bar_index - b
+            if off < 0 or na(k[off])
                 continue
-            float kv = k[o]
-            if math.abs(kv - mx) < 0.0001
-                int od = math.abs(b - pivotBar)
-                if na(bestB) or od < bestDist
-                    bestDist := od
-                    bestB := b
-    [mx, bestB]
+            float kv = k[off]
+            bool isHigh = true
+            for i = 1 to lbL
+                if off + i > bar_index or na(k[off + i]) or k[off + i] >= kv
+                    isHigh := false
+                    break
+            if isHigh
+                for i = 1 to lbR
+                    if off - i < 0 or na(k[off - i]) or k[off - i] >= kv
+                        isHigh := false
+                        break
+            if isHigh
+                int dist = math.abs(b - pricePivotBar)
+                if dist < bestDist
+                    bestDist := dist
+                    bestBar := b
+                    bestVal := kv
+        if na(bestBar)
+            bestDist := 2147483647
+            for b = winLo to winHi
+                if b == excludeBar
+                    continue
+                int off = bar_index - b
+                if off < 0 or off + 1 > bar_index
+                    continue
+                if na(k[off]) or na(d[off]) or na(k[off + 1]) or na(d[off + 1])
+                    continue
+                if k[off] < d[off] and k[off + 1] >= d[off + 1]
+                    int dist = math.abs(b - pricePivotBar)
+                    if dist < bestDist
+                        bestDist := dist
+                        bestBar := b
+                        bestVal := k[off]
+        [bestVal, bestBar]
 
-// Min K in ±w around pivot using only bars strictly after minBarIdx (second swing trough).
-k_trough_around_after_anchor(int pivotBar, int w, int minBarIdx) =>
-    int winLo = math.max(0, pivotBar - w)
-    int winHi = math.min(bar_index, pivotBar + w)
-    float mn = na
-    for b = winLo to winHi
-        if not na(minBarIdx) and b <= minBarIdx
-            continue
-        int o = bar_index - b
-        if o < 0
-            continue
-        float kv = k[o]
-        if na(mn) or kv < mn
-            mn := kv
-    int bestB = na
-    int bestDist = 2147483647
-    if not na(mn)
+// Bull anchor: %K swing low closest to pricePivotBar, falling back to K cross-up-through-D.
+find_k_anchor_bull(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
+    if na(pricePivotBar) or winHi < winLo or winHi < 0
+        [na, na]
+    else
+        float bestVal = na
+        int bestBar = na
+        int bestDist = 2147483647
         for b = winLo to winHi
-            if not na(minBarIdx) and b <= minBarIdx
+            if b == excludeBar
                 continue
-            int o = bar_index - b
-            if o < 0
+            int off = bar_index - b
+            if off < 0 or na(k[off])
                 continue
-            float kv = k[o]
-            if math.abs(kv - mn) < 0.0001
-                int od = math.abs(b - pivotBar)
-                if na(bestB) or od < bestDist
-                    bestDist := od
-                    bestB := b
-    [mn, bestB]
-
-// Bear: highest K on [cu, cd] clipped to pivot +/- w, where cu = K cross up, cd = next K cross down,
-// cu > anchorBar (prior red endpoint; ignored if na), and cu <= pivotBar <= cd.
-k_peak_bear_leg(int pivotBar, int w, int pOff, int anchorBar) =>
-    [fa, ka] = k_peak_around_after_anchor(pivotBar, w, anchorBar)
-    [fc, kc] = k_peak_around(pOff, w)
-    float fb = fc
-    int kb = kc
-    if not na(anchorBar) and not na(ka)
-        fb := fa
-        kb := ka
-    int winLo = pivotBar - w
-    int winHi = pivotBar + w
-    int aMin = na(anchorBar) ? -1 : anchorBar
-    float bestK = na
-    int bestB = na
-    int chosenCu = na
-    int chosenCd = na
-    for idx = 0 to 500
-        int cu = pivotBar - idx
-        if cu < 0 or cu < aMin + 1
-            break
-        int o_cu = bar_index - cu
-        bool isCo = o_cu + 1 <= bar_index and not na(k[o_cu]) and not na(d[o_cu]) and not na(k[o_cu + 1]) and not na(d[o_cu + 1]) and k[o_cu] > d[o_cu] and k[o_cu + 1] <= d[o_cu + 1]
-        if isCo
-            int cd = na
-            int limB = math.min(cu + 500, bar_index)
-            for b = cu + 1 to limB
-                int o_b = bar_index - b
-                bool isCdn = o_b + 1 <= bar_index and not na(k[o_b]) and not na(d[o_b]) and not na(k[o_b + 1]) and not na(d[o_b + 1]) and k[o_b] < d[o_b] and k[o_b + 1] >= d[o_b + 1]
-                if isCdn
-                    cd := b
+            float kv = k[off]
+            bool isLow = true
+            for i = 1 to lbL
+                if off + i > bar_index or na(k[off + i]) or k[off + i] <= kv
+                    isLow := false
                     break
-            if not na(cd) and cu <= pivotBar and pivotBar <= cd
-                chosenCu := cu
-                chosenCd := cd
-                break
-    if not na(chosenCu) and not na(chosenCd)
-        int lo = math.max(chosenCu, winLo)
-        int hi = math.min(chosenCd, winHi)
-        if lo <= hi
-            for b = lo to hi
-                int o = bar_index - b
-                float kv = k[o]
-                int dist = math.abs(b - pivotBar)
-                if na(bestK) or kv > bestK or (math.abs(kv - bestK) < 0.0001 and (na(bestB) or dist < math.abs(bestB - pivotBar)))
-                    bestK := kv
-                    bestB := b
-        else
-            // Window misses the leg; use full K>D leg apex (still the correct swing high for this rally)
-            for b = chosenCu to chosenCd
-                int o = bar_index - b
-                if o < 0
+            if isLow
+                for i = 1 to lbR
+                    if off - i < 0 or na(k[off - i]) or k[off - i] <= kv
+                        isLow := false
+                        break
+            if isLow
+                int dist = math.abs(b - pricePivotBar)
+                if dist < bestDist
+                    bestDist := dist
+                    bestBar := b
+                    bestVal := kv
+        if na(bestBar)
+            bestDist := 2147483647
+            for b = winLo to winHi
+                if b == excludeBar
                     continue
-                float kv = k[o]
-                int dist = math.abs(b - pivotBar)
-                if na(bestK) or kv > bestK or (math.abs(kv - bestK) < 0.0001 and (na(bestB) or dist < math.abs(bestB - pivotBar)))
-                    bestK := kv
-                    bestB := b
-    if na(bestB)
-        bestK := fb
-        bestB := kb
-    [bestK, bestB]
-
-// Bull: lowest K on [cd, cu] clipped to pivot +/- w, where cd = K cross down, cu = next K cross up,
-// cd > anchorBar (prior green endpoint; ignored if na), and cd <= pivotBar <= cu.
-k_trough_bull_leg(int pivotBar, int w, int pOff, int anchorBar) =>
-    [fa, ka] = k_trough_around_after_anchor(pivotBar, w, anchorBar)
-    [fc, kc] = k_trough_around(pOff, w)
-    float fb = fc
-    int kb = kc
-    if not na(anchorBar) and not na(ka)
-        fb := fa
-        kb := ka
-    int winLo = pivotBar - w
-    int winHi = pivotBar + w
-    int aMin = na(anchorBar) ? -1 : anchorBar
-    float bestMn = na
-    int bestB = na
-    int chosenCd = na
-    int chosenCu = na
-    for idx = 0 to 500
-        int cd = pivotBar - idx
-        if cd < 0 or cd < aMin + 1
-            break
-        int o_cd = bar_index - cd
-        bool isCdn = o_cd + 1 <= bar_index and not na(k[o_cd]) and not na(d[o_cd]) and not na(k[o_cd + 1]) and not na(d[o_cd + 1]) and k[o_cd] < d[o_cd] and k[o_cd + 1] >= d[o_cd + 1]
-        if isCdn
-            int cu = na
-            int limB = math.min(cd + 500, bar_index)
-            for b = cd + 1 to limB
-                int o_b = bar_index - b
-                bool isCo = o_b + 1 <= bar_index and not na(k[o_b]) and not na(d[o_b]) and not na(k[o_b + 1]) and not na(d[o_b + 1]) and k[o_b] > d[o_b] and k[o_b + 1] <= d[o_b + 1]
-                if isCo
-                    cu := b
-                    break
-            if not na(cu) and cd <= pivotBar and pivotBar <= cu
-                chosenCd := cd
-                chosenCu := cu
-                break
-    if not na(chosenCd) and not na(chosenCu)
-        int lo = math.max(chosenCd, winLo)
-        int hi = math.min(chosenCu, winHi)
-        if lo <= hi
-            for b = lo to hi
-                int o = bar_index - b
-                float kv = k[o]
-                int dist = math.abs(b - pivotBar)
-                if na(bestMn) or kv < bestMn or (math.abs(kv - bestMn) < 0.0001 and (na(bestB) or dist < math.abs(bestB - pivotBar)))
-                    bestMn := kv
-                    bestB := b
-        else
-            for b = chosenCd to chosenCu
-                int o = bar_index - b
-                if o < 0
+                int off = bar_index - b
+                if off < 0 or off + 1 > bar_index
                     continue
-                float kv = k[o]
-                int dist = math.abs(b - pivotBar)
-                if na(bestMn) or kv < bestMn or (math.abs(kv - bestMn) < 0.0001 and (na(bestB) or dist < math.abs(bestB - pivotBar)))
-                    bestMn := kv
-                    bestB := b
-    if na(bestB)
-        bestMn := fb
-        bestB := kb
-    [bestMn, bestB]
+                if na(k[off]) or na(d[off]) or na(k[off + 1]) or na(d[off + 1])
+                    continue
+                if k[off] > d[off] and k[off + 1] <= d[off + 1]
+                    int dist = math.abs(b - pricePivotBar)
+                    if dist < bestDist
+                        bestDist := dist
+                        bestBar := b
+                        bestVal := k[off]
+        [bestVal, bestBar]
 
-// Cross detection uses k[o]/d[o] only (not ta.crossunder[]), so deep offsets respect max_bars_back on k,d.
-
-// Bearish peak: cross down after peak; if a cross down exists before the peak, require a cross up
-// strictly between that cross down and the peak (new leg above D before the high).
-stoch_peak_validated_bear(int peakBar) =>
-    bool ok = false
-    if not na(peakBar)
-        int pkOff = bar_index - peakBar
-        bool hasCdAfter = false
-        if pkOff > 0
-            for o = 0 to pkOff - 1
-                bool cDown = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] < d[o] and k[o + 1] >= d[o + 1]
-                hasCdAfter := hasCdAfter or cDown
-        int cdPrev = na
-        if pkOff >= 0
-            int hiCd = math.min(pkOff + 500, bar_index)
-            if pkOff + 1 <= hiCd
-                for o = pkOff + 1 to hiCd
-                    if na(cdPrev)
-                        bool cDown = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] < d[o] and k[o + 1] >= d[o + 1]
-                        if cDown
-                            cdPrev := bar_index - o
-        bool freshLeg = true
-        if not na(cdPrev)
-            freshLeg := false
-            int oMin = bar_index - (peakBar - 1)
-            int oMax = bar_index - (cdPrev + 1)
-            if oMin <= oMax
-                for o = oMin to oMax
-                    bool cUp = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] > d[o] and k[o + 1] <= d[o + 1]
-                    freshLeg := freshLeg or cUp
-        ok := hasCdAfter and freshLeg
-    ok
-
-// Bullish trough: cross up after trough; if a cross up exists before the trough, require a cross down between them.
-stoch_peak_validated_bull(int troughBar) =>
-    bool ok = false
-    if not na(troughBar)
-        int pkOff = bar_index - troughBar
-        bool hasCoAfter = false
-        if pkOff > 0
-            for o = 0 to pkOff - 1
-                bool cUp = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] > d[o] and k[o + 1] <= d[o + 1]
-                hasCoAfter := hasCoAfter or cUp
-        int coPrev = na
-        if pkOff >= 0
-            int hiCo = math.min(pkOff + 500, bar_index)
-            if pkOff + 1 <= hiCo
-                for o = pkOff + 1 to hiCo
-                    if na(coPrev)
-                        bool cUp = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] > d[o] and k[o + 1] <= d[o + 1]
-                        if cUp
-                            coPrev := bar_index - o
-        bool freshLeg = true
-        if not na(coPrev)
-            freshLeg := false
-            int oMin = bar_index - (troughBar - 1)
-            int oMax = bar_index - (coPrev + 1)
-            if oMin <= oMax
-                for o = oMin to oMax
-                    bool cDn = o + 1 <= bar_index and not na(k[o]) and not na(d[o]) and not na(k[o + 1]) and not na(d[o + 1]) and k[o] < d[o] and k[o + 1] >= d[o + 1]
-                    freshLeg := freshLeg or cDn
-        ok := hasCoAfter and freshLeg
-    ok
-
-// --- Divergence Logic (price pivots; %K = local max/min near pivot) ---
-var int lastPhBar = na, var float lastPhPrice = na, var float lastPhK = na, var int lastKhBar = na
-var int lastPlBar = na, var float lastPlPrice = na, var float lastPlK = na, var int lastKlBar = na
-
-// Pending div when cross validation not yet complete (frozen coordinates)
-var int pBr_lkb = na, var float pBr_lk = na, var int pBr_ckb = na, var float pBr_ck = na
-var int pBr_lpb = na, var float pBr_lpp = na, var int pBr_cb = na, var float pBr_cp = na
-var int pBl_llb = na, var float pBl_lk = na, var int pBl_clb = na, var float pBl_ck = na
-var int pBl_lpb = na, var float pBl_lpp = na, var int pBl_cb = na, var float pBl_cp = na
-
+// --- Price Pivots ---
 phH = ta.pivothigh(high, lbL, lbR)
 plL = ta.pivotlow(low, lbL, lbR)
 
-// Debug: every ta.pivothigh — shapes on price pane (force_overlay); barcolor also affects main chart. bgcolor() would only tint this script's pane, so not used.
-plotshape(debugPhH and not na(phH), title="phH swing", style=shape.triangledown, location=location.abovebar, color=color.new(#FF9800, 0), size=size.small, offset=-lbR, force_overlay=true)
-barcolor(debugPhH and not na(phH) ? color.new(#FF9800, 70) : na, title="phH confirm (price)")
+int curBarH = not na(phH) ? bar_index - lbR : na
+int curBarL = not na(plL) ? bar_index - lbR : na
 
-[curKPeak, curKhBarCalc] = k_peak_bear_leg(bar_index - lbR, kPeakWin, lbR, lastKhBar)
-[curKTr, curKlBarCalc] = k_trough_bull_leg(bar_index - lbR, kPeakWin, lbR, lastKlBar)
+// --- Divergence state (ps / pe chain) ---
+var int bear_ps_bar = na
+var float bear_ps_price = na
+var int bull_ps_bar = na
+var float bull_ps_price = na
 
-// Every-bar validation (Pine consistency); used only on pivot bars for drawing
-v1_cross = stoch_peak_validated_bear(lastKhBar)
-v2_cross = stoch_peak_validated_bear(curKhBarCalc)
-vb1_cross = stoch_peak_validated_bull(lastKlBar)
-vb2_cross = stoch_peak_validated_bull(curKlBarCalc)
+// --- Bearish anchors (computed every bar) ---
+bool bearHH = showDiv and not na(phH) and not na(bear_ps_bar) and not na(curBarH) and phH > bear_ps_price
+int bearWL = bearHH ? math.max(0, bear_ps_bar - WIN_EXTRA) : 0
+int bearWH = bearHH ? math.min(bar_index, curBarH + WIN_EXTRA) : -1
 
-// Bearish: Price HH + K LH
-if not na(phH)
-    int   curBar = bar_index - lbR
+[ksValBear, ksBarBear] = find_k_anchor_bear(bear_ps_bar, bearWL, bearWH, -1)
+int bearExcl = na(ksBarBear) ? -1 : ksBarBear
+[keValBear, keBarBear] = find_k_anchor_bear(curBarH, bearWL, bearWH, bearExcl)
+
+if showDiv and not na(phH)
+    int curBar = bar_index - lbR
     float curPrice = phH
-    float curK = curKPeak
-    int   curKhBar = curKhBarCalc
-    if not na(lastPhBar) and not na(lastPhPrice) and curBar > lastPhBar
-        if curPrice < lastPhPrice
-            lastPhBar := na
-            lastPhPrice := na
-            lastPhK := na
-            lastKhBar := na
-            pBr_ckb := na
-    bool zoneOk = minKBear <= 0.0 or (curK >= minKBear and (na(lastPhK) or lastPhK >= minKBear))
-    bool baseOk = not na(lastPhPrice) and not na(lastKhBar) and not na(curKhBar) and curPrice > lastPhPrice and curK < lastPhK and (lastPhK - curK) >= minKDiff and zoneOk
-    if showDiv and baseOk and zoneOk
-        if not requireCross
-            line.new(lastKhBar, lastPhK, curKhBar, curK, color=color.red, width=2)
-            line.new(lastPhBar, lastPhPrice, curBar, curPrice, color=priceColorBear, width=2, force_overlay=true)
-        else if v1_cross and v2_cross
-            line.new(lastKhBar, lastPhK, curKhBar, curK, color=color.red, width=2)
-            line.new(lastPhBar, lastPhPrice, curBar, curPrice, color=priceColorBear, width=2, force_overlay=true)
-            pBr_ckb := na
+    if na(bear_ps_bar)
+        bear_ps_bar := curBar
+        bear_ps_price := curPrice
+    else if curPrice > bear_ps_price
+        if not na(ksBarBear) and not na(keBarBear) and keValBear <= ksValBear
+            line.new(ksBarBear, ksValBear, keBarBear, keValBear, color=color.red, width=2)
+            line.new(bear_ps_bar, bear_ps_price, curBar, curPrice, color=priceColorBear, width=2, force_overlay=true)
+            bear_ps_bar := curBar
+            bear_ps_price := curPrice
         else
-            pBr_lkb := lastKhBar
-            pBr_lk := lastPhK
-            pBr_ckb := curKhBar
-            pBr_ck := curK
-            pBr_lpb := lastPhBar
-            pBr_lpp := lastPhPrice
-            pBr_cb := curBar
-            pBr_cp := curPrice
-    lastPhBar := curBar
-    lastPhPrice := curPrice
-    lastPhK := curK
-    lastKhBar := curKhBar
-
-// Bullish: Price LL + K HL
-if not na(plL)
-    int   curBar = bar_index - lbR
-    float curPrice = plL
-    float curK = curKTr
-    int   curKlBar = curKlBarCalc
-    if not na(lastPlBar) and not na(lastPlPrice) and curBar > lastPlBar
-        if curPrice > lastPlPrice
-            lastPlBar := na
-            lastPlPrice := na
-            lastPlK := na
-            lastKlBar := na
-            pBl_clb := na
-    bool zoneOkB = maxKBull >= 100.0 or (curK <= maxKBull and (na(lastPlK) or lastPlK <= maxKBull))
-    bool baseOkB = not na(lastPlPrice) and not na(lastKlBar) and not na(curKlBar) and curPrice < lastPlPrice and curK > lastPlK and (curK - lastPlK) >= minKDiff and zoneOkB
-    if showDiv and baseOkB and zoneOkB
-        if not requireCross
-            line.new(lastKlBar, lastPlK, curKlBar, curK, color=color.green, width=2)
-            line.new(lastPlBar, lastPlPrice, curBar, curPrice, color=priceColor, width=2, force_overlay=true)
-        else if vb1_cross and vb2_cross
-            line.new(lastKlBar, lastPlK, curKlBar, curK, color=color.green, width=2)
-            line.new(lastPlBar, lastPlPrice, curBar, curPrice, color=priceColor, width=2, force_overlay=true)
-            pBl_clb := na
-        else
-            pBl_llb := lastKlBar
-            pBl_lk := lastPlK
-            pBl_clb := curKlBar
-            pBl_ck := curK
-            pBl_lpb := lastPlBar
-            pBl_lpp := lastPlPrice
-            pBl_cb := curBar
-            pBl_cp := curPrice
-    lastPlBar := curBar
-    lastPlPrice := curPrice
-    lastPlK := curK
-    lastKlBar := curKlBar
-
-// Deferred draw when cross validation completes after pivot bar (requireCross only)
-val_pBr_l = stoch_peak_validated_bear(pBr_lkb)
-val_pBr_c = stoch_peak_validated_bear(pBr_ckb)
-val_pBl_l = stoch_peak_validated_bull(pBl_llb)
-val_pBl_c = stoch_peak_validated_bull(pBl_clb)
-
-if requireCross and showDiv and not na(pBr_ckb) and val_pBr_l and val_pBr_c
-    line.new(pBr_lkb, pBr_lk, pBr_ckb, pBr_ck, color=color.red, width=2)
-    line.new(pBr_lpb, pBr_lpp, pBr_cb, pBr_cp, color=priceColorBear, width=2, force_overlay=true)
-    pBr_ckb := na
-
-if requireCross and showDiv and not na(pBl_clb) and val_pBl_l and val_pBl_c
-    line.new(pBl_llb, pBl_lk, pBl_clb, pBl_ck, color=color.green, width=2)
-    line.new(pBl_lpb, pBl_lpp, pBl_cb, pBl_cp, color=priceColor, width=2, force_overlay=true)
-    pBl_clb := na
-
-// --- Debug: last bar only. Use label+force_overlay (table.new+force_overlay often does not show for overlay=false indicators).
-dbg_txt() =>
-    string t = "StochDiv debug (last bar)\n"
-    t += "Bear phH\n" + (dbg_bear_l1 == "" ? "(no phH yet)\n" : dbg_bear_l1 + "\n" + dbg_bear_l2 + "\n")
-    t += "Bull plL\n" + (dbg_bull_l1 == "" ? "(no plL yet)\n" : dbg_bull_l1 + "\n" + dbg_bull_l2 + "\n")
-    t += "Pend bear/bull: " + str.tostring(not na(pBr_ckb)) + " / " + str.tostring(not na(pBl_clb)) + "\n"
-    t += "Def OK br: " + str.tostring(val_pBr_l) + "/" + str.tostring(val_pBr_c) + "  bl: " + str.tostring(val_pBl_l) + "/" + str.tostring(val_pBl_c) + "\n"
-    t += "showDiv " + str.tostring(showDiv) + "  minKD " + str.tostring(minKDiff, "#.#") + "  minKBear " + str.tostring(minKBear, "#.#")
-    t
-
-if debugDiv and barstate.islast
-    float yHi = high
-    string tx = dbg_txt()
-    if na(dbg_lbl)
-        dbg_lbl := label.new(bar_index, yHi, tx, xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_lower_left, color=color.new(#1e222d, 15), textcolor=color.new(#eceff1, 0), size=size.small, textalign=text.align_left, force_overlay=true)
+            bear_ps_bar := na
+            bear_ps_price := na
     else
-        label.set_text(dbg_lbl, tx)
-        label.set_xy(dbg_lbl, bar_index, yHi)
-        label.set_color(dbg_lbl, color.new(#1e222d, 15))
-else if not debugDiv and not na(dbg_lbl)
-    label.delete(dbg_lbl)
-    dbg_lbl := na
+        bear_ps_bar := curBar
+        bear_ps_price := curPrice
+
+// --- Bullish anchors (computed every bar) ---
+bool bullLL = showDiv and not na(plL) and not na(bull_ps_bar) and not na(curBarL) and plL < bull_ps_price
+int bullWL = bullLL ? math.max(0, bull_ps_bar - WIN_EXTRA) : 0
+int bullWH = bullLL ? math.min(bar_index, curBarL + WIN_EXTRA) : -1
+
+[ksValBull, ksBarBull] = find_k_anchor_bull(bull_ps_bar, bullWL, bullWH, -1)
+int bullExcl = na(ksBarBull) ? -1 : ksBarBull
+[keValBull, keBarBull] = find_k_anchor_bull(curBarL, bullWL, bullWH, bullExcl)
+
+if showDiv and not na(plL)
+    int curBar = bar_index - lbR
+    float curPrice = plL
+    if na(bull_ps_bar)
+        bull_ps_bar := curBar
+        bull_ps_price := curPrice
+    else if curPrice < bull_ps_price
+        if not na(ksBarBull) and not na(keBarBull) and keValBull >= ksValBull
+            line.new(ksBarBull, ksValBull, keBarBull, keValBull, color=color.green, width=2)
+            line.new(bull_ps_bar, bull_ps_price, curBar, curPrice, color=priceColor, width=2, force_overlay=true)
+            bull_ps_bar := curBar
+            bull_ps_price := curPrice
+        else
+            bull_ps_bar := na
+            bull_ps_price := na
+    else
+        bull_ps_bar := curBar
+        bull_ps_price := curPrice
