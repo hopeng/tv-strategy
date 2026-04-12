@@ -1,5 +1,5 @@
 //@version=5
-indicator(title="Stoch RSI Divergence", shorttitle="Stoch RSI Div+", overlay=false)
+indicator(title="Stoch RSI Divergence", shorttitle="Stoch RSI Div+", overlay=false, max_lines_count=500)
 
 // --- Stoch RSI Inputs ---
 smoothK     = input.int(3, "K Smoothing", minval=1)
