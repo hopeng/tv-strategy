@@ -1,0 +1,8 @@
+{
+  "name": "tv-strategy",
+  "private": true,
+  "scripts": {
+    "watch:tv": "node scripts/watch-pine-to-tv.cjs",
+    "push:tv": "node scripts/watch-pine-to-tv.cjs --once"
+  }
+}

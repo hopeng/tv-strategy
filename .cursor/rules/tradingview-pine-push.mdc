@@ -1,0 +1,33 @@
+---
+description: After editing Pine indicators, push to TradingView and compile
+globs: "**/*.pine"
+alwaysApply: false
+---
+
+# TradingView Pine — push after changes
+
+## Rules vs automation
+
+- **This rule** only instructs the **AI**: it does not run commands when *you* save a file in the editor by yourself.
+- **Automatic push** after an **agent** edit to a `.pine` file is handled by the project hook `.cursor/hooks.json` → `afterFileEdit` → `push-pine-after-edit.cjs` (same `pine set` / `compile` / `save` as the CLI). Restart Cursor if hooks do not run after adding them; check the **Hooks** output channel if needed.
+- **`npm run watch:tv`** (file watcher) is optional: use it for edits made **outside** Cursor (other tools, git operations) or if you want every disk save to sync without relying on the hook.
+
+Set `TRADINGVIEW_MCP_ROOT` if `tradingview-mcp-jackson` is not next to this repo. TradingView must be reachable the same way as manual CLI pushes (browser + CDP).
+
+## What the AI should do
+
+Whenever you **add or modify** a `.pine` file, finish by syncing to TradingView and compiling (unless the user says TV sync is skipped). The hook may already have run **set** + **compile** + **save**; if unsure or the user reports the chart is stale, run again from the repo root (**PowerShell** uses `;` not `&&`):
+
+```powershell
+node "$env:TRADINGVIEW_MCP_ROOT/src/cli/index.js" pine set -f "D:/projects/tv-strategy/indicators/stoch_rsi_divergence.pine"; node "$env:TRADINGVIEW_MCP_ROOT/src/cli/index.js" pine compile
+```
+
+If `TRADINGVIEW_MCP_ROOT` is unset, use the full path to `tradingview-mcp-jackson`. Adjust `-f` to the file you edited.
+
+If `compile` only triggers **Pine Save**, the user may need **Add to chart** / **Update on chart** in TradingView.
+
+Optional offline check (no browser):
+
+```powershell
+node "D:/projects/tradingview-mcp-jackson/src/cli/index.js" pine check -f "D:/projects/tv-strategy/indicators/stoch_rsi_divergence.pine"
+```

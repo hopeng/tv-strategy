@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "node .cursor/hooks/push-pine-after-edit.cjs",
+        "timeout": 120
+      }
+    ]
+  }
+}
