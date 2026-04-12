@@ -1,4 +1,23 @@
 //@version=5
+// -----------------------------------------------------------------------------
+// Strategy: Stochastic RSI divergence (visual indicator, not automated entries)
+//
+// Core idea: Compare swing structure on price vs. the Stoch RSI %K line. When price
+// and %K disagree, momentum may be weakening — a common way to spot potential
+// reversals or pullbacks before they show on price alone.
+//
+// - Bearish divergence: price makes a higher high while %K makes a lower high at
+//   successive pivot highs → sellers may be taking control; watch for downside.
+// - Bullish divergence: price makes a lower low while %K makes a higher low at
+//   successive pivot lows → buyers may be absorbing; watch for upside.
+//
+// Implementation: Pivots use ta.pivothigh / ta.pivotlow on %K with configurable
+// left/right lookback. On each confirmed pivot, the script compares the new swing
+// to the previous stored swing and draws paired lines on %K and on the chart
+// (highs for bearish, lows for bullish) when the divergence condition holds.
+// Stoch RSI settings (RSI length, stochastic length, K/D smoothing) follow the
+// usual bounded oscillator; bands at 20/50/80 give overbought/oversold context.
+// -----------------------------------------------------------------------------
 indicator(title="Stoch RSI Divergence", shorttitle="Stoch RSI Div+", overlay=false, max_lines_count=500)
 
 // --- Stoch RSI Inputs ---
