@@ -6,16 +6,15 @@
 // 1. Save a swing high as ps. On the next swing high: if higher, treat as pe;
 //    if lower, replace ps.
 // 2. Window: Stoch RSI from ps to pe, widened by 5 bars on each end.
-// 3. ks = %K anchor closest to ps: %K swing high (priority) or K cross-down
-//    through D (fallback).
-// 4. ke = %K anchor closest to pe (same rules, ke != ks).
+// 3. ks = %K pivot closest to ps.
+// 4. ke = %K pivot closest to pe (ke != ks).
 // 5. If %K at ke <= %K at ks -> bear div confirmed, draw lines.
 // 6. If %K at ke > %K at ks -> no div, clear ps/pe, start fresh.
-// 7. Lookbacks: lbL = 5, lbR = 3 for both price and %K pivots.
+// 7. Lookbacks: lbL = 5, lbR = 3 for price pivots.
 //
 // Bull div: symmetric (lower lows on price, higher lows on %K).
 // -----------------------------------------------------------------------------
-indicator(title="Stoch RSI Divergence v2", shorttitle="StochDiv v2", overlay=false, max_lines_count=500, max_bars_back=5000)
+indicator(title="Stoch RSI Divergence v2a", shorttitle="StochDivV2", overlay=false, max_lines_count=500, max_bars_back=5000)
 
 // --- Stoch RSI Inputs ---
 smoothK     = input.int(3, "K Smoothing", minval=1)
@@ -50,7 +49,7 @@ fill(h0, h1, color=color.rgb(33, 150, 243, 93), title="Background")
 
 // --- Helpers (called every bar below — satisfies Pine consistency) ---
 
-// Bear anchor: %K swing high closest to pricePivotBar, falling back to K cross-down-through-D.
+// Bear anchor: %K pivot-high closest to pricePivotBar.
 // excludeBar (-1 = none) is skipped so ke != ks.
 find_k_anchor_bear(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
     if na(pricePivotBar) or winHi < winLo or winHi < 0
@@ -68,12 +67,12 @@ find_k_anchor_bear(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
             float kv = k[off]
             bool isHigh = true
             for i = 1 to lbL
-                if off + i > bar_index or na(k[off + i]) or k[off + i] >= kv
+                if off + i > bar_index or na(k[off + i]) or k[off + i] > kv
                     isHigh := false
                     break
             if isHigh
                 for i = 1 to lbR
-                    if off - i < 0 or na(k[off - i]) or k[off - i] >= kv
+                    if off - i < 0 or na(k[off - i]) or k[off - i] > kv
                         isHigh := false
                         break
             if isHigh
@@ -82,25 +81,9 @@ find_k_anchor_bear(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
                     bestDist := dist
                     bestBar := b
                     bestVal := kv
-        if na(bestBar)
-            bestDist := 2147483647
-            for b = winLo to winHi
-                if b == excludeBar
-                    continue
-                int off = bar_index - b
-                if off < 0 or off + 1 > bar_index
-                    continue
-                if na(k[off]) or na(d[off]) or na(k[off + 1]) or na(d[off + 1])
-                    continue
-                if k[off] < d[off] and k[off + 1] >= d[off + 1]
-                    int dist = math.abs(b - pricePivotBar)
-                    if dist < bestDist
-                        bestDist := dist
-                        bestBar := b
-                        bestVal := k[off]
         [bestVal, bestBar]
 
-// Bull anchor: %K swing low closest to pricePivotBar, falling back to K cross-up-through-D.
+// Bull anchor: %K pivot-low closest to pricePivotBar.
 find_k_anchor_bull(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
     if na(pricePivotBar) or winHi < winLo or winHi < 0
         [na, na]
@@ -117,12 +100,12 @@ find_k_anchor_bull(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
             float kv = k[off]
             bool isLow = true
             for i = 1 to lbL
-                if off + i > bar_index or na(k[off + i]) or k[off + i] <= kv
+                if off + i > bar_index or na(k[off + i]) or k[off + i] < kv
                     isLow := false
                     break
             if isLow
                 for i = 1 to lbR
-                    if off - i < 0 or na(k[off - i]) or k[off - i] <= kv
+                    if off - i < 0 or na(k[off - i]) or k[off - i] < kv
                         isLow := false
                         break
             if isLow
@@ -131,22 +114,6 @@ find_k_anchor_bull(int pricePivotBar, int winLo, int winHi, int excludeBar) =>
                     bestDist := dist
                     bestBar := b
                     bestVal := kv
-        if na(bestBar)
-            bestDist := 2147483647
-            for b = winLo to winHi
-                if b == excludeBar
-                    continue
-                int off = bar_index - b
-                if off < 0 or off + 1 > bar_index
-                    continue
-                if na(k[off]) or na(d[off]) or na(k[off + 1]) or na(d[off + 1])
-                    continue
-                if k[off] > d[off] and k[off + 1] <= d[off + 1]
-                    int dist = math.abs(b - pricePivotBar)
-                    if dist < bestDist
-                        bestDist := dist
-                        bestBar := b
-                        bestVal := k[off]
         [bestVal, bestBar]
 
 // --- Price Pivots ---
