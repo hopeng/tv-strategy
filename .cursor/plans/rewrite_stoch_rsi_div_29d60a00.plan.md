@@ -1,6 +1,6 @@
 ---
-name: Rewrite Stoch RSI Div
-overview: "Rewrite stoch_rsi_divergence.pine from ~504 lines to ~200-250 lines, replacing the complex K>D leg / anchor / cross-validation machinery with the simplified README spec: price pivot chaining, widened window scan, %K pivot-first / cross-down-fallback anchors."
+name: Stoch RSI Div Consolidated Plan
+overview: "Consolidated record of the Stoch RSI divergence rewrite and follow-up anchor-logic iterations: simplified ps/pe state machine, TV sync verification, and final %K pivot-based ks/ke anchors."
 todos:
   - id: strip-old
     content: Remove all old helper functions, cross-validation, pending-div state, dropped inputs, and debug shapes
@@ -113,3 +113,13 @@ flowchart TD
     compareK -->|yes: div confirmed| drawDiv
     compareK -->|no: rejected| clearPs
 ```
+
+## Follow-up changes (consolidated)
+
+- Cross-only anchor experiment was applied and validated, then superseded.
+- Final anchor behavior in current code:
+  - `ks` = `%K` pivot closest to `ps`
+  - `ke` = `%K` pivot closest to `pe`
+  - `ke != ks` enforced via `excludeBar`.
+- Pivot strictness was relaxed to allow equal neighboring `%K` values (only reject strictly greater/less neighbors), restoring divergence line visibility.
+- TradingView automation was added (`sync-pine-to-tv.cjs`) and reused by watch mode.
