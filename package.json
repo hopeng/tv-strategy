@@ -3,6 +3,6 @@
   "private": true,
   "scripts": {
     "watch:tv": "node scripts/watch-pine-to-tv.cjs",
-    "push:tv": "node scripts/watch-pine-to-tv.cjs --once"
+    "sync:tv": "node scripts/sync-pine-to-tv.cjs"
   }
 }
