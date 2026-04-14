@@ -32,12 +32,12 @@ priceColorBull = input.color(color.new(#FFFF00, 0), "Bullish price line color")
 priceColorBear = input.color(color.new(#FF69B4, 0), "Bearish price line color")
 priceMapRadius = input.int(3, "Price map radius (+/- bars)", minval=1, maxval=10)
 debugAllKPivots = input.bool(true, "Debug: plot all K pivots (high + low)")
-debugMatchPrice = input.bool(false, "Debug: plot mapped price pivots for ks/ke")
 
 // --- Calculations ---
 rsi1 = ta.rsi(src, lengthRSI)
 k = ta.sma(ta.stoch(rsi1, rsi1, rsi1, lengthStoch), smoothK)
 d = ta.sma(k, smoothD)
+atr14 = ta.atr(14)
 max_bars_back(k, 5000)
 max_bars_back(d, 5000)
 
@@ -207,11 +207,11 @@ if showDiv and not na(kPh)
         float ksVal = lastKHighVal
         [psPrice, psBar] = map_price_high_near(ksBar, priceMapRadius)
         [pePrice, peBar] = map_price_high_near(keBar, priceMapRadius)
-        if debugMatchPrice
+        if debugAllKPivots
             if not na(psBar)
-                label.new(psBar, psPrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_down, color=color.new(color.orange, 0), textcolor=color.new(color.orange, 0), size=size.tiny, force_overlay=true)
+                label.new(psBar, psPrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
             if not na(peBar)
-                label.new(peBar, pePrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_down, color=color.new(color.fuchsia, 0), textcolor=color.new(color.fuchsia, 0), size=size.tiny, force_overlay=true)
+                label.new(peBar, pePrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
         bool priceOk = not na(psBar) and not na(peBar) and pePrice > psPrice
         if priceOk
             line.new(ksBar, ksVal, keBar, keVal, color=color.red, width=2)
@@ -227,11 +227,12 @@ if showDiv and not na(kPl)
         float ksVal = lastKLowVal
         [psPrice, psBar] = map_price_low_near(ksBar, priceMapRadius)
         [pePrice, peBar] = map_price_low_near(keBar, priceMapRadius)
-        if debugMatchPrice
+        if debugAllKPivots
+            float lowMarkerGap = math.max(syminfo.mintick * 12.0, atr14 * 0.15)
             if not na(psBar)
-                label.new(psBar, psPrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_up, color=color.new(color.aqua, 0), textcolor=color.new(color.aqua, 0), size=size.tiny, force_overlay=true)
+                label.new(psBar, psPrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
             if not na(peBar)
-                label.new(peBar, pePrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_up, color=color.new(color.blue, 0), textcolor=color.new(color.blue, 0), size=size.tiny, force_overlay=true)
+                label.new(peBar, pePrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
         bool priceOk = not na(psBar) and not na(peBar) and pePrice < psPrice
         if priceOk
             line.new(ksBar, ksVal, keBar, keVal, color=color.green, width=2)
