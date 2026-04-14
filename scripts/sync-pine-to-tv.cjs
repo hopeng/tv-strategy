@@ -5,6 +5,8 @@
  *
  * Usage:
  *   node scripts/sync-pine-to-tv.cjs
+ *   node scripts/sync-pine-to-tv.cjs -f indicators/stoch_rsi_divergence_v3.pine
+ *   node scripts/sync-pine-to-tv.cjs --file "D:/projects/tv-strategy/indicators/foo.pine"
  *
  * Env overrides:
  *   TRADINGVIEW_MCP_ROOT  - path to tradingview-mcp-jackson repo
@@ -17,6 +19,25 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 
 const ROOT = path.join(__dirname, "..");
+
+function parseCliArgs(argv) {
+  let pineFile;
+  for (let i = 0; i < argv.length; i += 1) {
+    const a = argv[i];
+    if ((a === "-f" || a === "--file") && argv[i + 1]) {
+      pineFile = argv[i + 1];
+      i += 1;
+      continue;
+    }
+    // Allow positional .pine argument
+    if (!pineFile && a && a.toLowerCase().endsWith(".pine")) {
+      pineFile = a;
+    }
+  }
+  if (!pineFile) return {};
+  const resolved = path.isAbsolute(pineFile) ? pineFile : path.resolve(ROOT, pineFile);
+  return { pineFile: resolved };
+}
 
 function fail(msg, err) {
   console.error(msg);
@@ -141,6 +162,7 @@ function syncToTradingView(options = {}) {
 module.exports = { syncToTradingView };
 
 if (require.main === module) {
-  syncToTradingView();
+  const cliOpts = parseCliArgs(process.argv.slice(2));
+  syncToTradingView(cliOpts);
 }
 

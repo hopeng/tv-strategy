@@ -1,0 +1,241 @@
+//@version=6
+// -----------------------------------------------------------------------------
+// Stochastic RSI Divergence v3 (K-first)
+//
+// Logic:
+// 1) Detect K pivots first (using lbL/lbR).
+// 2) Pair consecutive K pivots: ks (previous), ke (current).
+// 3) Keep pair only if K forms divergence shape:
+//    - Bear: ke <= ks (lower/equal high)
+//    - Bull: ke >= ks (higher/equal low)
+// 4) Map each K pivot to nearby price point in +/-3 bars:
+//    - Prefer price pivots in that band
+//    - If none, fallback to nearest local extreme in that band
+// 5) Confirm divergence only when price condition also matches:
+//    - Bear: pe > ps (higher high)
+//    - Bull: pe < ps (lower low)
+// -----------------------------------------------------------------------------
+indicator(title="Stoch RSI Divergence v3", shorttitle="StochDivV3", overlay=false, max_lines_count=500, max_bars_back=5000)
+
+// --- Stoch RSI Inputs ---
+smoothK     = input.int(3, "K Smoothing", minval=1)
+smoothD     = input.int(3, "D Smoothing", minval=1)
+lengthRSI   = input.int(14, "RSI Length", minval=1)
+lengthStoch = input.int(14, "Stochastic Length", minval=1)
+src         = input(close, title="RSI Source")
+
+// --- Divergence Inputs ---
+showDiv        = input.bool(true, "Show Divergence Lines")
+lbR            = input.int(3, "Pivot Right Lookback", minval=1)
+lbL            = input.int(3, "Pivot Left Lookback", minval=1)
+priceColorBull = input.color(color.new(#FFFF00, 0), "Bullish price line color")
+priceColorBear = input.color(color.new(#FF69B4, 0), "Bearish price line color")
+priceMapRadius = input.int(3, "Price map radius (+/- bars)", minval=1, maxval=10)
+debugAllKPivots = input.bool(true, "Debug: plot all K pivots (high + low)")
+debugMatchPrice = input.bool(false, "Debug: plot mapped price pivots for ks/ke")
+
+// --- Calculations ---
+rsi1 = ta.rsi(src, lengthRSI)
+k = ta.sma(ta.stoch(rsi1, rsi1, rsi1, lengthStoch), smoothK)
+d = ta.sma(k, smoothD)
+max_bars_back(k, 5000)
+max_bars_back(d, 5000)
+
+// --- Plotting Stoch RSI ---
+plot(k, "K", color=#2962FF, linewidth=2)
+plot(d, "D", color=#FF6D00, linewidth=1)
+h0 = hline(80, "Upper Band", color=#787B86, linestyle=hline.style_dashed)
+hline(50, "Middle Band", color=color.new(#787B86, 50))
+h1 = hline(20, "Lower Band", color=#787B86, linestyle=hline.style_dashed)
+fill(h0, h1, color=color.rgb(33, 150, 243, 93), title="Background")
+
+// Debug all %K pivots (confirmed with lbL/lbR; plotted on pivot bar via offset).
+kPivotHighDbg = ta.pivothigh(k, lbL, lbR)
+kPivotLowDbg = ta.pivotlow(k, lbL, lbR)
+plotshape(debugAllKPivots ? kPivotHighDbg : na, title="All K pivot highs", style=shape.triangleup, location=location.absolute, offset=-lbR, color=color.new(color.yellow, 0), size=size.tiny)
+plotshape(debugAllKPivots ? kPivotLowDbg : na, title="All K pivot lows", style=shape.triangledown, location=location.absolute, offset=-lbR, color=color.new(color.red, 0), size=size.tiny)
+
+is_k_pivot_high(int b, int left, int right) =>
+    int off = bar_index - b
+    if off < 0 or na(k[off])
+        false
+    else
+        float v = k[off]
+        bool ok = true
+        for i = 1 to left
+            if off + i > bar_index or na(k[off + i]) or k[off + i] > v
+                ok := false
+                break
+        if ok
+            for i = 1 to right
+                if off - i < 0 or na(k[off - i]) or k[off - i] > v
+                    ok := false
+                    break
+        ok
+
+is_k_pivot_low(int b, int left, int right) =>
+    int off = bar_index - b
+    if off < 0 or na(k[off])
+        false
+    else
+        float v = k[off]
+        bool ok = true
+        for i = 1 to left
+            if off + i > bar_index or na(k[off + i]) or k[off + i] < v
+                ok := false
+                break
+        if ok
+            for i = 1 to right
+                if off - i < 0 or na(k[off - i]) or k[off - i] < v
+                    ok := false
+                    break
+        ok
+
+is_price_pivot_high(int b, int left, int right) =>
+    int off = bar_index - b
+    if off < 0 or na(high[off])
+        false
+    else
+        float v = high[off]
+        bool ok = true
+        for i = 1 to left
+            if off + i > bar_index or na(high[off + i]) or high[off + i] > v
+                ok := false
+                break
+        if ok
+            for i = 1 to right
+                if off - i < 0 or na(high[off - i]) or high[off - i] > v
+                    ok := false
+                    break
+        ok
+
+is_price_pivot_low(int b, int left, int right) =>
+    int off = bar_index - b
+    if off < 0 or na(low[off])
+        false
+    else
+        float v = low[off]
+        bool ok = true
+        for i = 1 to left
+            if off + i > bar_index or na(low[off + i]) or low[off + i] < v
+                ok := false
+                break
+        if ok
+            for i = 1 to right
+                if off - i < 0 or na(low[off - i]) or low[off - i] < v
+                    ok := false
+                    break
+        ok
+
+map_price_high_near(int kBar, int rad) =>
+    int lo = math.max(0, kBar - rad)
+    int hi = math.min(bar_index, kBar + rad)
+    int bestB = na
+    float bestP = na
+    int bestDist = 2147483647
+    for b = lo to hi
+        if is_price_pivot_high(b, lbL, lbR)
+            int dist = math.abs(b - kBar)
+            if na(bestB) or dist < bestDist
+                bestDist := dist
+                bestB := b
+                bestP := high[bar_index - b]
+    if na(bestB)
+        // Fallback: nearest bar with max high in +/-rad
+        float maxP = na
+        for b = lo to hi
+            float p = high[bar_index - b]
+            if na(maxP) or p > maxP
+                maxP := p
+        bestDist := 2147483647
+        for b = lo to hi
+            float p = high[bar_index - b]
+            if math.abs(p - maxP) < 0.0000001
+                int dist = math.abs(b - kBar)
+                if na(bestB) or dist < bestDist
+                    bestDist := dist
+                    bestB := b
+                    bestP := p
+    [bestP, bestB]
+
+map_price_low_near(int kBar, int rad) =>
+    int lo = math.max(0, kBar - rad)
+    int hi = math.min(bar_index, kBar + rad)
+    int bestB = na
+    float bestP = na
+    int bestDist = 2147483647
+    for b = lo to hi
+        if is_price_pivot_low(b, lbL, lbR)
+            int dist = math.abs(b - kBar)
+            if na(bestB) or dist < bestDist
+                bestDist := dist
+                bestB := b
+                bestP := low[bar_index - b]
+    if na(bestB)
+        // Fallback: nearest bar with min low in +/-rad
+        float minP = na
+        for b = lo to hi
+            float p = low[bar_index - b]
+            if na(minP) or p < minP
+                minP := p
+        bestDist := 2147483647
+        for b = lo to hi
+            float p = low[bar_index - b]
+            if math.abs(p - minP) < 0.0000001
+                int dist = math.abs(b - kBar)
+                if na(bestB) or dist < bestDist
+                    bestDist := dist
+                    bestB := b
+                    bestP := p
+    [bestP, bestB]
+
+// --- K-first state ---
+var int lastKHighBar = na
+var float lastKHighVal = na
+var int lastKLowBar = na
+var float lastKLowVal = na
+
+// K pivot events (confirmed on this bar, pivot is at bar_index - lbR)
+kPh = ta.pivothigh(k, lbL, lbR)
+kPl = ta.pivotlow(k, lbL, lbR)
+
+if showDiv and not na(kPh)
+    int keBar = bar_index - lbR
+    float keVal = kPh
+    if not na(lastKHighBar) and not na(lastKHighVal) and keBar > lastKHighBar and keVal <= lastKHighVal
+        int ksBar = lastKHighBar
+        float ksVal = lastKHighVal
+        [psPrice, psBar] = map_price_high_near(ksBar, priceMapRadius)
+        [pePrice, peBar] = map_price_high_near(keBar, priceMapRadius)
+        if debugMatchPrice
+            if not na(psBar)
+                label.new(psBar, psPrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_down, color=color.new(color.orange, 0), textcolor=color.new(color.orange, 0), size=size.tiny, force_overlay=true)
+            if not na(peBar)
+                label.new(peBar, pePrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_down, color=color.new(color.fuchsia, 0), textcolor=color.new(color.fuchsia, 0), size=size.tiny, force_overlay=true)
+        bool priceOk = not na(psBar) and not na(peBar) and pePrice > psPrice
+        if priceOk
+            line.new(ksBar, ksVal, keBar, keVal, color=color.red, width=2)
+            line.new(psBar, psPrice, peBar, pePrice, color=priceColorBear, width=2, force_overlay=true)
+    lastKHighBar := keBar
+    lastKHighVal := keVal
+
+if showDiv and not na(kPl)
+    int keBar = bar_index - lbR
+    float keVal = kPl
+    if not na(lastKLowBar) and not na(lastKLowVal) and keBar > lastKLowBar and keVal >= lastKLowVal
+        int ksBar = lastKLowBar
+        float ksVal = lastKLowVal
+        [psPrice, psBar] = map_price_low_near(ksBar, priceMapRadius)
+        [pePrice, peBar] = map_price_low_near(keBar, priceMapRadius)
+        if debugMatchPrice
+            if not na(psBar)
+                label.new(psBar, psPrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_up, color=color.new(color.aqua, 0), textcolor=color.new(color.aqua, 0), size=size.tiny, force_overlay=true)
+            if not na(peBar)
+                label.new(peBar, pePrice, "", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_up, color=color.new(color.blue, 0), textcolor=color.new(color.blue, 0), size=size.tiny, force_overlay=true)
+        bool priceOk = not na(psBar) and not na(peBar) and pePrice < psPrice
+        if priceOk
+            line.new(ksBar, ksVal, keBar, keVal, color=color.green, width=2)
+            line.new(psBar, psPrice, peBar, pePrice, color=priceColorBull, width=2, force_overlay=true)
+    lastKLowBar := keBar
+    lastKLowVal := keVal
+

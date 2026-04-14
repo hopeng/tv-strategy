@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "watch:tv": "node scripts/watch-pine-to-tv.cjs",
-    "sync:tv": "node scripts/sync-pine-to-tv.cjs"
+    "sync:tv": "node scripts/sync-pine-to-tv.cjs",
+    "sync:tv:v2": "node scripts/sync-pine-to-tv.cjs -f indicators/stoch_rsi_divergence.pine",
+    "sync:tv:v3": "node scripts/sync-pine-to-tv.cjs -f indicators/stoch_rsi_divergence_v3.pine"
   }
 }
