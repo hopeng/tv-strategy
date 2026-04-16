@@ -191,10 +191,21 @@ map_price_low_near(int kBar, int rad) =>
     [bestP, bestB]
 
 // --- K-first state ---
-var int lastKHighBar = na
+var int   lastKHighBar = na
 var float lastKHighVal = na
-var int lastKLowBar = na
+var int   prevKHighBar = na
+var float prevKHighVal = na
+var line  activeBearKLine = na
+var line  activeBearPLine = na
+var int   activeBearKsBar = na
+
+var int   lastKLowBar = na
 var float lastKLowVal = na
+var int   prevKLowBar = na
+var float prevKLowVal = na
+var line  activeBullKLine = na
+var line  activeBullPLine = na
+var int   activeBullKsBar = na
 
 // K pivot events (confirmed on this bar, pivot is at bar_index - lbR)
 kPh = ta.pivothigh(k, lbL, lbR)
@@ -203,41 +214,158 @@ kPl = ta.pivotlow(k, lbL, lbR)
 if showDiv and not na(kPh)
     int keBar = bar_index - lbR
     float keVal = kPh
+
+    bool consOk = false
+    int  consKsBar = na
+    float consKsVal = na
+    int  consPsBar = na
+    float consPsPrice = na
+    int  consPeBar = na
+    float consPePrice = na
+
+    bool lbOk = false
+    int  lbKsBar = na
+    float lbKsVal = na
+    int  lbPsBar = na
+    float lbPsPrice = na
+    int  lbPeBar = na
+    float lbPePrice = na
+
     if not na(lastKHighBar) and not na(lastKHighVal) and keBar > lastKHighBar and keVal <= lastKHighVal
-        int ksBar = lastKHighBar
-        float ksVal = lastKHighVal
-        [psPrice, psBar] = map_price_high_near(ksBar, priceMapRadius)
-        [pePrice, peBar] = map_price_high_near(keBar, priceMapRadius)
+        consKsBar := lastKHighBar
+        consKsVal := lastKHighVal
+        [_psP, _psB] = map_price_high_near(consKsBar, priceMapRadius)
+        [_peP, _peB] = map_price_high_near(keBar, priceMapRadius)
+        consPsBar := _psB
+        consPsPrice := _psP
+        consPeBar := _peB
+        consPePrice := _peP
+        consOk := not na(_psB) and not na(_peB) and _peP > _psP
+
+    if not na(prevKHighBar) and not na(prevKHighVal) and keBar > prevKHighBar and keVal <= prevKHighVal
+        lbKsBar := prevKHighBar
+        lbKsVal := prevKHighVal
+        [_psP2, _psB2] = map_price_high_near(lbKsBar, priceMapRadius)
+        [_peP2, _peB2] = map_price_high_near(keBar, priceMapRadius)
+        lbPsBar := _psB2
+        lbPsPrice := _psP2
+        lbPeBar := _peB2
+        lbPePrice := _peP2
+        lbOk := not na(_psB2) and not na(_peB2) and _peP2 > _psP2
+
+    if lbOk
+        if activeBearKsBar == lbKsBar
+            if not na(activeBearKLine)
+                line.set_style(activeBearKLine, line.style_dashed)
+            if not na(activeBearPLine)
+                line.set_style(activeBearPLine, line.style_dashed)
+        activeBearKLine := line.new(lbKsBar, lbKsVal, keBar, keVal, color=color.red, width=2)
+        activeBearPLine := line.new(lbPsBar, lbPsPrice, lbPeBar, lbPePrice, color=priceColorBear, width=2, force_overlay=true)
+        activeBearKsBar := lbKsBar
         if debugAllKPivots
-            if not na(psBar)
-                label.new(psBar, psPrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
-            if not na(peBar)
-                label.new(peBar, pePrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
-        bool priceOk = not na(psBar) and not na(peBar) and pePrice > psPrice
-        if priceOk
-            line.new(ksBar, ksVal, keBar, keVal, color=color.red, width=2)
-            line.new(psBar, psPrice, peBar, pePrice, color=priceColorBear, width=2, force_overlay=true)
+            if not na(lbPsBar)
+                label.new(lbPsBar, lbPsPrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
+            if not na(lbPeBar)
+                label.new(lbPeBar, lbPePrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
+    else if consOk
+        activeBearKLine := line.new(consKsBar, consKsVal, keBar, keVal, color=color.red, width=2)
+        activeBearPLine := line.new(consPsBar, consPsPrice, consPeBar, consPePrice, color=priceColorBear, width=2, force_overlay=true)
+        activeBearKsBar := consKsBar
+        if debugAllKPivots
+            if not na(consPsBar)
+                label.new(consPsBar, consPsPrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
+            if not na(consPeBar)
+                label.new(consPeBar, consPePrice, "▲", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(color.blue, 100), textcolor=color.new(color.blue, 0), size=size.normal, force_overlay=true)
+
+    if keVal > lastKHighVal
+        prevKHighBar := na
+        prevKHighVal := na
+        activeBearKLine := na
+        activeBearPLine := na
+        activeBearKsBar := na
+    else if not lbOk
+        prevKHighBar := lastKHighBar
+        prevKHighVal := lastKHighVal
     lastKHighBar := keBar
     lastKHighVal := keVal
 
 if showDiv and not na(kPl)
     int keBar = bar_index - lbR
     float keVal = kPl
+
+    bool consOk = false
+    int  consKsBar = na
+    float consKsVal = na
+    int  consPsBar = na
+    float consPsPrice = na
+    int  consPeBar = na
+    float consPePrice = na
+
+    bool lbOk = false
+    int  lbKsBar = na
+    float lbKsVal = na
+    int  lbPsBar = na
+    float lbPsPrice = na
+    int  lbPeBar = na
+    float lbPePrice = na
+
     if not na(lastKLowBar) and not na(lastKLowVal) and keBar > lastKLowBar and keVal >= lastKLowVal
-        int ksBar = lastKLowBar
-        float ksVal = lastKLowVal
-        [psPrice, psBar] = map_price_low_near(ksBar, priceMapRadius)
-        [pePrice, peBar] = map_price_low_near(keBar, priceMapRadius)
+        consKsBar := lastKLowBar
+        consKsVal := lastKLowVal
+        [_psP, _psB] = map_price_low_near(consKsBar, priceMapRadius)
+        [_peP, _peB] = map_price_low_near(keBar, priceMapRadius)
+        consPsBar := _psB
+        consPsPrice := _psP
+        consPeBar := _peB
+        consPePrice := _peP
+        consOk := not na(_psB) and not na(_peB) and _peP < _psP
+
+    if not na(prevKLowBar) and not na(prevKLowVal) and keBar > prevKLowBar and keVal >= prevKLowVal
+        lbKsBar := prevKLowBar
+        lbKsVal := prevKLowVal
+        [_psP2, _psB2] = map_price_low_near(lbKsBar, priceMapRadius)
+        [_peP2, _peB2] = map_price_low_near(keBar, priceMapRadius)
+        lbPsBar := _psB2
+        lbPsPrice := _psP2
+        lbPeBar := _peB2
+        lbPePrice := _peP2
+        lbOk := not na(_psB2) and not na(_peB2) and _peP2 < _psP2
+
+    float lowMarkerGap = math.max(syminfo.mintick * 12.0, atr14 * 0.15)
+
+    if lbOk
+        if activeBullKsBar == lbKsBar
+            if not na(activeBullKLine)
+                line.set_style(activeBullKLine, line.style_dashed)
+            if not na(activeBullPLine)
+                line.set_style(activeBullPLine, line.style_dashed)
+        activeBullKLine := line.new(lbKsBar, lbKsVal, keBar, keVal, color=color.green, width=2)
+        activeBullPLine := line.new(lbPsBar, lbPsPrice, lbPeBar, lbPePrice, color=priceColorBull, width=2, force_overlay=true)
+        activeBullKsBar := lbKsBar
         if debugAllKPivots
-            float lowMarkerGap = math.max(syminfo.mintick * 12.0, atr14 * 0.15)
-            if not na(psBar)
-                label.new(psBar, psPrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
-            if not na(peBar)
-                label.new(peBar, pePrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
-        bool priceOk = not na(psBar) and not na(peBar) and pePrice < psPrice
-        if priceOk
-            line.new(ksBar, ksVal, keBar, keVal, color=color.green, width=2)
-            line.new(psBar, psPrice, peBar, pePrice, color=priceColorBull, width=2, force_overlay=true)
+            if not na(lbPsBar)
+                label.new(lbPsBar, lbPsPrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
+            if not na(lbPeBar)
+                label.new(lbPeBar, lbPePrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
+    else if consOk
+        activeBullKLine := line.new(consKsBar, consKsVal, keBar, keVal, color=color.green, width=2)
+        activeBullPLine := line.new(consPsBar, consPsPrice, consPeBar, consPePrice, color=priceColorBull, width=2, force_overlay=true)
+        activeBullKsBar := consKsBar
+        if debugAllKPivots
+            if not na(consPsBar)
+                label.new(consPsBar, consPsPrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
+            if not na(consPeBar)
+                label.new(consPeBar, consPePrice - lowMarkerGap, "▼", xloc=xloc.bar_index, yloc=yloc.price, style=label.style_none, color=color.new(#800080, 100), textcolor=color.new(#800080, 0), size=size.normal, force_overlay=true)
+
+    if keVal < lastKLowVal
+        prevKLowBar := na
+        prevKLowVal := na
+        activeBullKLine := na
+        activeBullPLine := na
+        activeBullKsBar := na
+    else if not lbOk
+        prevKLowBar := lastKLowBar
+        prevKLowVal := lastKLowVal
     lastKLowBar := keBar
     lastKLowVal := keVal
 
