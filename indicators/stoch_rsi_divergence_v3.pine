@@ -203,7 +203,13 @@ kPl = ta.pivotlow(k, lbL, lbR)
 if showDiv and not na(kPh)
     int keBar = bar_index - lbR
     float keVal = kPh
-    if not na(lastKHighBar) and not na(lastKHighVal) and keBar > lastKHighBar and keVal <= lastKHighVal
+    if na(lastKHighBar) or na(lastKHighVal)
+        lastKHighBar := keBar
+        lastKHighVal := keVal
+    else if keVal > lastKHighVal
+        lastKHighBar := keBar
+        lastKHighVal := keVal
+    else if keBar > lastKHighBar
         int ksBar = lastKHighBar
         float ksVal = lastKHighVal
         [psPrice, psBar] = map_price_high_near(ksBar, priceMapRadius)
@@ -217,13 +223,17 @@ if showDiv and not na(kPh)
         if priceOk
             line.new(ksBar, ksVal, keBar, keVal, color=color.red, width=2)
             line.new(psBar, psPrice, peBar, pePrice, color=priceColorBear, width=2, force_overlay=true)
-    lastKHighBar := keBar
-    lastKHighVal := keVal
 
 if showDiv and not na(kPl)
     int keBar = bar_index - lbR
     float keVal = kPl
-    if not na(lastKLowBar) and not na(lastKLowVal) and keBar > lastKLowBar and keVal >= lastKLowVal
+    if na(lastKLowBar) or na(lastKLowVal)
+        lastKLowBar := keBar
+        lastKLowVal := keVal
+    else if keVal < lastKLowVal
+        lastKLowBar := keBar
+        lastKLowVal := keVal
+    else if keBar > lastKLowBar
         int ksBar = lastKLowBar
         float ksVal = lastKLowVal
         [psPrice, psBar] = map_price_low_near(ksBar, priceMapRadius)
@@ -238,6 +248,4 @@ if showDiv and not na(kPl)
         if priceOk
             line.new(ksBar, ksVal, keBar, keVal, color=color.green, width=2)
             line.new(psBar, psPrice, peBar, pePrice, color=priceColorBull, width=2, force_overlay=true)
-    lastKLowBar := keBar
-    lastKLowVal := keVal
 
