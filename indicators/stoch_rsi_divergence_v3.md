@@ -165,7 +165,7 @@ Four functions check whether a given bar qualifies as a pivot by comparing it ag
 - `is_price_pivot_high(b, left, right)` — `high` at bar `b` >= all neighbors
 - `is_price_pivot_low(b, left, right)` — `low` at bar `b` <= all neighbors
 
-All include `>= 0` and `<= bar_index` bounds checks. Pine Script's history operator `series[offset]` has a hard limit of 10,000 bars; this is handled by the `max_bars_back=5000` indicator setting and the natural constraint that offsets stay reasonable.
+All include `>= 0` and `<= bar_index` bounds checks. In practice, this script constrains history access to 5,000 bars (`max_bars_back=5000` plus explicit `off <= 5000` checks in penetration loops).
 
 ## Price Mapping Functions
 
@@ -175,6 +175,99 @@ All include `>= 0` and `<= bar_index` bounds checks. Pine Script's history opera
 When `requireNearbyPricePivot = true` (default), these return `na` if no actual price pivot is found in the radius — preventing noise from fallback to local extremes.
 
 When `requireNearbyPricePivot = false`, a fallback scans for the bar with the highest `high` (or lowest `low`) in the window and uses that as a pseudo-pivot.
+
+---
+
+## K-Line Penetration Filter
+
+### Problem
+
+Long-span divergence lines can cut through the K oscillator many times between `ks` and `ke`, producing visually noisy and low-conviction signals. However, a blanket "max crossings" threshold is too crude: a few bars crossing deeply is acceptable, and many bars crossing shallowly is also acceptable. Only when many bars cross deeply should the divergence be rejected.
+
+### Solution: Average Penetration Depth
+
+For each bar between `ks` and `ke`, interpolate the straight-line divergence value, then measure how far K penetrates through the wrong side:
+
+```
+For bar i (ksBar < i < keBar):
+  lineVal = ksVal + slope * (i - ksBar)
+  off = bar_index - (ksBar + i)
+  Bear: penetration = max(0, k[off] - lineVal)   // K above line is bad
+  Bull: penetration = max(0, lineVal - k[off])   // K below line is bad
+```
+
+The metric is:
+
+```
+avgPenetration = totalPenetration / span
+```
+
+If `avgPenetration > maxKPenetration`, the divergence is invalidated.
+
+### Why This Works
+
+| Scenario | Count | Depth | avgPenetration | Result |
+|----------|-------|-------|----------------|--------|
+| 3 bars cross by 1 pt over 20 bars | low | shallow | 0.15 | OK |
+| 15 bars cross by 0.5 pt over 20 bars | high | shallow | 0.375 | OK |
+| 15 bars cross by 5 pt over 20 bars | high | deep | 3.75 | REJECT |
+| 2 bars cross by 8 pt over 20 bars | low | deep | 0.8 | OK |
+
+The threshold is in K points (K ranges 0–100). A default of `2.0` means: on average across the span, K doesn't pierce the line by more than 2 points.
+
+### Implementation
+
+```pine
+avg_k_penetration(int startBar, float startVal, int endBar, float endVal, bool checkAbove) =>
+    int span = endBar - startBar
+    if span <= 1
+        0.0
+    else
+        float slope = (endVal - startVal) / span
+        float total = 0.0
+        for i = 1 to span - 1
+            int off = bar_index - (startBar + i)
+            if off >= 0 and off <= 5000
+                float lineVal = startVal + slope * i
+                float kVal = k[off]
+                if checkAbove
+                    total += math.max(0.0, kVal - lineVal)
+                else
+                    total += math.max(0.0, lineVal - kVal)
+        total / span
+```
+
+The function is used as a final gate after K-shape + price-divergence checks.  
+For Pine consistency, the script precomputes candidate penetration values at top level each bar, then applies them inside the confirmation branches:
+
+```
+avgPen = avg_k_penetration(ksBar, ksVal, keBar, keVal, true)  // true = bear
+if avgPen > maxKPenetration
+    consOk := false  // invalidate
+```
+
+### Price-Line Penetration (same principle)
+
+The same average-penetration approach is applied to the price divergence line:
+
+- **Bear** (price highs, line slopes up): penetration = `max(0, high[off] - lineVal)` — candles poking above the line
+- **Bull** (price lows, line slopes down): penetration = `max(0, lineVal - low[off])` — candles dipping below the line
+
+The raw price penetration is normalized by `atr14` to be instrument-agnostic:
+
+```
+if avgPricePenetration / atr14 > maxPricePenetration
+    invalidate
+```
+
+When a look-back divergence fails price penetration, it falls through to the consecutive pair, which uses a closer `ps` and typically produces a cleaner line.
+
+### Inputs
+
+| Input | Type | Default | Description |
+|-------|------|---------|-------------|
+| Max K penetration | float | 2.0 | Max average K-line penetration (K points) to allow divergence |
+| Max price penetration | float | 0.3 | Max average price-line penetration (as ATR ratio) to allow divergence |
 
 ---
 
@@ -236,6 +329,8 @@ Price low markers are offset downward by `max(syminfo.mintick * 12, atr14 * 0.15
 | Bearish price line color | color | hot pink | Color for bearish price divergence lines |
 | Price map radius | int | 5 | +/- bars to search for price pivot near K pivot |
 | Require nearby price pivot | bool | true | Disable fallback to local extreme when no pivot found |
+| Max K penetration | float | 2.0 | Max average K-line penetration (K points) to allow divergence |
+| Max price penetration | float | 0.3 | Max average price-line penetration (ATR ratio) to allow divergence |
 | Debug: plot all K pivots | bool | true | Show all K pivot markers and price mapping labels |
 
 ---

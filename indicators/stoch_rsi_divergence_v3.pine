@@ -32,6 +32,8 @@ priceColorBull = input.color(color.new(#FFFF00, 0), "Bullish price line color")
 priceColorBear = input.color(color.new(#FF69B4, 0), "Bearish price line color")
 priceMapRadius = input.int(5, "Price map radius (+/- bars)", minval=1, maxval=10)
 requireNearbyPricePivot = input.bool(true, "Require nearby price pivot for ks/ke mapping")
+maxKPenetration = input.float(2.0, "Max K penetration (avg pts)", minval=0.0, step=0.5)
+maxPricePenetration = input.float(0.3, "Max price penetration (avg ATR ratio)", minval=0.0, step=0.1)
 debugAllKPivots = input.bool(true, "Debug: plot all K pivots (high + low)")
 
 // --- Calculations ---
@@ -190,6 +192,52 @@ map_price_low_near(int kBar, int rad) =>
                     bestP := p
     [bestP, bestB]
 
+avg_k_penetration(int startBar, float startVal, int endBar, float endVal, bool checkAbove) =>
+    int span = endBar - startBar
+    if span <= 1
+        0.0
+    else
+        float slope = (endVal - startVal) / span
+        float total = 0.0
+        for i = 1 to span - 1
+            int off = bar_index - (startBar + i)
+            if off >= 0 and off <= 5000
+                float lineVal = startVal + slope * i
+                float kVal = k[off]
+                if checkAbove
+                    total += math.max(0.0, kVal - lineVal)
+                else
+                    total += math.max(0.0, lineVal - kVal)
+        total / span
+
+avg_price_pen_high(int startBar, float startPrice, int endBar, float endPrice) =>
+    int span = endBar - startBar
+    if span <= 1
+        0.0
+    else
+        float slope = (endPrice - startPrice) / span
+        float total = 0.0
+        for i = 1 to span - 1
+            int off = bar_index - (startBar + i)
+            if off >= 0 and off <= 5000
+                float lineVal = startPrice + slope * i
+                total += math.max(0.0, high[off] - lineVal)
+        total / span
+
+avg_price_pen_low(int startBar, float startPrice, int endBar, float endPrice) =>
+    int span = endBar - startBar
+    if span <= 1
+        0.0
+    else
+        float slope = (endPrice - startPrice) / span
+        float total = 0.0
+        for i = 1 to span - 1
+            int off = bar_index - (startBar + i)
+            if off >= 0 and off <= 5000
+                float lineVal = startPrice + slope * i
+                total += math.max(0.0, lineVal - low[off])
+        total / span
+
 // --- K-first state ---
 var int   lastKHighBar = na
 var float lastKHighVal = na
@@ -211,9 +259,22 @@ var int   activeBullKsBar = na
 kPh = ta.pivothigh(k, lbL, lbR)
 kPl = ta.pivotlow(k, lbL, lbR)
 
+int _keBarH = bar_index - lbR
+float _keValH = nz(kPh)
+float bearConsPen = avg_k_penetration(nz(lastKHighBar, _keBarH), nz(lastKHighVal, _keValH), _keBarH, _keValH, true)
+float bearLbPen = avg_k_penetration(nz(prevKHighBar, _keBarH), nz(prevKHighVal, _keValH), _keBarH, _keValH, true)
+
+int _keBarL = bar_index - lbR
+float _keValL = nz(kPl)
+float bullConsPen = avg_k_penetration(nz(lastKLowBar, _keBarL), nz(lastKLowVal, _keValL), _keBarL, _keValL, false)
+float bullLbPen = avg_k_penetration(nz(prevKLowBar, _keBarL), nz(prevKLowVal, _keValL), _keBarL, _keValL, false)
+
 if showDiv and not na(kPh)
     int keBar = bar_index - lbR
     float keVal = kPh
+
+    float consPen = bearConsPen
+    float lbPen = bearLbPen
 
     bool consOk = false
     int  consKsBar = na
@@ -241,6 +302,11 @@ if showDiv and not na(kPh)
         consPeBar := _peB
         consPePrice := _peP
         consOk := not na(_psB) and not na(_peB) and _peP > _psP
+        if consOk and maxKPenetration > 0
+            consOk := consPen <= maxKPenetration
+        float _pPen = avg_price_pen_high(nz(_psB, keBar), nz(_psP, 0.0), nz(_peB, keBar), nz(_peP, 0.0))
+        if consOk and maxPricePenetration > 0 and _pPen / atr14 > maxPricePenetration
+            consOk := false
 
     if not na(prevKHighBar) and not na(prevKHighVal) and keBar > prevKHighBar and keVal <= prevKHighVal
         lbKsBar := prevKHighBar
@@ -252,6 +318,11 @@ if showDiv and not na(kPh)
         lbPeBar := _peB2
         lbPePrice := _peP2
         lbOk := not na(_psB2) and not na(_peB2) and _peP2 > _psP2
+        if lbOk and maxKPenetration > 0
+            lbOk := lbPen <= maxKPenetration
+        float _pPen2 = avg_price_pen_high(nz(_psB2, keBar), nz(_psP2, 0.0), nz(_peB2, keBar), nz(_peP2, 0.0))
+        if lbOk and maxPricePenetration > 0 and _pPen2 / atr14 > maxPricePenetration
+            lbOk := false
 
     if lbOk
         if activeBearKsBar == lbKsBar
@@ -293,6 +364,9 @@ if showDiv and not na(kPl)
     int keBar = bar_index - lbR
     float keVal = kPl
 
+    float consPen = bullConsPen
+    float lbPen = bullLbPen
+
     bool consOk = false
     int  consKsBar = na
     float consKsVal = na
@@ -319,6 +393,11 @@ if showDiv and not na(kPl)
         consPeBar := _peB
         consPePrice := _peP
         consOk := not na(_psB) and not na(_peB) and _peP < _psP
+        if consOk and maxKPenetration > 0
+            consOk := consPen <= maxKPenetration
+        float _pPen = avg_price_pen_low(nz(_psB, keBar), nz(_psP, 0.0), nz(_peB, keBar), nz(_peP, 0.0))
+        if consOk and maxPricePenetration > 0 and _pPen / atr14 > maxPricePenetration
+            consOk := false
 
     if not na(prevKLowBar) and not na(prevKLowVal) and keBar > prevKLowBar and keVal >= prevKLowVal
         lbKsBar := prevKLowBar
@@ -330,6 +409,11 @@ if showDiv and not na(kPl)
         lbPeBar := _peB2
         lbPePrice := _peP2
         lbOk := not na(_psB2) and not na(_peB2) and _peP2 < _psP2
+        if lbOk and maxKPenetration > 0
+            lbOk := lbPen <= maxKPenetration
+        float _pPen2 = avg_price_pen_low(nz(_psB2, keBar), nz(_psP2, 0.0), nz(_peB2, keBar), nz(_peP2, 0.0))
+        if lbOk and maxPricePenetration > 0 and _pPen2 / atr14 > maxPricePenetration
+            lbOk := false
 
     float lowMarkerGap = math.max(syminfo.mintick * 12.0, atr14 * 0.15)
 
